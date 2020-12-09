@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dearobot</title>
+
+  <!-- css links -->
+  <link rel="stylesheet" href="./assest/css/reset.css">
+  <link rel="stylesheet" href="./assest/css/mdc.css">
+  <link rel="stylesheet" href="./assest/css/main.css">
+
+  <!-- material design components -->
+  <link href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css" rel="stylesheet">
+  <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
+  <!-- material design icons -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+  <!-- google fonts: Noto Sans JP -->
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap" rel="stylesheet">
+
+  <!-- p5.js  -->
+  <script src="https://cdn.jsdelivr.net/npm/p5@1.1.9/lib/p5.js"></script>
+  <script src="./libs/p5.play.js"></script>
+  <script src="./assest/js/sketch.js"></script>
+</head>
+
+<body>
+  <!-- 1. Header: App bars: top -->
+  <header class="mdc-top-app-bar">
+    <div class="mdc-top-app-bar__row">
+      <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
+        <span class="mdc-top-app-bar__title">Dearobot</span>
+      </section>
+      <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-end" role="toolbar">
+        <!-- <button class="material-icons mdc-top-app-bar__action-item mdc-icon-button" aria-label="Favorite">favorite</button>
+        <button class="material-icons mdc-top-app-bar__action-item mdc-icon-button" aria-label="Search">search</button>
+        <button class="material-icons mdc-top-app-bar__action-item mdc-icon-button" aria-label="Options">more_vert</button> -->
+      </section>
+    </div>
+  </header>
+
+  <!-- 2. Main: main contents -->
+  <main>
+
+    <!-- 2.1 paper -->
+    <div class="paper">
+
+      <!-- 1 stepper -->
+      <div class="stepper">
+        <div class="mdc-tab-bar" role="tablist">
+          <div class="mdc-tab-scroller">
+            <div class="mdc-tab-scroller__scroll-area mdc-tab-scroller__scroll-area--scroll">
+              <div class="mdc-tab-scroller__scroll-content">
+
+                <button id="mdc-tab-1" class="mdc-tab mdc-tab--active" role="tab" aria-selected="true" tabindex="-1">
+                  <span class="mdc-tab__content">
+                    <span class="mdc-tab__icon material-icons" aria-hidden="true">face</span>
+                    <span class="mdc-tab__text-label">顔の形</span>
+                  </span>
+                  <span class="mdc-tab-indicator mdc-tab-indicator--active">
+                    <span class="mdc-tab-indicator__content mdc-tab-indicator__content--underline"></span>
+                  </span>
+                  <span class="mdc-tab__ripple"></span>
+                </button>
+
+                <button id="mdc-tab-2" class="mdc-tab" role="tab" aria-selected="false" tabindex="-1">
+                  <span class="mdc-tab__content">
+                    <span class="mdc-tab__icon material-icons" aria-hidden="true">visibility</span>
+                    <span class="mdc-tab__text-label">目</span>
+                  </span>
+                  <span class="mdc-tab-indicator mdc-tab-indicator__content--underline">
+                    <span class="mdc-tab-indicator__content mdc-tab-indicator__content--underline"></span>
+                  </span>
+                  <span class="mdc-tab__ripple"></span>
+                </button>
+
+                <button id="mdc-tab-3" class="mdc-tab" role="tab" aria-selected="false" tabindex="-1">
+                  <span class="mdc-tab__content">
+                    <span class="mdc-tab__icon material-icons" aria-hidden="true">accessibility</span>
+                    <span class="mdc-tab__text-label">口</span>
+                  </span>
+                  <span class="mdc-tab-indicator mdc-tab-indicator__content--underline">
+                    <span class="mdc-tab-indicator__content mdc-tab-indicator__content--underline"></span>
+                  </span>
+                  <span class="mdc-tab__ripple"></span>
+                </button>
+
+                <button id="mdc-tab-4" class="mdc-tab" role="tab" aria-selected="false" tabindex="-1">
+                  <span class="mdc-tab__content">
+                    <span class="mdc-tab__icon material-icons" aria-hidden="true">accessibility</span>
+                    <span class="mdc-tab__text-label">体</span>
+                  </span>
+                  <span class="mdc-tab-indicator mdc-tab-indicator__content--underline">
+                    <span class="mdc-tab-indicator__content mdc-tab-indicator__content--underline"></span>
+                  </span>
+                  <span class="mdc-tab__ripple"></span>
+                </button>
+
+                <button id="mdc-tab-5" class="mdc-tab" role="tab" aria-selected="false" tabindex="-1">
+                  <span class="mdc-tab__content">
+                    <span class="mdc-tab__icon material-icons" aria-hidden="true">preview</span>
+                    <span class="mdc-tab__text-label">プレビュー</span>
+                  </span>
+                  <span class="mdc-tab-indicator mdc-tab-indicator__content--underline">
+                    <span class="mdc-tab-indicator__content mdc-tab-indicator__content--underline"></span>
+                  </span>
+                  <span class="mdc-tab__ripple"></span>
+                </button>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2 content1: 顔の形の編集画面 -->
+      <div id="content1" class="edit-container">
+        <div class="left-box">
+          <p>1. お好みの顔の形に編集してください</p>
+          <div class="gallery">
+            <input type="image" src="./assest/img/face_00.jpg" onClick="changeTemp('face', 0)">
+            <input type="image" src="./assest/img/face_01.jpg" onClick="changeTemp('face', 1)">
+            <input type="image" src="./assest/img/face_02.jpg" onClick="changeTemp('face', 2)">
+            <input type="image" src="./assest/img/face_03.jpg" onClick="changeTemp('face', 3)">
+            <input type="image" src="./assest/img/face_04.jpg" onClick="changeTemp('face', 4)">
+            <input type="image" src="./assest/img/face_05.jpg" onClick="changeTemp('face', 5)">
+            <input type="image" src="./assest/img/face_06.jpg" onClick="changeTemp('face', 6)">
+            <input type="image" src="./assest/img/face_07.jpg" onClick="changeTemp('face', 7)">
+            <input type="image" src="./assest/img/face_08.jpg" onClick="changeTemp('face', 8)">
+            <input type="image" src="./assest/img/face_09.jpg" onClick="changeTemp('face', 9)">
+            <input type="image" src="./assest/img/face_10.jpg" onClick="changeTemp('face', 10)">
+            <input type="image" src="./assest/img/face_11.jpg" onClick="changeTemp('face', 11)">
+            <input type="image" src="./assest/img/face_12.jpg" onClick="changeTemp('face', 12)">
+            <input type="image" src="./assest/img/face_13.jpg" onClick="changeTemp('face', 13)">
+            <input type="image" src="./assest/img/face_14.jpg" onClick="changeTemp('face', 14)">
+            <input type="image" src="./assest/img/face_15.jpg" onClick="changeTemp('face', 15)">
+          </div>
+        </div>
+        <div class="mid-box">
+          <div class="tool-bar">
+            <button class="mdc-button mdc-button--outlined">
+              <div class="mdc-button__ripple"></div>
+              <i class="material-icons mdc-button__icon" aria-hidden="true">color_lens</i>
+              <span class="mdc-button__label">色の変更</span>
+            </button>
+          </div>
+          <div class="slider">
+            <p>顔の位置</p>
+            <div class="mdc-slider face-position">
+              <div class="mdc-slider__track">
+                <div class="mdc-slider__track--inactive"></div>
+                <div class="mdc-slider__track--active">
+                  <div class="mdc-slider__track--active_fill"></div>
+                </div>
+              </div>
+              <div id="face-position" class="mdc-slider__thumb" role="slider" tabindex="0"
+                aria-label="Continuous slider demo" aria-valuemin="-40" aria-valuemax="40" aria-valuenow="0">
+                <div class="mdc-slider__thumb-knob"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- <div id="canvas" class="canvas"></div> -->
+      </div>
+
+      <!-- 3 content2: 目の編集画面 -->
+      <div id="content2" class="edit-container">
+        <div class="left-box">
+          <p>2. お好みの目に編集してください</p>
+          <div class="gallery">
+            <input type="image" src="./assest/img/eye_01.jpg" onClick="changeTemp('eye', 1)">
+            <input type="image" src="./assest/img/eye_02.jpg" onClick="changeTemp('eye', 2)">
+            <input type="image" src="./assest/img/eye_03.jpg" onClick="changeTemp('eye', 3)">
+            <input type="image" src="./assest/img/eye_04.jpg" onClick="changeTemp('eye', 4)">
+            <input type="image" src="./assest/img/eye_05.jpg" onClick="changeTemp('eye', 5)">
+            <input type="image" src="./assest/img/eye_06.jpg" onClick="changeTemp('eye', 6)">
+            <input type="image" src="./assest/img/eye_07.jpg" onClick="changeTemp('eye', 7)">
+            <input type="image" src="./assest/img/eye_08.jpg" onClick="changeTemp('eye', 8)">
+            <input type="image" src="./assest/img/eye_09.jpg" onClick="changeTemp('eye', 9)">
+            <input type="image" src="./assest/img/eye_10.jpg" onClick="changeTemp('eye', 10)">
+            <input type="image" src="./assest/img/eye_11.jpg" onClick="changeTemp('eye', 11)">
+            <input type="image" src="./assest/img/eye_12.jpg" onClick="changeTemp('eye', 12)">
+            <input type="image" src="./assest/img/eye_13.jpg" onClick="changeTemp('eye', 13)">
+            <input type="image" src="./assest/img/eye_14.jpg" onClick="changeTemp('eye', 14)">
+            <input type="image" src="./assest/img/eye_15.jpg" onClick="changeTemp('eye', 15)">
+            <input type="image" src="./assest/img/none.jpg" onClick="changeTemp('eye', 16)">
+          </div>
+        </div>
+        <div class="mid-box">
+          <div class="tool-bar">
+            <button class="mdc-button mdc-button--outlined">
+              <div class="mdc-button__ripple"></div>
+              <i class="material-icons mdc-button__icon" aria-hidden="true">color_lens</i>
+              <span class="mdc-button__label">色の変更</span>
+            </button>
+          </div>
+          <div class="slider">
+            <p>目の大きさ</p>
+            <div class="mdc-slider eye-size">
+              <div class="mdc-slider__track">
+                <div class="mdc-slider__track--inactive"></div>
+                <div class="mdc-slider__track--active">
+                  <div class="mdc-slider__track--active_fill"></div>
+                </div>
+              </div>
+              <div id="eye-size" class="mdc-slider__thumb" role="slider" tabindex="0"
+                aria-label="Continuous slider demo" aria-valuemin="0.1" aria-valuemax="2.0" aria-valuenow="1">
+                <div class="mdc-slider__thumb-knob"></div>
+              </div>
+            </div>
+          </div>
+          <div class="slider">
+            <p>目の位置</p>
+            <div class="mdc-slider eye-position">
+              <div class="mdc-slider__track">
+                <div class="mdc-slider__track--inactive"></div>
+                <div class="mdc-slider__track--active">
+                  <div class="mdc-slider__track--active_fill"></div>
+                </div>
+              </div>
+              <div id="eye-position" class="mdc-slider__thumb" role="slider" tabindex="0"
+                aria-label="Continuous slider demo" aria-valuemin="-40" aria-valuemax="40" aria-valuenow="0">
+                <div class="mdc-slider__thumb-knob"></div>
+              </div>
+            </div>
+          </div>
+          <div class="slider">
+            <p>目の間隔</p>
+            <div class="mdc-slider eye-distance">
+              <div class="mdc-slider__track">
+                <div class="mdc-slider__track--inactive"></div>
+                <div class="mdc-slider__track--active">
+                  <div class="mdc-slider__track--active_fill"></div>
+                </div>
+              </div>
+              <div id="eye-distance" class="mdc-slider__thumb" role="slider" tabindex="0"
+                aria-label="Continuous slider demo" aria-valuemin="-40" aria-valuemax="40" aria-valuenow="0">
+                <div class="mdc-slider__thumb-knob"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- <div id="canvas" class="canvas"></div> -->
+      </div>
+
+      <!-- 4 content3: 口の編集画面 -->
+      <div id="content3" class="edit-container">
+        <div class="left-box">
+          <p>3. お好みの口に編集してください</p>
+          <div class="gallery">
+            <input type="image" src="./assest/img/mouse_01.jpg" onClick="changeTemp('mouse', 1)">
+            <input type="image" src="./assest/img/mouse_02.jpg" onClick="changeTemp('mouse', 2)">
+            <input type="image" src="./assest/img/mouse_03.jpg" onClick="changeTemp('mouse', 3)">
+            <input type="image" src="./assest/img/mouse_04.jpg" onClick="changeTemp('mouse', 4)">
+            <input type="image" src="./assest/img/mouse_05.jpg" onClick="changeTemp('mouse', 5)">
+            <input type="image" src="./assest/img/mouse_06.jpg" onClick="changeTemp('mouse', 6)">
+            <input type="image" src="./assest/img/mouse_07.jpg" onClick="changeTemp('mouse', 7)">
+            <input type="image" src="./assest/img/mouse_08.jpg" onClick="changeTemp('mouse', 8)">
+            <input type="image" src="./assest/img/mouse_09.jpg" onClick="changeTemp('mouse', 9)">
+            <input type="image" src="./assest/img/none.jpg" onClick="changeTemp('mouse', 10)">
+          </div>
+        </div>
+        <div class="mid-box">
+          <div class="tool-bar">
+            <button class="mdc-button mdc-button--outlined">
+              <div class="mdc-button__ripple"></div>
+              <i class="material-icons mdc-button__icon" aria-hidden="true">color_lens</i>
+              <span class="mdc-button__label">色の変更</span>
+            </button>
+          </div>
+          <div class="slider">
+            <p>口の大きさ</p>
+            <div class="mdc-slider mouse-size">
+              <div class="mdc-slider__track">
+                <div class="mdc-slider__track--inactive"></div>
+                <div class="mdc-slider__track--active">
+                  <div class="mdc-slider__track--active_fill"></div>
+                </div>
+              </div>
+              <div id="mouse-size" class="mdc-slider__thumb" role="slider" tabindex="0"
+                aria-label="Continuous slider demo" aria-valuemin="-40" aria-valuemax="40" aria-valuenow="0">
+                <div class="mdc-slider__thumb-knob"></div>
+              </div>
+            </div>
+          </div>
+          <div class="slider">
+            <p>口の位置</p>
+            <div class="mdc-slider mouse-position">
+              <div class="mdc-slider__track">
+                <div class="mdc-slider__track--inactive"></div>
+                <div class="mdc-slider__track--active">
+                  <div class="mdc-slider__track--active_fill"></div>
+                </div>
+              </div>
+              <div id="mouse-position" class="mdc-slider__thumb" role="slider" tabindex="0"
+                aria-label="Continuous slider demo" aria-valuemin="-100" aria-valuemax="100" aria-valuenow="0">
+                <div class="mdc-slider__thumb-knob"></div>
+              </div>
+            </div>
+          </div>
+          <div class="slider">
+            <p>口の高さ</p>
+            <div class="mdc-slider mouse-height">
+              <div class="mdc-slider__track">
+                <div class="mdc-slider__track--inactive"></div>
+                <div class="mdc-slider__track--active">
+                  <div class="mdc-slider__track--active_fill"></div>
+                </div>
+              </div>
+              <div id="mouse-height" class="mdc-slider__thumb" role="slider" tabindex="0"
+                aria-label="Continuous slider demo" aria-valuemin="-40" aria-valuemax="40" aria-valuenow="0">
+                <div class="mdc-slider__thumb-knob"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- <div id="canvas" class="canvas"></div> -->
+      </div>
+
+      <!-- 5 content4: 体の編集画面 -->
+      <div id="content4" class="edit-container">
+        <div class="left-box">
+          <p>4. お好みの体に編集してください</p>
+          <div class="gallery">
+            <input type="image" src="./assest/img/body_01.jpg" onClick="changeTemp('body', 1)">
+            <input type="image" src="./assest/img/body_02.jpg" onClick="changeTemp('body', 2)">
+            <input type="image" src="./assest/img/body_03.jpg" onClick="changeTemp('body', 3)">
+            <input type="image" src="./assest/img/body_04.jpg" onClick="changeTemp('body', 4)">
+          </div>
+        </div>
+        <div class="mid-box">
+          <div class="tool-bar">
+            <button class="mdc-button mdc-button--outlined">
+              <div class="mdc-button__ripple"></div>
+              <i class="material-icons mdc-button__icon" aria-hidden="true">color_lens</i>
+              <span class="mdc-button__label">色の変更</span>
+            </button>
+          </div>
+          <div class="slider">
+            <p>体の高さ</p>
+            <div class="mdc-slider body-height">
+              <div class="mdc-slider__track">
+                <div class="mdc-slider__track--inactive"></div>
+                <div class="mdc-slider__track--active">
+                  <div class="mdc-slider__track--active_fill"></div>
+                </div>
+              </div>
+              <div id="body-height" class="mdc-slider__thumb" role="slider" tabindex="0"
+                aria-label="Continuous slider demo" aria-valuemin="-40" aria-valuemax="40" aria-valuenow="0">
+                <div class="mdc-slider__thumb-knob"></div>
+              </div>
+            </div>
+          </div>
+          <div class="slider">
+            <p>体の位置</p>
+            <div class="mdc-slider body-position">
+              <div class="mdc-slider__track">
+                <div class="mdc-slider__track--inactive"></div>
+                <div class="mdc-slider__track--active">
+                  <div class="mdc-slider__track--active_fill"></div>
+                </div>
+              </div>
+              <div id="body-position" class="mdc-slider__thumb" role="slider" tabindex="0"
+                aria-label="Continuous slider demo" aria-valuemin="-100" aria-valuemax="100" aria-valuenow="0">
+                <div class="mdc-slider__thumb-knob"></div>
+              </div>
+            </div>
+          </div>
+          <div class="slider">
+            <p>体の横幅</p>
+            <div class="mdc-slider body-width">
+              <div class="mdc-slider__track">
+                <div class="mdc-slider__track--inactive"></div>
+                <div class="mdc-slider__track--active">
+                  <div class="mdc-slider__track--active_fill"></div>
+                </div>
+              </div>
+              <div id="body-width" class="mdc-slider__thumb" role="slider" tabindex="0"
+                aria-label="Continuous slider demo" aria-valuemin="-40" aria-valuemax="40" aria-valuenow="0">
+                <div class="mdc-slider__thumb-knob"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- <div id="canvas" class="canvas"></div> -->
+      </div>
+
+      <!-- 6 content5: プレビュー画面 -->
+      <div id="content5" class="edit-container">
+        <div class="left-box">
+          <p>5. プレビュー画面を確認してください</p>
+        </div>
+        <div class="mid-box">
+        </div>
+        <!-- <div id="canvas" class="canvas"></div> -->
+      </div>
+
+      <div id="canvas" class="canvas"></div>
+
+
+    </div>
+  </main>
+
+</body>
+<script src="./assest/js/material.js"></script>
+
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="/__/firebase/8.0.1/firebase-app.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="/__/firebase/8.0.1/firebase-analytics.js"></script>
+
+<!-- Initialize Firebase -->
+<script src="/__/firebase/init.js"></script>
+
+</html>
