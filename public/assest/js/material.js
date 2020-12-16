@@ -27,6 +27,23 @@ E1. Selects
 const topAppBarElement = document.querySelector('.mdc-top-app-bar');
 const topAppBar = mdc.topAppBar.MDCTopAppBar.attachTo(topAppBarElement);
 
+/* -- 8. Dialogs -- */
+const colorDialog = mdc.dialog.MDCDialog.attachTo(document.querySelector('.color-dialog'));
+colorDialog.listen('MDCDialog:opened', () => {
+  // cmRed.layout();
+  // cmGreen.layout();
+  // cmBlue.layout();
+  // cmAlpha.layout();
+});
+/* -- 8.1 Action to open the dialog : ダイアログを開くためのアクション -- */
+const elmA = document.querySelectorAll('#color-dialog');
+for (let i = 0; i < elmA.length; i++) {
+  elmA[i].addEventListener('click', () => {
+    // console.log("hoge");
+    colorDialog.open();
+  });
+}
+
 /* -- 17. Sliders -- */
 const slider = document.getElementsByClassName('mdc-slider');
 for (var i = 0; i < slider.length; i++) {

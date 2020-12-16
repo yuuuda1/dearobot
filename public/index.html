@@ -44,6 +44,52 @@
 
   <!-- 2. Main: main contents -->
   <main>
+    <!-- Dialogs -->
+    <!-- Dialogs - material design color -->
+    <div class="mdc-dialog color-dialog">
+      <div class="mdc-dialog__container">
+        <div class="mdc-dialog__surface" role="alertdialog" aria-modal="true" aria-labelledby="my-dialog-title"
+          aria-describedby="my-dialog-content">
+          <h2 class="mdc-dialog__title" id="my-dialog-title">
+            色の変更
+          </h2>
+          <div class="mdc-dialog__content" id="my-dialog-content">
+            <div class="color-pallet-block">
+              <a href="javascript:onPalletClick(`#f44336`);" class="btn-circle-flat red-500"></a>
+              <a href="javascript:onPalletClick(`#e91e63`);" class="btn-circle-flat pink-500"></a>
+              <a href="javascript:onPalletClick(`#9c27b0`);" class="btn-circle-flat purple-500"></a>
+              <a href="javascript:onPalletClick(`#673ab7`);" class="btn-circle-flat deep-purple-500"></a>
+              <a href="javascript:onPalletClick(`#3f51b5`);" class="btn-circle-flat indigo-500"></a>
+              <a href="javascript:onPalletClick(`#2196f3`);" class="btn-circle-flat blue-500"></a>
+              <a href="javascript:onPalletClick(`#03a9f4`);" class="btn-circle-flat light-blue-500"></a>
+              <a href="javascript:onPalletClick(`#00bcd4`);" class="btn-circle-flat cyan-500"></a>
+              <a href="javascript:onPalletClick(`#009688`);" class="btn-circle-flat teal-500"></a>
+              <a href="javascript:onPalletClick(`#4caf50`);" class="btn-circle-flat green-500"></a>
+              <a href="javascript:onPalletClick(`#8bc34a`);" class="btn-circle-flat light-green-500"></a>
+              <a href="javascript:onPalletClick(`#cddc39`);" class="btn-circle-flat lime-500"></a>
+              <a href="javascript:onPalletClick(`#ffeb3b`);" class="btn-circle-flat yellow-500"></a>
+              <a href="javascript:onPalletClick(`#ffc107`);" class="btn-circle-flat amber-500"></a>
+              <a href="javascript:onPalletClick(`#ff9800`);" class="btn-circle-flat orange-500"></a>
+              <a href="javascript:onPalletClick(`#ff5722`);" class="btn-circle-flat deep-orange-500"></a>
+              <a href="javascript:onPalletClick(`#795548`);" class="btn-circle-flat brown-500"></a>
+              <a href="javascript:onPalletClick(`#9e9e9e`);" class="btn-circle-flat grey-500"></a>
+              <a href="javascript:onPalletClick(`#607d8b`);" class="btn-circle-flat blue-grey-500"></a>
+            </div>
+          </div>
+          <div class="mdc-dialog__actions">
+            <button type="button" class="mdc-button mdc-dialog__button" data-mdc-dialog-action="cancel">
+              <div class="mdc-button__ripple"></div>
+              <span class="mdc-button__label">キャンセル</span>
+            </button>
+            <button onclick="reloadButton()" type="button" class="mdc-button mdc-dialog__button">
+              <div class="mdc-button__ripple"></div>
+              <span class="mdc-button__label">リロード</span>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="mdc-dialog__scrim"></div>
+    </div>
 
     <!-- 2.1 paper -->
     <div class="paper">
@@ -58,7 +104,7 @@
                 <button id="mdc-tab-1" class="mdc-tab mdc-tab--active" role="tab" aria-selected="true" tabindex="-1">
                   <span class="mdc-tab__content">
                     <span class="mdc-tab__icon material-icons" aria-hidden="true">face</span>
-                    <span class="mdc-tab__text-label">顔の形</span>
+                    <span class="mdc-tab__text-label">顔</span>
                   </span>
                   <span class="mdc-tab-indicator mdc-tab-indicator--active">
                     <span class="mdc-tab-indicator__content mdc-tab-indicator__content--underline"></span>
@@ -79,7 +125,7 @@
 
                 <button id="mdc-tab-3" class="mdc-tab" role="tab" aria-selected="false" tabindex="-1">
                   <span class="mdc-tab__content">
-                    <span class="mdc-tab__icon material-icons" aria-hidden="true">accessibility</span>
+                    <span class="mdc-tab__icon material-icons" aria-hidden="true">insert_emoticon</span>
                     <span class="mdc-tab__text-label">口</span>
                   </span>
                   <span class="mdc-tab-indicator mdc-tab-indicator__content--underline">
@@ -141,7 +187,7 @@
         </div>
         <div class="mid-box">
           <div class="tool-bar">
-            <button class="mdc-button mdc-button--outlined">
+            <button class="mdc-button mdc-button--outlined" id="color-dialog" onclick="changeColor('face')">
               <div class="mdc-button__ripple"></div>
               <i class="material-icons mdc-button__icon" aria-hidden="true">color_lens</i>
               <span class="mdc-button__label">色の変更</span>
@@ -191,7 +237,7 @@
         </div>
         <div class="mid-box">
           <div class="tool-bar">
-            <button class="mdc-button mdc-button--outlined">
+            <button class="mdc-button mdc-button--outlined" id="color-dialog" onclick="changeColor('eye')">
               <div class="mdc-button__ripple"></div>
               <i class="material-icons mdc-button__icon" aria-hidden="true">color_lens</i>
               <span class="mdc-button__label">色の変更</span>
@@ -265,7 +311,7 @@
         </div>
         <div class="mid-box">
           <div class="tool-bar">
-            <button class="mdc-button mdc-button--outlined">
+            <button class="mdc-button mdc-button--outlined" id="color-dialog" onclick="changeColor('mouse')">
               <div class="mdc-button__ripple"></div>
               <i class="material-icons mdc-button__icon" aria-hidden="true">color_lens</i>
               <span class="mdc-button__label">色の変更</span>
@@ -333,7 +379,7 @@
         </div>
         <div class="mid-box">
           <div class="tool-bar">
-            <button class="mdc-button mdc-button--outlined">
+            <button class="mdc-button mdc-button--outlined" id="color-dialog" onclick="changeColor('body')">
               <div class="mdc-button__ripple"></div>
               <i class="material-icons mdc-button__icon" aria-hidden="true">color_lens</i>
               <span class="mdc-button__label">色の変更</span>
@@ -392,6 +438,28 @@
       <div id="content5" class="edit-container">
         <div class="left-box">
           <p>5. プレビュー画面を確認してください</p>
+          <div class="button-block">
+            <p>ロボットのサイズ</p>
+            <button class="mdc-button mdc-button--outlined" onclick="changeBG('assest/img/bg-1.png')">
+              <div class="mdc-button__ripple"></div>
+              <span class="mdc-button__label">大</span>
+            </button>
+            <button class="mdc-button mdc-button--outlined" onclick="changeBG('assest/img/bg-2.png')">
+              <div class="mdc-button__ripple"></div>
+              <span class="mdc-button__label">中</span>
+            </button>
+            <button class="mdc-button mdc-button--outlined" onclick="changeBG('assest/img/bg-3.png')">
+              <div class="mdc-button__ripple"></div>
+              <span class="mdc-button__label">小</span>
+            </button>
+          </div>
+          <div class="button-block">
+            <p>ロボット画像を保存する</p>
+            <button class="mdc-button mdc-button--outlined" onclick="saveCanvas()">
+              <div class="mdc-button__ripple"></div>
+              <span class="mdc-button__label">保存</span>
+            </button>
+          </div>
         </div>
         <div class="mid-box">
         </div>
@@ -399,8 +467,6 @@
       </div>
 
       <div id="canvas" class="canvas"></div>
-
-
     </div>
   </main>
 

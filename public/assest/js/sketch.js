@@ -32,14 +32,16 @@ class Head {
 
 let faceTemp = 0, faceY = 0;
 class Face {
-  constructor(x, y) {
+  constructor(x, y, color) {
     this.x = x;
     this.y = y;
+    this.color = color;
   }
 
   draw() {
     strokeWeight(3);
     stroke("#00000060");
+    fill(this.color);
     if (faceTemp == 0) {
       beginShape();
       vertex(this.x, 20 + faceY);
@@ -77,7 +79,6 @@ class Face {
       endShape();
     }
     if (faceTemp == 4) {
-      fill("#FFF");
       beginShape();
       vertex(this.x, 20 + faceY);
       bezierVertex(this.x, 20 + faceY, this.x + 80, 20 + faceY, this.x + 80, 150 + faceY);
@@ -89,7 +90,6 @@ class Face {
       rect(this.x - 55, 60 + faceY, 110, 60, 20);
     }
     if (faceTemp == 5) {
-      fill("#FFF");
       beginShape();
       vertex(this.x, 20 + faceY);
       bezierVertex(this.x, 20 + faceY, this.x + 80, 20 + faceY, this.x + 80, 100 + faceY);
@@ -103,7 +103,6 @@ class Face {
       rect(this.x - 55, 60 + faceY, 110, 110, 20);
     }
     if (faceTemp == 6) {
-      fill("#FFF");
       beginShape();
       vertex(this.x, 20 + faceY);
       bezierVertex(this.x, 20 + faceY, this.x + 60, 20 + faceY, this.x + 70, 80 + faceY);
@@ -117,7 +116,6 @@ class Face {
       rect(this.x - 60, 72 + faceY, 120, 56, 8);
     }
     if (faceTemp == 7) {
-      fill("#FFF");
       rect(this.x - 80, 60 + faceY, 160, 120, 8);
       fill("#000");
       ellipse(this.x, 72 + faceY, 8, 8);
@@ -182,29 +180,30 @@ class Face {
     if (faceTemp == 15) {
       rect(this.x - 70, 30 + faceY, 140, 140, 40);
     }
-    fill('#FFFFFF');
+    fill('#FFF');
   }
 }
-let robotFace = new Face(cnvsW / 2, 400);
+let robotFace = new Face(cnvsW / 2, 400, "#FFF");
 
 
 let eyeTemp = 0, eyePos = 0, eyeSize = 0, eyeDis = 0;
 class Eye {
-  constructor(x, y) {
+  constructor(x, y, color) {
     this.x = x;
     this.y = y;
+    this.color = color;
   }
 
   draw() {
     strokeWeight(2);
-    stroke("#00000060");
+    stroke(this.color);
     fill('#FFF');
     if (eyeTemp == 1) {
       // 眼球
       ellipse(this.x + 40 + eyeDis, this.y + eyePos, 40 * eyeSize, 40 * eyeSize);
       ellipse(this.x - 40 - eyeDis, this.y + eyePos, 40 * eyeSize, 40 * eyeSize);
       // 虹彩
-      fill('#000000');
+      fill(this.color);
       ellipse(this.x + 40 + eyeDis, this.y + eyePos, 20 * eyeSize, 20 * eyeSize);
       ellipse(this.x - 40 - eyeDis, this.y + eyePos, 20 * eyeSize, 20 * eyeSize);
     }
@@ -213,7 +212,7 @@ class Eye {
       ellipse(this.x + 40 + eyeDis, this.y + eyePos, 40 * eyeSize, 40 * eyeSize);
       ellipse(this.x - 40 - eyeDis, this.y + eyePos, 40 * eyeSize, 40 * eyeSize);
       // 虹彩
-      fill('#000000');
+      fill(this.color);
       ellipse(this.x + 40 + eyeDis, this.y + eyePos, 13 * eyeSize, 13 * eyeSize);
       ellipse(this.x - 40 - eyeDis, this.y + eyePos, 13 * eyeSize, 13 * eyeSize);
     }
@@ -231,7 +230,7 @@ class Eye {
       ellipse(this.x + 40 + eyeDis, this.y + eyePos, 40 * eyeSize, 40 * eyeSize);
       ellipse(this.x - 40 - eyeDis, this.y + eyePos, 40 * eyeSize, 40 * eyeSize);
       strokeWeight(0);
-      fill("#00000060")
+      fill(this.color);
       rect(this.x + 40 - (10 * eyeSize) + eyeDis, this.y - 2 + eyePos, 20 * eyeSize, 4 * eyeSize, 4);
       rect(this.x - 40 - (10 * eyeSize) - eyeDis, this.y - 2 + eyePos, 20 * eyeSize, 4 * eyeSize, 4);
     }
@@ -240,23 +239,20 @@ class Eye {
       ellipse(this.x + 40 + eyeDis, this.y + eyePos, 33 * eyeSize, 40 * eyeSize);
       ellipse(this.x - 40 - eyeDis, this.y + eyePos, 33 * eyeSize, 40 * eyeSize);
       // 虹彩
-      fill('#000000');
+      fill(this.color);
       ellipse(this.x + 40 + eyeDis, this.y + eyePos, 21 * eyeSize, 24 * eyeSize);
       ellipse(this.x - 40 - eyeDis, this.y + eyePos, 21 * eyeSize, 24 * eyeSize);
     }
     if (eyeTemp == 6) {
-      fill('#FFF');
       // 眼球
       ellipse(this.x + 40 + eyeDis, this.y + eyePos, 33 * eyeSize, 40 * eyeSize);
       ellipse(this.x - 40 - eyeDis, this.y + eyePos, 33 * eyeSize, 40 * eyeSize);
       // 虹彩
-      fill('#000000');
+      fill(this.color);
       ellipse(this.x + 40 + eyeDis, this.y + eyePos, 12 * eyeSize, 12 * eyeSize);
       ellipse(this.x - 40 - eyeDis, this.y + eyePos, 12 * eyeSize, 12 * eyeSize);
-      fill('#FFFFFF');
     }
     if (eyeTemp == 7) {
-      fill('#FFF');
       // 眼球
       ellipse(this.x + 40 + eyeDis, this.y + eyePos, 33 * eyeSize, 40 * eyeSize);
       ellipse(this.x - 40 - eyeDis, this.y + eyePos, 33 * eyeSize, 40 * eyeSize);
@@ -270,7 +266,7 @@ class Eye {
       ellipse(this.x + 40 + eyeDis, this.y + eyePos, 40 * eyeSize, 40 * eyeSize);
       ellipse(this.x - 40 - eyeDis, this.y + eyePos, 40 * eyeSize, 40 * eyeSize);
       strokeWeight(0);
-      fill("#00000060")
+      fill(this.color);
       rect(this.x + 40 - (10 * eyeSize) + eyeDis, this.y - 2 + eyePos, 20 * eyeSize, 4 * eyeSize, 4);
       rect(this.x - 40 - (10 * eyeSize) - eyeDis, this.y - 2 + eyePos, 20 * eyeSize, 4 * eyeSize, 4);
     }
@@ -291,52 +287,54 @@ class Eye {
       ellipse(this.x + 40 + eyeDis, this.y + eyePos, 40 * eyeSize, 33 * eyeSize);
       ellipse(this.x - 40 - eyeDis, this.y + eyePos, 40 * eyeSize, 33 * eyeSize);
       // 虹彩
-      fill('#000000');
+      fill(this.color);
       ellipse(this.x + 40 + eyeDis, this.y + eyePos, 24 * eyeSize, 21 * eyeSize);
       ellipse(this.x - 40 - eyeDis, this.y + eyePos, 24 * eyeSize, 21 * eyeSize);
     }
     if (eyeTemp == 12) {
-      fill('#FFF');
       // 眼球
       ellipse(this.x + 40 + eyeDis, this.y + eyePos, 40 * eyeSize, 33 * eyeSize);
       ellipse(this.x - 40 - eyeDis, this.y + eyePos, 40 * eyeSize, 33 * eyeSize);
       // 虹彩
-      fill('#000000');
+      fill(this.color);
       ellipse(this.x + 40 + eyeDis, this.y + eyePos, 12 * eyeSize, 12 * eyeSize);
       ellipse(this.x - 40 - eyeDis, this.y + eyePos, 12 * eyeSize, 12 * eyeSize);
-      fill('#FFFFFF');
     }
     if (eyeTemp == 13) {
-      fill("#000");
+      fill(this.color);
       ellipse(this.x + 40 + eyeDis, this.y + eyePos, 40 * eyeSize, 40 * eyeSize);
       ellipse(this.x - 40 - eyeDis, this.y + eyePos, 40 * eyeSize, 40 * eyeSize);
     }
     if (eyeTemp == 14) {
-      fill("#000");
+      fill(this.color);
       ellipse(this.x + 40 + eyeDis, this.y + eyePos, 32 * eyeSize, 40 * eyeSize);
       ellipse(this.x - 40 - eyeDis, this.y + eyePos, 32 * eyeSize, 40 * eyeSize);
     }
     if (eyeTemp == 15) {
-      fill("#000");
+      fill(this.color);
       ellipse(this.x + 40 + eyeDis, this.y + eyePos, 40 * eyeSize, 32 * eyeSize);
       ellipse(this.x - 40 - eyeDis, this.y + eyePos, 40 * eyeSize, 32 * eyeSize);
     }
     if (eyeTemp == 16) {
     }
     fill('#FFF');
+    stroke("#00000060");
     strokeWeight(3);
   }
 }
-let robotEye = new Eye(cnvsW / 2, 80);
+let robotEye = new Eye(cnvsW / 2, 80, "#000000");
 
 let mouseTemp = 0, mouseSize = 0, mousePos = 0, mouseH = 0;
 class Mouse {
-  constructor(x, y) {
+  constructor(x, y, color) {
     this.x = x;
     this.y = y;
+    this.color = color;
   }
 
   draw() {
+    fill(this.color);
+    stroke("#00000060");
     if (mouseTemp == 1) {
       arc(this.x, this.y - 8 + mousePos, 48 + mouseSize, 48 + mouseH, 0, PI, CHORD);
     }
@@ -365,20 +363,23 @@ class Mouse {
     if (mouseTemp == 9) {
       arc(this.x, this.y + 12 + mousePos, 48 + mouseSize, 48 + mouseH, PI, TWO_PI, CHORD);
     }
+    fill("#FFF");
   }
 }
-let robotMouse = new Mouse(cnvsW / 2, 160);
+let robotMouse = new Mouse(cnvsW / 2, 160, "#FFF");
 
 let bodyTemp = 0, bodyPos = 0, bodyH = 0, bodyW = 0;
 class Body {
-  constructor(x, y) {
+  constructor(x, y, color) {
     this.x = x;
     this.y = y;
+    this.color = color;
   }
 
   draw() {
     strokeWeight(3);
     stroke("#00000060");
+    fill(this.color);
     if (bodyTemp == 1) {
       // 上腕
       rect(this.x - 130, this.y + 40 + bodyPos, 48, 120, 16);
@@ -517,7 +518,7 @@ class Body {
     }
   }
 }
-let robotBody = new Body(cnvsW / 2, 180);
+let robotBody = new Body(cnvsW / 2, 180, "#FFF");
 
 
 // -- 1.3 クラスに影響する関数
@@ -631,4 +632,39 @@ function tabSwiching() {
   if (tab5 == "true") content5.classList.remove("disable"), content5.classList.add("active"), index = 5;
 
   return index;
+}
+
+
+/*** -- 3. Original functions -- ***/
+/* 
+3.1 COLOR 
+*/
+
+let selectColorParts = "";
+function changeColor(parts) {
+  selectColorParts = parts;
+}
+
+function onPalletClick(colorValue) {
+  if (selectColorParts == "face") {
+    robotFace.color = colorValue;
+  }
+  if (selectColorParts == "eye") {
+    robotEye.color = colorValue;
+  }
+  if (selectColorParts == "mouse") {
+    robotMouse.color = colorValue;
+  }
+  if (selectColorParts == "body") {
+    robotBody.color = colorValue;
+  }
+}
+
+function changeBG(wIMG) {
+  var canvas = document.getElementById("canvas");
+  canvas.style.backgroundImage = "url(" + wIMG + ")";
+}
+
+function saveCanvas() {
+  saveCanvas(cnvs, 'result', 'jpg');
 }

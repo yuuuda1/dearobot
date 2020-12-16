@@ -61,6 +61,28 @@ main {
   padding: 24px;
 }
 
+/* 2.0 dialogs */
+.mdc-dialog__content {
+  display: flex;
+}
+
+.color-pallet-block {
+  padding-top: 24px;
+}
+
+.btn-circle-flat {
+  width: 1.5rem;
+  height: 1.5rem;
+  margin-right: 0.5rem;
+  margin-bottom: 0.5rem;
+  border-radius: 50%;
+  display: inline-block;
+  text-decoration: none;
+  overflow: hidden;
+  transition: .4s;
+}
+
+
 /* 2.1 paper */
 .paper {
   height: calc(100vh - 112px); 
@@ -161,4 +183,14 @@ main {
   width: calc(100vw - 796px);
   position: relative;
   top: 0px;
+  background-size: cover;
+}
+
+.button-block {
+  padding-bottom: 24px;
+}
+
+.button-block p {
+  font-size: 16px;
+  margin-bottom: 0px;
 }
