@@ -30,10 +30,6 @@ const topAppBar = mdc.topAppBar.MDCTopAppBar.attachTo(topAppBarElement);
 /* -- 8. Dialogs -- */
 const colorDialog = mdc.dialog.MDCDialog.attachTo(document.querySelector('.color-dialog'));
 colorDialog.listen('MDCDialog:opened', () => {
-  // cmRed.layout();
-  // cmGreen.layout();
-  // cmBlue.layout();
-  // cmAlpha.layout();
 });
 /* -- 8.1 Action to open the dialog : ダイアログを開くためのアクション -- */
 const elmA = document.querySelectorAll('#color-dialog');
@@ -51,18 +47,17 @@ for (var i = 0; i < slider.length; i++) {
   element.listen('MDCSlider:change', () => console.log(`Value changed to ${element.value}`));
 }
 
-// - Face -
-// const facePosition = mdc.slider.MDCSlider.attachTo(document.querySelector('.face-position'));
+// - Face - 
+// const facePos = mdc.slider.MDCSlider.attachTo(document.querySelector('.face-pos'));
 // // - Eye - 
 // const eyeSize = mdc.slider.MDCSlider.attachTo(document.querySelector('.eye-size'));
-// // const eyeSize = mdc.slider.MDCSlider.attachTo(document.querySelector('.mdc-slider'));
-// const eyePosition = mdc.slider.MDCSlider.attachTo(document.querySelector('.eye-position'));
-// const eyeDistance = mdc.slider.MDCSlider.attachTo(document.querySelector('.eye-distance'));
-// // - Mouse -
+// const eyePosition = mdc.slider.MDCSlider.attachTo(document.querySelector('.eye-pos'));
+// const eyeDistance = mdc.slider.MDCSlider.attachTo(document.querySelector('.eye-dis'));
+// // - Mouse - 
 // const mouseSize = mdc.slider.MDCSlider.attachTo(document.querySelector('.mouse-size'));
-// const mousePosition = mdc.slider.MDCSlider.attachTo(document.querySelector('.mouse-position'));
-// const mouseHeight = mdc.slider.MDCSlider.attachTo(document.querySelector('.mouse-height'));
-// // - Body -
+// const mousePosition = mdc.slider.MDCSlider.attachTo(document.querySelector('.mouse-pos'));
+// const mouseHeight = mdc.slider.MDCSlider.attachTo(document.querySelector('.mouse-h'));
+// // - Body - 
 // const bodyHeihgt = mdc.slider.MDCSlider.attachTo(document.querySelector('.body-height'));
 // const bodyWidth = mdc.slider.MDCSlider.attachTo(document.querySelector('.body-width'));
 
