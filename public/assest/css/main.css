@@ -71,11 +71,11 @@ main {
 }
 
 .btn-circle-flat {
-  width: 1.5rem;
-  height: 1.5rem;
+  width: 2rem;
+  height: 2rem;
   margin-right: 0.5rem;
   margin-bottom: 0.5rem;
-  border-radius: 50%;
+  border-radius: 20%;
   display: inline-block;
   text-decoration: none;
   overflow: hidden;
@@ -120,6 +120,7 @@ main {
 .left-box {
   width: 464px;
   margin-right: 8px;
+  overflow: auto;
 }
 
 .left-box p {
@@ -157,11 +158,22 @@ main {
 }
 
 .tool-bar {
-  height: 48px;
-  width: 216px;
   float: right;
   text-align: right;
+  height: 48px;
+  width: 216px;
   margin-bottom: 8px;
+  color: rgba(0,0,0,0.6);
+}
+
+.displayFace-tool {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.tool-bar .mdc-switch {
+  margin: 0 0.2rem 0rem 0.5rem;
 }
 
 .slider {

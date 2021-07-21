@@ -56,27 +56,27 @@
           </h2>
           <div class="mdc-dialog__content" id="my-dialog-content">
             <div class="color-pallet-block">
-              <a href="javascript:onPalletClick(`#ffcdd2`);" class="btn-circle-flat red-100"></a>
-              <a href="javascript:onPalletClick(`#f8bbd0`);" class="btn-circle-flat pink-100"></a>
-              <a href="javascript:onPalletClick(`#e1bee7`);" class="btn-circle-flat purple-100"></a>
-              <a href="javascript:onPalletClick(`#d1c4e9`);" class="btn-circle-flat deep-purple-100"></a>
-              <a href="javascript:onPalletClick(`#c5cae9`);" class="btn-circle-flat indigo-100"></a>
-              <a href="javascript:onPalletClick(`#bbdefb`);" class="btn-circle-flat blue-100"></a>
-              <a href="javascript:onPalletClick(`#b3e5fc`);" class="btn-circle-flat light-blue-100"></a>
-              <a href="javascript:onPalletClick(`#b2ebf2`);" class="btn-circle-flat cyan-100"></a>
-              <a href="javascript:onPalletClick(`#b2dfdb`);" class="btn-circle-flat teal-100"></a>
-              <a href="javascript:onPalletClick(`#c8e6c9`);" class="btn-circle-flat green-100"></a>
-              <a href="javascript:onPalletClick(`#dcedc8`);" class="btn-circle-flat light-green-100"></a>
-              <a href="javascript:onPalletClick(`#f0f4c3`);" class="btn-circle-flat lime-100"></a>
-              <a href="javascript:onPalletClick(`#fff9c4`);" class="btn-circle-flat yellow-100"></a>
-              <a href="javascript:onPalletClick(`#ffecb3`);" class="btn-circle-flat amber-100"></a>
-              <a href="javascript:onPalletClick(`#ffe0b2`);" class="btn-circle-flat orange-100"></a>
-              <a href="javascript:onPalletClick(`#ffccbc`);" class="btn-circle-flat deep-orange-100"></a>
-              <a href="javascript:onPalletClick(`#d7ccc8`);" class="btn-circle-flat brown-100"></a>
-              <a href="javascript:onPalletClick(`#f5f5f5`);" class="btn-circle-flat grey-100"></a>
-              <a href="javascript:onPalletClick(`#cfd8dc`);" class="btn-circle-flat blue-grey-100"></a>
-              <a href="javascript:onPalletClick(`#212121`);" class="btn-circle-flat black-100"></a>
-              <a href="javascript:onPalletClick(`#FFFFFF`);" class="btn-circle-flat white-100"></a>
+              <a href="javascript:onPalletClick('#e57373');" class="btn-circle-flat red"></a>
+              <a href="javascript:onPalletClick('#f06292');" class="btn-circle-flat pink"></a>
+              <a href="javascript:onPalletClick('#ba68c8');" class="btn-circle-flat purple"></a>
+              <a href="javascript:onPalletClick('#9575cd');" class="btn-circle-flat deep-purple"></a>
+              <a href="javascript:onPalletClick('#7986cb');" class="btn-circle-flat indigo"></a>
+              <a href="javascript:onPalletClick('#64b5f6');" class="btn-circle-flat blue"></a>
+              <a href="javascript:onPalletClick('#4fc3f7');" class="btn-circle-flat light-blue"></a>
+              <a href="javascript:onPalletClick('#4dd0e1');" class="btn-circle-flat cyan"></a>
+              <a href="javascript:onPalletClick('#4db6ac');" class="btn-circle-flat teal"></a>
+              <a href="javascript:onPalletClick('#81c784');" class="btn-circle-flat green"></a>
+              <a href="javascript:onPalletClick('#aed581');" class="btn-circle-flat light-green"></a>
+              <a href="javascript:onPalletClick('#dce775');" class="btn-circle-flat lime"></a>
+              <a href="javascript:onPalletClick('#fff176');" class="btn-circle-flat yellow"></a>
+              <a href="javascript:onPalletClick('#ffd54f');" class="btn-circle-flat amber"></a>
+              <a href="javascript:onPalletClick('#ffb74d');" class="btn-circle-flat orange"></a>
+              <a href="javascript:onPalletClick('#ff8a65');" class="btn-circle-flat deep-orange"></a>
+              <a href="javascript:onPalletClick('#a1887f');" class="btn-circle-flat brown"></a>
+              <a href="javascript:onPalletClick('#e0e0e0');" class="btn-circle-flat grey"></a>
+              <a href="javascript:onPalletClick('#90a4ae');" class="btn-circle-flat blue-grey"></a>
+              <a href="javascript:onPalletClick(`#212121`);" class="btn-circle-flat black"></a>
+              <a href="javascript:onPalletClick(`#FFFFFF`);" class="btn-circle-flat white"></a>
             </div>
           </div>
           <div class="mdc-dialog__actions">
@@ -150,6 +150,17 @@
 
                 <button id="mdc-tab-5" class="mdc-tab" role="tab" aria-selected="false" tabindex="-1">
                   <span class="mdc-tab__content">
+                    <span class="mdc-tab__icon material-icons" aria-hidden="true">more</span>
+                    <span class="mdc-tab__text-label">その他</span>
+                  </span>
+                  <span class="mdc-tab-indicator mdc-tab-indicator__content--underline">
+                    <span class="mdc-tab-indicator__content mdc-tab-indicator__content--underline"></span>
+                  </span>
+                  <span class="mdc-tab__ripple"></span>
+                </button>
+
+                <button id="mdc-tab-6" class="mdc-tab" role="tab" aria-selected="false" tabindex="-1">
+                  <span class="mdc-tab__content">
                     <span class="mdc-tab__icon material-icons" aria-hidden="true">preview</span>
                     <span class="mdc-tab__text-label">プレビュー</span>
                   </span>
@@ -168,39 +179,75 @@
       <!-- 2 content1: 顔の形の編集画面 -->
       <div id="content1" class="edit-container">
         <div class="left-box">
-          <p>1. お好みの顔の形に編集してください</p>
+          <p>1. お好みの顔に編集してください</p>
           <div class="gallery">
-            <input type="image" src="./assest/img/face_00.jpg" onClick="changeTemp('face', 0)">
-            <input type="image" src="./assest/img/face_01.jpg" onClick="changeTemp('face', 1)">
-            <input type="image" src="./assest/img/face_02.jpg" onClick="changeTemp('face', 2)">
-            <input type="image" src="./assest/img/face_03.jpg" onClick="changeTemp('face', 3)">
-            <input type="image" src="./assest/img/face_04.jpg" onClick="changeTemp('face', 4)">
-            <input type="image" src="./assest/img/face_05.jpg" onClick="changeTemp('face', 5)">
-            <input type="image" src="./assest/img/face_06.jpg" onClick="changeTemp('face', 6)">
-            <input type="image" src="./assest/img/face_07.jpg" onClick="changeTemp('face', 7)">
-            <input type="image" src="./assest/img/face_08.jpg" onClick="changeTemp('face', 8)">
-            <input type="image" src="./assest/img/face_09.jpg" onClick="changeTemp('face', 9)">
-            <input type="image" src="./assest/img/face_10.jpg" onClick="changeTemp('face', 10)">
-            <input type="image" src="./assest/img/face_11.jpg" onClick="changeTemp('face', 11)">
-            <input type="image" src="./assest/img/face_12.jpg" onClick="changeTemp('face', 12)">
-            <input type="image" src="./assest/img/face_13.jpg" onClick="changeTemp('face', 13)">
-            <input type="image" src="./assest/img/face_14.jpg" onClick="changeTemp('face', 14)">
-            <input type="image" src="./assest/img/face_15.jpg" onClick="changeTemp('face', 15)">
+            <input id="image1" type="image" src="./assest/img/face1.png" onClick="changeTemp('face', 1)">
+            <input id="image2" type="image" src="./assest/img/face2.png" onClick="changeTemp('face', 2)">
+            <input id="image3" type="image" src="./assest/img/face3.png" onClick="changeTemp('face', 3)">
+            <input id="image4" type="image" src="./assest/img/face4.png" onClick="changeTemp('face', 4)">
+            <input id="image5" type="image" src="./assest/img/face5.png" onClick="changeTemp('face', 5)">
+            <input id="image6" type="image" src="./assest/img/face6.png" onClick="changeTemp('face', 6)">
+            <input id="image7" type="image" src="./assest/img/face7.png" onClick="changeTemp('face', 7)">
+            <input id="image8" type="image" src="./assest/img/face8.png" onClick="changeTemp('face', 8)">
+            <input id="image9" type="image" src="./assest/img/face9.png" onClick="changeTemp('face', 9)">
+            <input id="image10" type="image" src="./assest/img/face10.png" onClick="changeTemp('face', 10)">
+            <input id="image11" type="image" src="./assest/img/face11.png" onClick="changeTemp('face', 11)">
+            <input id="image12" type="image" src="./assest/img/face12.png" onClick="changeTemp('face', 12)">
+            <!-- <input type="image" src="./assest/img/face.jpg" onClick="changeTemp('face', 13)">
+            <input type="image" src="./assest/img/face_3.jpg" onClick="changeTemp('face', 14)">
+            <input type="image" src="./assest/img/face_14.jpg" onClick="changeTemp('face', 15)">
+            <input type="image" src="./assest/img/face_15.jpg" onClick="changeTemp('face', 16)"> -->
           </div>
         </div>
         <div class="mid-box">
-          <div class="tool-bar">
+          <div class="tool-bar displayFace-tool">
             <button class="mdc-button mdc-button--outlined" id="color-dialog" onclick="changeColor('face')">
               <div class="mdc-button__ripple"></div>
               <i class="material-icons mdc-button__icon" aria-hidden="true">color_lens</i>
-              <span class="mdc-button__label">色の変更</span>
+              <span class="mdc-button__label">色</span>
             </button>
+            <div class="mdc-switch">
+              <div class="mdc-switch__track"></div>
+              <div class="mdc-switch__thumb-underlay">
+                <div class="mdc-switch__thumb"></div>
+                <input type="checkbox" id="basic-switch" class="mdc-switch__native-control" role="switch"
+                  aria-checked="false">
+              </div>
+            </div>
+            <label for="basic-switch">ディスプレイ</label>
           </div>
+
+          <!-- 顔の位置のスライダー -->
           <div class="slider">
             <p>顔の位置</p>
             <div class="mdc-slider mdc-slider--discrete face-pos">
-              <input id="face-pos" class="mdc-slider__input" type="range" min="-100" max="100" value="0" name="volume"
-                step="2" aria-label="Discrete slider demo">
+              <input id="face-pos" class="mdc-slider__input" type="range" min="-48" max="48" value="0" name="volume"
+                step="4" aria-label="Discrete slider demo">
+              <div class="mdc-slider__track">
+                <div class="mdc-slider__track--inactive"></div>
+                <div class="mdc-slider__track--active">
+                  <div class="mdc-slider__track--active_fill"></div>
+                </div>
+              </div>
+              <div class="mdc-slider__thumb">
+                <div class="mdc-slider__value-indicator-container">
+                  <div class="mdc-slider__value-indicator">
+                    <span class="mdc-slider__value-indicator-text">
+                      0
+                    </span>
+                  </div>
+                </div>
+                <div class="mdc-slider__thumb-knob"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 顔の倍率のスライダー -->
+          <div class="slider">
+            <p>顔の倍率</p>
+            <div class="mdc-slider mdc-slider--discrete face-size">
+              <input id="face-size" class="mdc-slider__input" type="range" min="0.5" max="1.5" value="1.0" name="volume"
+                step="0.05" aria-label="Discrete slider demo">
               <div class="mdc-slider__track">
                 <div class="mdc-slider__track--inactive"></div>
                 <div class="mdc-slider__track--active">
@@ -227,22 +274,19 @@
         <div class="left-box">
           <p>2. お好みの目に編集してください</p>
           <div class="gallery">
-            <input type="image" src="./assest/img/eye_01.jpg" onClick="changeTemp('eye', 1)">
-            <input type="image" src="./assest/img/eye_02.jpg" onClick="changeTemp('eye', 2)">
-            <input type="image" src="./assest/img/eye_03.jpg" onClick="changeTemp('eye', 3)">
-            <input type="image" src="./assest/img/eye_04.jpg" onClick="changeTemp('eye', 4)">
-            <input type="image" src="./assest/img/eye_05.jpg" onClick="changeTemp('eye', 5)">
-            <input type="image" src="./assest/img/eye_06.jpg" onClick="changeTemp('eye', 6)">
-            <input type="image" src="./assest/img/eye_07.jpg" onClick="changeTemp('eye', 7)">
-            <input type="image" src="./assest/img/eye_08.jpg" onClick="changeTemp('eye', 8)">
-            <input type="image" src="./assest/img/eye_09.jpg" onClick="changeTemp('eye', 9)">
-            <input type="image" src="./assest/img/eye_10.jpg" onClick="changeTemp('eye', 10)">
-            <input type="image" src="./assest/img/eye_11.jpg" onClick="changeTemp('eye', 11)">
-            <input type="image" src="./assest/img/eye_12.jpg" onClick="changeTemp('eye', 12)">
-            <input type="image" src="./assest/img/eye_13.jpg" onClick="changeTemp('eye', 13)">
-            <input type="image" src="./assest/img/eye_14.jpg" onClick="changeTemp('eye', 14)">
-            <input type="image" src="./assest/img/eye_15.jpg" onClick="changeTemp('eye', 15)">
-            <input type="image" src="./assest/img/none.jpg" onClick="changeTemp('eye', 16)">
+            <input type="image" src="./assest/img/eye1.png" onClick="changeTemp('eye', 1)">
+            <input type="image" src="./assest/img/eye2.png" onClick="changeTemp('eye', 2)">
+            <input type="image" src="./assest/img/eye3.png" onClick="changeTemp('eye', 3)">
+            <input type="image" src="./assest/img/eye4.png" onClick="changeTemp('eye', 4)">
+            <input type="image" src="./assest/img/eye5.png" onClick="changeTemp('eye', 5)">
+            <input type="image" src="./assest/img/eye6.png" onClick="changeTemp('eye', 6)">
+            <input type="image" src="./assest/img/eye7.png" onClick="changeTemp('eye', 7)">
+            <input type="image" src="./assest/img/eye8.png" onClick="changeTemp('eye', 8)">
+            <input type="image" src="./assest/img/eye9.png" onClick="changeTemp('eye', 9)">
+            <input type="image" src="./assest/img/eye10.png" onClick="changeTemp('eye', 10)">
+            <input type="image" src="./assest/img/eye11.png" onClick="changeTemp('eye', 11)">
+            <input type="image" src="./assest/img/eye12.png" onClick="changeTemp('eye', 12)">
+            <input type="image" src="./assest/img/none.jpg" onClick="changeTemp('eye', 13)">
           </div>
         </div>
         <div class="mid-box">
@@ -253,11 +297,13 @@
               <span class="mdc-button__label">色の変更</span>
             </button>
           </div>
+
+          <!-- 目の倍率のスライダー -->
           <div class="slider">
-            <p>目の大きさ</p>
+            <p>目の倍率</p>
             <div class="mdc-slider mdc-slider--discrete eye-size">
-              <input id="eye-size" class="mdc-slider__input" type="range" min="1" max="21" value="11" name="volume"
-                step="1" aria-label="Discrete slider demo">
+              <input id="eye-size" class="mdc-slider__input" type="range" min="0" max="2.0" value="1.0" name="volume"
+                step="0.1" aria-label="Discrete slider demo">
               <div class="mdc-slider__track">
                 <div class="mdc-slider__track--inactive"></div>
                 <div class="mdc-slider__track--active">
@@ -276,11 +322,13 @@
               </div>
             </div>
           </div>
+
+          <!-- 目の位置のスライダー -->
           <div class="slider">
             <p>目の位置</p>
             <div class="mdc-slider mdc-slider--discrete eye-pos">
-              <input id="eye-pos" class="mdc-slider__input" type="range" min="-160" max="160" value="0" name="volume"
-                step="2" aria-label="Discrete slider demo">
+              <input id="eye-pos" class="mdc-slider__input" type="range" min="-75" max="75" value="0" name="volume"
+                step="5" aria-label="Discrete slider demo">
               <div class="mdc-slider__track">
                 <div class="mdc-slider__track--inactive"></div>
                 <div class="mdc-slider__track--active">
@@ -299,11 +347,13 @@
               </div>
             </div>
           </div>
+
+          <!-- 目の間隔のスライダー -->
           <div class="slider">
             <p>目の間隔</p>
             <div class="mdc-slider mdc-slider--discrete eye-dis">
-              <input id="eye-dis" class="mdc-slider__input" type="range" min="-40" max="40" value="0" name="volume"
-                step="2" aria-label="Discrete slider demo">
+              <input id="eye-dis" class="mdc-slider__input" type="range" min="0" max="80" value="40" name="volume"
+                step="5" aria-label="Discrete slider demo">
               <div class="mdc-slider__track">
                 <div class="mdc-slider__track--inactive"></div>
                 <div class="mdc-slider__track--active">
@@ -322,6 +372,58 @@
               </div>
             </div>
           </div>
+
+          <!-- 目の高さのスライダー -->
+          <div class="slider">
+            <p>目の高さ</p>
+            <div class="mdc-slider mdc-slider--discrete eye-height">
+              <input id="eye-height" class="mdc-slider__input" type="range" min="0" max="80" value="40" name="volume"
+                step="5" aria-label="Discrete slider demo">
+              <div class="mdc-slider__track">
+                <div class="mdc-slider__track--inactive"></div>
+                <div class="mdc-slider__track--active">
+                  <div class="mdc-slider__track--active_fill"></div>
+                </div>
+              </div>
+              <div class="mdc-slider__thumb">
+                <div class="mdc-slider__value-indicator-container">
+                  <div class="mdc-slider__value-indicator">
+                    <span class="mdc-slider__value-indicator-text">
+                      10
+                    </span>
+                  </div>
+                </div>
+                <div class="mdc-slider__thumb-knob"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 虹彩の倍率のスライダー -->
+          <div class="slider">
+            <p>虹彩の大きさ</p>
+            <div class="mdc-slider mdc-slider--discrete iris-size">
+              <input id="iris-size" class="mdc-slider__input" type="range" min="0" max="2.0" value="1.0" name="volume"
+                step="0.1" aria-label="Discrete slider demo">
+              <div class="mdc-slider__track">
+                <div class="mdc-slider__track--inactive"></div>
+                <div class="mdc-slider__track--active">
+                  <div class="mdc-slider__track--active_fill"></div>
+                </div>
+              </div>
+              <div class="mdc-slider__thumb">
+                <div class="mdc-slider__value-indicator-container">
+                  <div class="mdc-slider__value-indicator">
+                    <span class="mdc-slider__value-indicator-text">
+                      10
+                    </span>
+                  </div>
+                </div>
+                <div class="mdc-slider__thumb-knob"></div>
+              </div>
+            </div>
+          </div>
+
+
         </div>
       </div>
 
@@ -342,6 +444,7 @@
             <input type="image" src="./assest/img/none.jpg" onClick="changeTemp('mouse', 10)">
           </div>
         </div>
+
         <div class="mid-box">
           <div class="tool-bar">
             <button class="mdc-button mdc-button--outlined" id="color-dialog" onclick="changeColor('mouse')">
@@ -350,6 +453,8 @@
               <span class="mdc-button__label">色の変更</span>
             </button>
           </div>
+
+          <!-- 口の位置のスライダー -->
           <div class="slider">
             <p>口の位置</p>
             <div class="mdc-slider mdc-slider--discrete mouse-pos">
@@ -373,6 +478,8 @@
               </div>
             </div>
           </div>
+
+          <!-- 口の横幅のスライダー -->
           <div class="slider">
             <p>口の横幅</p>
             <div class="mdc-slider mdc-slider--discrete mouse-size">
@@ -396,6 +503,8 @@
               </div>
             </div>
           </div>
+
+          <!-- 口の縦幅のスライダー -->
           <div class="slider">
             <p>口の縦幅</p>
             <div class="mdc-slider mdc-slider--discrete mouse-h">
@@ -427,11 +536,11 @@
         <div class="left-box">
           <p>4. お好みの体に編集してください</p>
           <div class="gallery">
-            <input type="image" src="./assest/img/body_01.jpg" onClick="changeTemp('body', 1)">
-            <input type="image" src="./assest/img/body_02.jpg" onClick="changeTemp('body', 2)">
-            <input type="image" src="./assest/img/body_03.jpg" onClick="changeTemp('body', 3)">
+            <input type="image" src="./assest/img/body1.png" onClick="changeTemp('body', 1)">
+            <input type="image" src="./assest/img/body3.png" onClick="changeTemp('body', 2)">
+            <!-- <input type="image" src="./assest/img/body_03.jpg" onClick="changeTemp('body', 3)">
             <input type="image" src="./assest/img/body_04.jpg" onClick="changeTemp('body', 4)">
-            <input type="image" src="./assest/img/body_05.jpg" onClick="changeTemp('body', 5)">
+            <input type="image" src="./assest/img/body_05.jpg" onClick="changeTemp('body', 5)"> -->
             <!-- <input type="image" src="./assest/img/body_06.jpg" onClick="changeTemp('body', 6)"> -->
           </div>
         </div>
@@ -443,8 +552,57 @@
               <span class="mdc-button__label">色の変更</span>
             </button>
           </div>
+
+          <!-- 体の位置のスライダー -->
           <div class="slider">
+            <p>体の位置</p>
+            <div class="mdc-slider mdc-slider--discrete body-pos">
+              <input id="body-pos" class="mdc-slider__input" type="range" min="-75" max="75" value="0" name="volume"
+                step="5" aria-label="Discrete slider demo">
+              <div class="mdc-slider__track">
+                <div class="mdc-slider__track--inactive"></div>
+                <div class="mdc-slider__track--active">
+                  <div class="mdc-slider__track--active_fill"></div>
+                </div>
+              </div>
+              <div class="mdc-slider__thumb">
+                <div class="mdc-slider__value-indicator-container">
+                  <div class="mdc-slider__value-indicator">
+                    <span class="mdc-slider__value-indicator-text">
+                      10
+                    </span>
+                  </div>
+                </div>
+                <div class="mdc-slider__thumb-knob"></div>
+              </div>
+            </div>
           </div>
+
+          <!-- 体の倍率のスライダー -->
+          <div class="slider">
+            <p>体の倍率</p>
+            <div class="mdc-slider mdc-slider--discrete body-size">
+              <input id="body-size" class="mdc-slider__input" type="range" min="0.6" max="1.4" value="1.0" name="volume"
+                step="0.02" aria-label="Discrete slider demo">
+              <div class="mdc-slider__track">
+                <div class="mdc-slider__track--inactive"></div>
+                <div class="mdc-slider__track--active">
+                  <div class="mdc-slider__track--active_fill"></div>
+                </div>
+              </div>
+              <div class="mdc-slider__thumb">
+                <div class="mdc-slider__value-indicator-container">
+                  <div class="mdc-slider__value-indicator">
+                    <span class="mdc-slider__value-indicator-text">
+                      10
+                    </span>
+                  </div>
+                </div>
+                <div class="mdc-slider__thumb-knob"></div>
+              </div>
+            </div>
+          </div>
+
           <div class="slider">
           </div>
           <div class="slider">
@@ -452,8 +610,49 @@
         </div>
       </div>
 
-      <!-- 6 content5: プレビュー画面 -->
+      <!-- 6 content5: その他の編集画面 -->
       <div id="content5" class="edit-container">
+        <div class="left-box">
+          <p>5. その他のパーツを編集してください</p>
+          <div>
+            <p>耳の編集してください</p>
+            <div class="gallery">
+              <input type="image" src="" onclick="">
+              <input type="image" src="" onclick="">
+              <input type="image" src="./assest/img/none.jpg" onclick="">
+            </div>
+          </div>
+          <div>
+            <p>鼻の編集してください</p>
+            <div class="gallery">
+              <input type="image" src="" onclick="">
+              <input type="image" src="" onclick="">
+              <input type="image" src="./assest/img/none.jpg" onclick="">
+            </div>
+          </div>
+          <div>
+            <p>髪の編集してください</p>
+            <div class="gallery">
+              <input type="image" src="" onclick="">
+              <input type="image" src="" onclick="">
+              <input type="image" src="./assest/img/none.jpg" onclick="">
+            </div>
+          </div>
+          <div>
+            <p>眉の編集をしてください</p>
+            <div class="gallery">
+              <input type="image" src="" onclick="">
+              <input type="image" src="" onclick="">
+              <input type="image" src="./assest/img/none.jpg" onclick="">
+            </div>
+          </div>
+        </div>
+        <div class="mid-box">
+        </div>
+      </div>
+
+      <!-- 7 content6: プレビュー画面 -->
+      <div id="content6" class="edit-container">
         <div class="left-box">
           <p>5. プレビュー画面を確認してください</p>
           <div class="button-block">
@@ -473,7 +672,7 @@
           </div>
           <div class="button-block">
             <p>ロボット画像を保存する</p>
-            <button class="mdc-button mdc-button--outlined" onclick="saveCanvas()">
+            <button class="mdc-button mdc-button--outlined" onclick="saveImage()">
               <div class="mdc-button__ripple"></div>
               <span class="mdc-button__label">画像保存</span>
             </button>

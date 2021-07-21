@@ -18,8 +18,9 @@
 16. Selection controls: switches
 17. Sliders
 18. Snackbars
-19. Tabs
-20. Text fields
+19. Switch
+20. Tabs
+21. Text fields
 E1. Selects
 */
 
@@ -64,3 +65,15 @@ for (var i = 0; i < slider.length; i++) {
 /* -- 18. Tabs -- */
 const tabBar = mdc.tabBar.MDCTabBar.attachTo(document.querySelector('.mdc-tab-bar'));
 tabBar.listen('MDCTABBAR:change', () => console.log(`Value changed to ${tabBar.value}`));
+
+/* -- 19. Switch -- */
+[].slice.call(document.querySelectorAll('.mdc-switch')).forEach(
+  function (ele) {
+    mdc.switchControl.MDCSwitch.attachTo(ele);
+  }
+);
+// const switchArray = document.getElementsByClassName('mdc-switch');
+// for (var i = 0; i < switchControl.length; i++) {
+//   const element = mdc.switchControl.MDCSwitch.attachTo(switchArray[i]);
+// }
+// const switchControl = mdc.switch.MDCSwitch.attachTo(document.querySelector('.mdc-switch'));
