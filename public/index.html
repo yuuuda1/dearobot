@@ -5,6 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Dearobot</title>
+  <link rel="shoutcut icon" href="./assest/img/favicon.ico">
 
   <!-- css links -->
   <link rel="stylesheet" href="./assest/css/reset.css">
@@ -25,6 +26,12 @@
   <script src="https://cdn.jsdelivr.net/npm/p5@1.1.9/lib/p5.js"></script>
   <script src="./libs/p5.play.js"></script>
   <script src="./assest/js/sketch.js"></script>
+
+  <script type="text/javascript">
+    window.onbeforeunload = function (e) {
+      e.returnValue = "ページを離れようとしています。よろしいですか？";
+    }
+  </script>
 </head>
 
 <body>
@@ -55,25 +62,25 @@
           </h2>
           <div class="mdc-dialog__content" id="my-dialog-content">
             <div class="color-pallet-block">
-              <a href="javascript:onPalletClick(`#f44336`);" class="btn-circle-flat red-500"></a>
-              <a href="javascript:onPalletClick(`#e91e63`);" class="btn-circle-flat pink-500"></a>
-              <a href="javascript:onPalletClick(`#9c27b0`);" class="btn-circle-flat purple-500"></a>
-              <a href="javascript:onPalletClick(`#673ab7`);" class="btn-circle-flat deep-purple-500"></a>
-              <a href="javascript:onPalletClick(`#3f51b5`);" class="btn-circle-flat indigo-500"></a>
-              <a href="javascript:onPalletClick(`#2196f3`);" class="btn-circle-flat blue-500"></a>
-              <a href="javascript:onPalletClick(`#03a9f4`);" class="btn-circle-flat light-blue-500"></a>
-              <a href="javascript:onPalletClick(`#00bcd4`);" class="btn-circle-flat cyan-500"></a>
-              <a href="javascript:onPalletClick(`#009688`);" class="btn-circle-flat teal-500"></a>
-              <a href="javascript:onPalletClick(`#4caf50`);" class="btn-circle-flat green-500"></a>
-              <a href="javascript:onPalletClick(`#8bc34a`);" class="btn-circle-flat light-green-500"></a>
-              <a href="javascript:onPalletClick(`#cddc39`);" class="btn-circle-flat lime-500"></a>
-              <a href="javascript:onPalletClick(`#ffeb3b`);" class="btn-circle-flat yellow-500"></a>
-              <a href="javascript:onPalletClick(`#ffc107`);" class="btn-circle-flat amber-500"></a>
-              <a href="javascript:onPalletClick(`#ff9800`);" class="btn-circle-flat orange-500"></a>
-              <a href="javascript:onPalletClick(`#ff5722`);" class="btn-circle-flat deep-orange-500"></a>
-              <a href="javascript:onPalletClick(`#795548`);" class="btn-circle-flat brown-500"></a>
-              <a href="javascript:onPalletClick(`#9e9e9e`);" class="btn-circle-flat grey-500"></a>
-              <a href="javascript:onPalletClick(`#607d8b`);" class="btn-circle-flat blue-grey-500"></a>
+              <a href="javascript:onPalletClick(`#ffcdd2`);" class="btn-circle-flat red-500"></a>
+              <a href="javascript:onPalletClick(`#f8bbd0`);" class="btn-circle-flat pink-500"></a>
+              <a href="javascript:onPalletClick(`#e1bee7`);" class="btn-circle-flat purple-500"></a>
+              <a href="javascript:onPalletClick(`#d1c4e9`);" class="btn-circle-flat deep-purple-500"></a>
+              <a href="javascript:onPalletClick(`#c5cae9`);" class="btn-circle-flat indigo-500"></a>
+              <a href="javascript:onPalletClick(`#bbdefb`);" class="btn-circle-flat blue-500"></a>
+              <a href="javascript:onPalletClick(`#b3e5fc`);" class="btn-circle-flat light-blue-500"></a>
+              <a href="javascript:onPalletClick(`#b2ebf2`);" class="btn-circle-flat cyan-500"></a>
+              <a href="javascript:onPalletClick(`#b2dfdb`);" class="btn-circle-flat teal-500"></a>
+              <a href="javascript:onPalletClick(`#c8e6c9`);" class="btn-circle-flat green-500"></a>
+              <a href="javascript:onPalletClick(`#dcedc8`);" class="btn-circle-flat light-green-500"></a>
+              <a href="javascript:onPalletClick(`#f0f4c3`);" class="btn-circle-flat lime-500"></a>
+              <a href="javascript:onPalletClick(`#fff9c4`);" class="btn-circle-flat yellow-500"></a>
+              <a href="javascript:onPalletClick(`#ffecb3`);" class="btn-circle-flat amber-500"></a>
+              <a href="javascript:onPalletClick(`#ffe0b2`);" class="btn-circle-flat orange-500"></a>
+              <a href="javascript:onPalletClick(`#ffccbc`);" class="btn-circle-flat deep-orange-500"></a>
+              <a href="javascript:onPalletClick(`#d7ccc8`);" class="btn-circle-flat brown-500"></a>
+              <a href="javascript:onPalletClick(`#f5f5f5`);" class="btn-circle-flat grey-500"></a>
+              <a href="javascript:onPalletClick(`#cfd8dc`);" class="btn-circle-flat blue-grey-500"></a>
             </div>
           </div>
           <div class="mdc-dialog__actions">
@@ -81,10 +88,10 @@
               <div class="mdc-button__ripple"></div>
               <span class="mdc-button__label">キャンセル</span>
             </button>
-            <button onclick="reloadButton()" type="button" class="mdc-button mdc-dialog__button">
+            <!-- <button onclick="reloadButton()" type="button" class="mdc-button mdc-dialog__button">
               <div class="mdc-button__ripple"></div>
               <span class="mdc-button__label">リロード</span>
-            </button>
+            </button> -->
           </div>
         </div>
       </div>
@@ -193,7 +200,33 @@
               <span class="mdc-button__label">色の変更</span>
             </button>
           </div>
+
+          <!-- 顔の位置のスライダー -->
           <div class="slider">
+            <p>顔の位置</p>
+            <div class="mdc-slider mdc-slider--discrete face-pos">
+              <input id="face-pos" class="mdc-slider__input" type="range" min="-40" max="40" value="0" name="volume"
+                step="4" aria-label="Discrete slider demo">
+              <div class="mdc-slider__track">
+                <div class="mdc-slider__track--inactive"></div>
+                <div class="mdc-slider__track--active">
+                  <div class="mdc-slider__track--active_fill"></div>
+                </div>
+              </div>
+              <div class="mdc-slider__thumb">
+                <div class="mdc-slider__value-indicator-container">
+                  <div class="mdc-slider__value-indicator">
+                    <span class="mdc-slider__value-indicator-text">
+                      0
+                    </span>
+                  </div>
+                </div>
+                <div class="mdc-slider__thumb-knob"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- <div class="slider">
             <p>顔の位置</p>
             <div class="mdc-slider face-position">
               <div class="mdc-slider__track">
@@ -207,7 +240,7 @@
                 <div class="mdc-slider__thumb-knob"></div>
               </div>
             </div>
-          </div>
+          </div> -->
         </div>
         <!-- <div id="canvas" class="canvas"></div> -->
       </div>
@@ -243,7 +276,33 @@
               <span class="mdc-button__label">色の変更</span>
             </button>
           </div>
+
+          <!-- 目の倍率のスライダー -->
           <div class="slider">
+            <p>目の倍率</p>
+            <div class="mdc-slider mdc-slider--discrete eye-size">
+              <input id="eye-size" class="mdc-slider__input" type="range" min="0" max="2.0" value="1.0" name="volume"
+                step="0.1" aria-label="Discrete slider demo">
+              <div class="mdc-slider__track">
+                <div class="mdc-slider__track--inactive"></div>
+                <div class="mdc-slider__track--active">
+                  <div class="mdc-slider__track--active_fill"></div>
+                </div>
+              </div>
+              <div class="mdc-slider__thumb">
+                <div class="mdc-slider__value-indicator-container">
+                  <div class="mdc-slider__value-indicator">
+                    <span class="mdc-slider__value-indicator-text">
+                      1.0
+                    </span>
+                  </div>
+                </div>
+                <div class="mdc-slider__thumb-knob"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- <div class="slider">
             <p>目の大きさ</p>
             <div class="mdc-slider eye-size">
               <div class="mdc-slider__track">
@@ -257,8 +316,34 @@
                 <div class="mdc-slider__thumb-knob"></div>
               </div>
             </div>
-          </div>
+          </div> -->
+
+          <!-- 目の位置のスライダー -->
           <div class="slider">
+            <p>目の位置</p>
+            <div class="mdc-slider mdc-slider--discrete eye-pos">
+              <input id="eye-pos" class="mdc-slider__input" type="range" min="-75" max="75" value="0" name="volume"
+                step="5" aria-label="Discrete slider demo">
+              <div class="mdc-slider__track">
+                <div class="mdc-slider__track--inactive"></div>
+                <div class="mdc-slider__track--active">
+                  <div class="mdc-slider__track--active_fill"></div>
+                </div>
+              </div>
+              <div class="mdc-slider__thumb">
+                <div class="mdc-slider__value-indicator-container">
+                  <div class="mdc-slider__value-indicator">
+                    <span class="mdc-slider__value-indicator-text">
+                      0
+                    </span>
+                  </div>
+                </div>
+                <div class="mdc-slider__thumb-knob"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- <div class="slider">
             <p>目の位置</p>
             <div class="mdc-slider eye-position">
               <div class="mdc-slider__track">
@@ -272,8 +357,34 @@
                 <div class="mdc-slider__thumb-knob"></div>
               </div>
             </div>
-          </div>
+          </div> -->
+
+          <!-- 目の間隔のスライダー -->
           <div class="slider">
+            <p>目の間隔</p>
+            <div class="mdc-slider mdc-slider--discrete eye-dis">
+              <input id="eye-dis" class="mdc-slider__input" type="range" min="0" max="80" value="40" name="volume"
+                step="5" aria-label="Discrete slider demo">
+              <div class="mdc-slider__track">
+                <div class="mdc-slider__track--inactive"></div>
+                <div class="mdc-slider__track--active">
+                  <div class="mdc-slider__track--active_fill"></div>
+                </div>
+              </div>
+              <div class="mdc-slider__thumb">
+                <div class="mdc-slider__value-indicator-container">
+                  <div class="mdc-slider__value-indicator">
+                    <span class="mdc-slider__value-indicator-text">
+                      40
+                    </span>
+                  </div>
+                </div>
+                <div class="mdc-slider__thumb-knob"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- <div class="slider">
             <p>目の間隔</p>
             <div class="mdc-slider eye-distance">
               <div class="mdc-slider__track">
@@ -287,7 +398,7 @@
                 <div class="mdc-slider__thumb-knob"></div>
               </div>
             </div>
-          </div>
+          </div> -->
         </div>
         <!-- <div id="canvas" class="canvas"></div> -->
       </div>
@@ -317,22 +428,33 @@
               <span class="mdc-button__label">色の変更</span>
             </button>
           </div>
+
+          <!-- 口の位置のスライダー -->
           <div class="slider">
-            <p>口の大きさ</p>
-            <div class="mdc-slider mouse-size">
+            <p>口の位置</p>
+            <div class="mdc-slider mdc-slider--discrete mouse-pos">
+              <input id="mouse-pos" class="mdc-slider__input" type="range" min="-40" max="40" value="0" name="volume"
+                step="2" aria-label="Discrete slider demo">
               <div class="mdc-slider__track">
                 <div class="mdc-slider__track--inactive"></div>
                 <div class="mdc-slider__track--active">
                   <div class="mdc-slider__track--active_fill"></div>
                 </div>
               </div>
-              <div id="mouse-size" class="mdc-slider__thumb" role="slider" tabindex="0"
-                aria-label="Continuous slider demo" aria-valuemin="-40" aria-valuemax="40" aria-valuenow="0">
+              <div class="mdc-slider__thumb">
+                <div class="mdc-slider__value-indicator-container">
+                  <div class="mdc-slider__value-indicator">
+                    <span class="mdc-slider__value-indicator-text">
+                      0
+                    </span>
+                  </div>
+                </div>
                 <div class="mdc-slider__thumb-knob"></div>
               </div>
             </div>
           </div>
-          <div class="slider">
+
+          <!-- <div class="slider">
             <p>口の位置</p>
             <div class="mdc-slider mouse-position">
               <div class="mdc-slider__track">
@@ -346,8 +468,75 @@
                 <div class="mdc-slider__thumb-knob"></div>
               </div>
             </div>
-          </div>
+          </div> -->
+
+          <!-- 口の横幅のスライダー -->
           <div class="slider">
+            <p>口の横幅</p>
+            <div class="mdc-slider mdc-slider--discrete mouse-size">
+              <input id="mouse-size" class="mdc-slider__input" type="range" min="-40" max="40" value="0" name="volume"
+                step="2" aria-label="Discrete slider demo">
+              <div class="mdc-slider__track">
+                <div class="mdc-slider__track--inactive"></div>
+                <div class="mdc-slider__track--active">
+                  <div class="mdc-slider__track--active_fill"></div>
+                </div>
+              </div>
+              <div class="mdc-slider__thumb">
+                <div class="mdc-slider__value-indicator-container">
+                  <div class="mdc-slider__value-indicator">
+                    <span class="mdc-slider__value-indicator-text">
+                      0
+                    </span>
+                  </div>
+                </div>
+                <div class="mdc-slider__thumb-knob"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- <div class="slider">
+            <p>口の大きさ</p>
+            <div class="mdc-slider mouse-size">
+              <div class="mdc-slider__track">
+                <div class="mdc-slider__track--inactive"></div>
+                <div class="mdc-slider__track--active">
+                  <div class="mdc-slider__track--active_fill"></div>
+                </div>
+              </div>
+              <div id="mouse-size" class="mdc-slider__thumb" role="slider" tabindex="0"
+                aria-label="Continuous slider demo" aria-valuemin="-40" aria-valuemax="40" aria-valuenow="0">
+                <div class="mdc-slider__thumb-knob"></div>
+              </div>
+            </div>
+          </div> -->
+
+          <!-- 口の縦幅のスライダー -->
+          <div class="slider">
+            <p>口の縦幅</p>
+            <div class="mdc-slider mdc-slider--discrete mouse-h">
+              <input id="mouse-h" class="mdc-slider__input" type="range" min="-40" max="40" value="0" name="volume"
+                step="2" aria-label="Discrete slider demo">
+              <div class="mdc-slider__track">
+                <div class="mdc-slider__track--inactive"></div>
+                <div class="mdc-slider__track--active">
+                  <div class="mdc-slider__track--active_fill"></div>
+                </div>
+              </div>
+              <div class="mdc-slider__thumb">
+                <div class="mdc-slider__value-indicator-container">
+                  <div class="mdc-slider__value-indicator">
+                    <span class="mdc-slider__value-indicator-text">
+                      0
+                    </span>
+                  </div>
+                </div>
+                <div class="mdc-slider__thumb-knob"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- <div class="slider">
             <p>口の高さ</p>
             <div class="mdc-slider mouse-height">
               <div class="mdc-slider__track">
@@ -361,7 +550,7 @@
                 <div class="mdc-slider__thumb-knob"></div>
               </div>
             </div>
-          </div>
+          </div> -->
         </div>
         <!-- <div id="canvas" class="canvas"></div> -->
       </div>
@@ -375,6 +564,8 @@
             <input type="image" src="./assest/img/body_02.jpg" onClick="changeTemp('body', 2)">
             <input type="image" src="./assest/img/body_03.jpg" onClick="changeTemp('body', 3)">
             <input type="image" src="./assest/img/body_04.jpg" onClick="changeTemp('body', 4)">
+            <input type="image" src="./assest/img/body_05.jpg" onClick="changeTemp('body', 5)">
+            <!-- <input type="image" src="./assest/img/body_06.jpg" onClick="changeTemp('body', 6)"> -->
           </div>
         </div>
         <div class="mid-box">
@@ -385,7 +576,7 @@
               <span class="mdc-button__label">色の変更</span>
             </button>
           </div>
-          <div class="slider">
+          <!-- <div class="slider">
             <p>体の高さ</p>
             <div class="mdc-slider body-height">
               <div class="mdc-slider__track">
@@ -399,8 +590,8 @@
                 <div class="mdc-slider__thumb-knob"></div>
               </div>
             </div>
-          </div>
-          <div class="slider">
+          </div> -->
+          <!-- <div class="slider">
             <p>体の位置</p>
             <div class="mdc-slider body-position">
               <div class="mdc-slider__track">
@@ -429,7 +620,7 @@
                 <div class="mdc-slider__thumb-knob"></div>
               </div>
             </div>
-          </div>
+          </div> -->
         </div>
         <!-- <div id="canvas" class="canvas"></div> -->
       </div>
@@ -454,11 +645,15 @@
             </button>
           </div>
           <div class="button-block">
-            <p>ロボット画像を保存する</p>
-            <button class="mdc-button mdc-button--outlined" onclick="saveCanvas()">
+            <p>画像とパラメータを保存する</p>
+            <button class="mdc-button mdc-button--outlined" onclick="saveImage();saveParameters()">
               <div class="mdc-button__ripple"></div>
               <span class="mdc-button__label">保存</span>
             </button>
+            <!-- <button class="mdc-button mdc-button--outlined" onclick="saveParameters()">
+              <div class="mdc-button__ripple"></div>
+              <span class="mdc-button__label">パラメータを保存</span>
+            </button> -->
           </div>
         </div>
         <div class="mid-box">
