@@ -22,16 +22,14 @@
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap" rel="stylesheet">
 
-  <!-- p5.js  -->
-  <script src="https://cdn.jsdelivr.net/npm/p5@1.1.9/lib/p5.js"></script>
-  <script src="./libs/p5.play.js"></script>
-  <script src="./assest/js/sketch.js"></script>
-
-  <script type="text/javascript">
+  
+<!-- リロードの注意喚起 -->
+<!-- <script type="text/javascript">
     window.onbeforeunload = function (e) {
       e.returnValue = "ページを離れようとしています。よろしいですか？";
     }
-  </script>
+  </script> -->
+  <script type="module" src="./assest/js/data-manager.js"></script>
 </head>
 
 <body>
@@ -42,9 +40,21 @@
         <span class="mdc-top-app-bar__title">Dearobot</span>
       </section>
       <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-end" role="toolbar">
-        <!-- <button class="material-icons mdc-top-app-bar__action-item mdc-icon-button" aria-label="Favorite">favorite</button>
-        <button class="material-icons mdc-top-app-bar__action-item mdc-icon-button" aria-label="Search">search</button>
-        <button class="material-icons mdc-top-app-bar__action-item mdc-icon-button" aria-label="Options">more_vert</button> -->
+        <button class="mdc-button mdc-button--outlined app-bar-button" id="usage-dialog">
+          <div class="mdc-button__ripple"></div>
+          <i class="material-icons mdc-button__icon" aria-hidden="true">play_circle_filled</i>
+          <span class="mdc-button__label">実験手順動画</span>
+        </button>
+        <button class="mdc-button mdc-button--outlined app-bar-button" id="help-dialog">
+          <div class="mdc-button__ripple"></div>
+          <i class="material-icons mdc-button__icon" aria-hidden="true">help</i>
+          <span class="mdc-button__label">実験について</span>
+        </button>
+        <button class="mdc-button mdc-button--outlined app-bar-button" id="send-button">
+          <div class="mdc-button__ripple"></div>
+          <i class="material-icons mdc-button__icon" aria-hidden="true">send</i>
+          <span class="mdc-button__label">送信</span>
+        </button>
       </section>
     </div>
   </header>
@@ -52,7 +62,25 @@
   <!-- 2. Main: main contents -->
   <main>
     <!-- Dialogs -->
-    <!-- Dialogs - material design color -->
+    <!-- Dialogs - onetime_popup -->
+    <div class="bg_onetime_popup">
+      <div class="onetime_popup">
+        <div class="onetime_popup_title">
+          <p>
+            <span class="mdc-tab__icon material-icons dialog-icon" aria-hidden="true">play_circle_filled</span>
+            実験手順動画
+          </p>
+        </div>
+        <div class="onetime_popup_content">
+          <iframe width="512" height="315" src="https://www.youtube.com/embed/t-ruIgyYfew?controls=0"
+            title="YouTube video player" frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen></iframe>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Dialogs - color -->
     <div class="mdc-dialog color-dialog">
       <div class="mdc-dialog__container">
         <div class="mdc-dialog__surface" role="alertdialog" aria-modal="true" aria-labelledby="my-dialog-title"
@@ -98,6 +126,62 @@
       <div class="mdc-dialog__scrim"></div>
     </div>
 
+    <!-- Dialogs - help -->
+    <div class="mdc-dialog help-dialog">
+      <div class="mdc-dialog__container">
+        <div class="mdc-dialog__surface" role="alertdialog" aria-modal="true" aria-labelledby="my-dialog-title"
+          aria-describedby="my-dialog-content">
+          <h2 class="mdc-dialog__title" id="my-dialog-title">
+            <span class="mdc-tab__icon material-icons dialog-icon" aria-hidden="true">help</span>
+            実験について
+          </h2>
+          <div class="mdc-dialog__content" id="my-dialog-content">
+            <div>
+              <p class="help-text-discription">本実験は、あなたがもし家庭内にロボットを導入する場合に、最も好ましいと感じるデザインを作成してもらうものです。</p>
+              <p class="help-text-title">実験手順</p>
+              <p>1. 顔の編集 → 2. 目の編集 → 3.口の編集 → 4. 体の編集</p>
+              <p>5. アンケート⑴ → 6. アンケート⑵ → 送信ボタン</p>
+            </div>
+          </div>
+          <div class="mdc-dialog__actions">
+            <button type="button" class="mdc-button mdc-dialog__button" data-mdc-dialog-action="cancel">
+              <div class="mdc-button__ripple"></div>
+              <span class="mdc-button__label">閉じる</span>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="mdc-dialog__scrim"></div>
+    </div>
+    
+    <!-- Dialogs - usage -->
+    <div class="mdc-dialog usage-dialog">
+      <div class="mdc-dialog__container">
+        <div class="mdc-dialog__surface youtube_frame" role="alertdialog" aria-modal="true"
+          aria-labelledby="my-dialog-title" aria-describedby="my-dialog-content">
+          <h2 class="mdc-dialog__title" id="my-dialog-title">
+            <span class="mdc-tab__icon material-icons dialog-icon" aria-hidden="true">play_circle_filled</span>
+            実験手順動画
+          </h2>
+          <div class="mdc-dialog__content" id="my-dialog-content">
+            <div>
+              <iframe width="512" height="315" src="https://www.youtube.com/embed/t-ruIgyYfew?controls=0"
+                title="YouTube video player" frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen></iframe>
+            </div>
+          </div>
+          <div class="mdc-dialog__actions">
+            <button type="button" class="mdc-button mdc-dialog__button" data-mdc-dialog-action="cancel">
+              <div class="mdc-button__ripple"></div>
+              <span class="mdc-button__label">閉じる</span>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="mdc-dialog__scrim"></div>
+    </div>
+
     <!-- 2.1 paper -->
     <div class="paper">
 
@@ -111,7 +195,7 @@
                 <button id="mdc-tab-1" class="mdc-tab mdc-tab--active" role="tab" aria-selected="true" tabindex="-1">
                   <span class="mdc-tab__content">
                     <span class="mdc-tab__icon material-icons" aria-hidden="true">face</span>
-                    <span class="mdc-tab__text-label">顔</span>
+                    <span class="mdc-tab__text-label"> 1-顔</span>
                   </span>
                   <span class="mdc-tab-indicator mdc-tab-indicator--active">
                     <span class="mdc-tab-indicator__content mdc-tab-indicator__content--underline"></span>
@@ -122,7 +206,7 @@
                 <button id="mdc-tab-2" class="mdc-tab" role="tab" aria-selected="false" tabindex="-1">
                   <span class="mdc-tab__content">
                     <span class="mdc-tab__icon material-icons" aria-hidden="true">visibility</span>
-                    <span class="mdc-tab__text-label">目</span>
+                    <span class="mdc-tab__text-label">2-目</span>
                   </span>
                   <span class="mdc-tab-indicator mdc-tab-indicator__content--underline">
                     <span class="mdc-tab-indicator__content mdc-tab-indicator__content--underline"></span>
@@ -133,7 +217,7 @@
                 <button id="mdc-tab-3" class="mdc-tab" role="tab" aria-selected="false" tabindex="-1">
                   <span class="mdc-tab__content">
                     <span class="mdc-tab__icon material-icons" aria-hidden="true">insert_emoticon</span>
-                    <span class="mdc-tab__text-label">口</span>
+                    <span class="mdc-tab__text-label">3-口</span>
                   </span>
                   <span class="mdc-tab-indicator mdc-tab-indicator__content--underline">
                     <span class="mdc-tab-indicator__content mdc-tab-indicator__content--underline"></span>
@@ -144,7 +228,7 @@
                 <button id="mdc-tab-4" class="mdc-tab" role="tab" aria-selected="false" tabindex="-1">
                   <span class="mdc-tab__content">
                     <span class="mdc-tab__icon material-icons" aria-hidden="true">accessibility</span>
-                    <span class="mdc-tab__text-label">体</span>
+                    <span class="mdc-tab__text-label">4-体</span>
                   </span>
                   <span class="mdc-tab-indicator mdc-tab-indicator__content--underline">
                     <span class="mdc-tab-indicator__content mdc-tab-indicator__content--underline"></span>
@@ -154,8 +238,19 @@
 
                 <button id="mdc-tab-5" class="mdc-tab" role="tab" aria-selected="false" tabindex="-1">
                   <span class="mdc-tab__content">
-                    <span class="mdc-tab__icon material-icons" aria-hidden="true">preview</span>
-                    <span class="mdc-tab__text-label">プレビュー</span>
+                    <span class="mdc-tab__icon material-icons" aria-hidden="true">assignment</span>
+                    <span class="mdc-tab__text-label">5-アンケート⑴</span>
+                    </span>
+                    <span class="mdc-tab-indicator mdc-tab-indicator__content--underline">
+                      <span class="mdc-tab-indicator__content mdc-tab-indicator__content--underline"></span>
+                    </span>
+                    <span class="mdc-tab__ripple"></span>
+                    </button>
+                    
+                    <button id="mdc-tab-6" class="mdc-tab" role="tab" aria-selected="false" tabindex="-1">
+                      <span class="mdc-tab__content">
+                        <span class="mdc-tab__icon material-icons" aria-hidden="true">assignment</span>
+                        <span class="mdc-tab__text-label">6-アンケート⑵</span>
                   </span>
                   <span class="mdc-tab-indicator mdc-tab-indicator__content--underline">
                     <span class="mdc-tab-indicator__content mdc-tab-indicator__content--underline"></span>
@@ -172,7 +267,7 @@
       <!-- 2 content1: 顔の形の編集画面 -->
       <div id="content1" class="edit-container">
         <div class="left-box">
-          <p>1. お好みの顔の形に編集してください</p>
+          <p class="title">1. お好みの顔の形に編集してください</p>
           <div class="gallery">
             <input type="image" src="./assest/img/face_00.jpg" onClick="changeTemp('face', 0)">
             <input type="image" src="./assest/img/face_01.jpg" onClick="changeTemp('face', 1)">
@@ -248,24 +343,24 @@
       <!-- 3 content2: 目の編集画面 -->
       <div id="content2" class="edit-container">
         <div class="left-box">
-          <p>2. お好みの目に編集してください</p>
+          <p class="title">2. お好みの目に編集してください</p>
           <div class="gallery">
-            <input type="image" src="./assest/img/eye_01.jpg" onClick="changeTemp('eye', 1)">
-            <input type="image" src="./assest/img/eye_02.jpg" onClick="changeTemp('eye', 2)">
-            <input type="image" src="./assest/img/eye_03.jpg" onClick="changeTemp('eye', 3)">
-            <input type="image" src="./assest/img/eye_04.jpg" onClick="changeTemp('eye', 4)">
-            <input type="image" src="./assest/img/eye_05.jpg" onClick="changeTemp('eye', 5)">
-            <input type="image" src="./assest/img/eye_06.jpg" onClick="changeTemp('eye', 6)">
-            <input type="image" src="./assest/img/eye_07.jpg" onClick="changeTemp('eye', 7)">
-            <input type="image" src="./assest/img/eye_08.jpg" onClick="changeTemp('eye', 8)">
-            <input type="image" src="./assest/img/eye_09.jpg" onClick="changeTemp('eye', 9)">
-            <input type="image" src="./assest/img/eye_10.jpg" onClick="changeTemp('eye', 10)">
-            <input type="image" src="./assest/img/eye_11.jpg" onClick="changeTemp('eye', 11)">
-            <input type="image" src="./assest/img/eye_12.jpg" onClick="changeTemp('eye', 12)">
-            <input type="image" src="./assest/img/eye_13.jpg" onClick="changeTemp('eye', 13)">
-            <input type="image" src="./assest/img/eye_14.jpg" onClick="changeTemp('eye', 14)">
-            <input type="image" src="./assest/img/eye_15.jpg" onClick="changeTemp('eye', 15)">
-            <input type="image" src="./assest/img/none.jpg" onClick="changeTemp('eye', 16)">
+            <input type="image" src="./assest/img/eye_01.jpg" onClick="changeTemp('eye', 0)">
+            <input type="image" src="./assest/img/eye_02.jpg" onClick="changeTemp('eye', 1)">
+            <input type="image" src="./assest/img/eye_03.jpg" onClick="changeTemp('eye', 2)">
+            <input type="image" src="./assest/img/eye_04.jpg" onClick="changeTemp('eye', 3)">
+            <input type="image" src="./assest/img/eye_05.jpg" onClick="changeTemp('eye', 4)">
+            <input type="image" src="./assest/img/eye_06.jpg" onClick="changeTemp('eye', 5)">
+            <input type="image" src="./assest/img/eye_07.jpg" onClick="changeTemp('eye', 6)">
+            <input type="image" src="./assest/img/eye_08.jpg" onClick="changeTemp('eye', 7)">
+            <input type="image" src="./assest/img/eye_09.jpg" onClick="changeTemp('eye', 8)">
+            <input type="image" src="./assest/img/eye_10.jpg" onClick="changeTemp('eye', 9)">
+            <input type="image" src="./assest/img/eye_11.jpg" onClick="changeTemp('eye', 10)">
+            <input type="image" src="./assest/img/eye_12.jpg" onClick="changeTemp('eye', 11)">
+            <input type="image" src="./assest/img/eye_13.jpg" onClick="changeTemp('eye', 12)">
+            <input type="image" src="./assest/img/eye_14.jpg" onClick="changeTemp('eye', 13)">
+            <input type="image" src="./assest/img/eye_15.jpg" onClick="changeTemp('eye', 14)">
+            <input type="image" src="./assest/img/none.jpg" onClick="changeTemp('eye', 15)">
           </div>
         </div>
         <div class="mid-box">
@@ -406,17 +501,17 @@
       <!-- 4 content3: 口の編集画面 -->
       <div id="content3" class="edit-container">
         <div class="left-box">
-          <p>3. お好みの口に編集してください</p>
+          <p class="title">3. お好みの口に編集してください</p>
           <div class="gallery">
-            <input type="image" src="./assest/img/mouse_01.jpg" onClick="changeTemp('mouse', 1)">
-            <input type="image" src="./assest/img/mouse_02.jpg" onClick="changeTemp('mouse', 2)">
-            <input type="image" src="./assest/img/mouse_03.jpg" onClick="changeTemp('mouse', 3)">
-            <input type="image" src="./assest/img/mouse_04.jpg" onClick="changeTemp('mouse', 4)">
-            <input type="image" src="./assest/img/mouse_05.jpg" onClick="changeTemp('mouse', 5)">
-            <input type="image" src="./assest/img/mouse_06.jpg" onClick="changeTemp('mouse', 6)">
-            <input type="image" src="./assest/img/mouse_07.jpg" onClick="changeTemp('mouse', 7)">
-            <input type="image" src="./assest/img/mouse_08.jpg" onClick="changeTemp('mouse', 8)">
-            <input type="image" src="./assest/img/mouse_09.jpg" onClick="changeTemp('mouse', 9)">
+            <input type="image" src="./assest/img/mouse_01.jpg" onClick="changeTemp('mouse', 0)">
+            <input type="image" src="./assest/img/mouse_02.jpg" onClick="changeTemp('mouse', 1)">
+            <input type="image" src="./assest/img/mouse_03.jpg" onClick="changeTemp('mouse', 2)">
+            <input type="image" src="./assest/img/mouse_04.jpg" onClick="changeTemp('mouse', 3)">
+            <input type="image" src="./assest/img/mouse_05.jpg" onClick="changeTemp('mouse', 4)">
+            <input type="image" src="./assest/img/mouse_06.jpg" onClick="changeTemp('mouse', 5)">
+            <input type="image" src="./assest/img/mouse_07.jpg" onClick="changeTemp('mouse', 6)">
+            <input type="image" src="./assest/img/mouse_08.jpg" onClick="changeTemp('mouse', 7)">
+            <input type="image" src="./assest/img/mouse_09.jpg" onClick="changeTemp('mouse', 8)">
             <input type="image" src="./assest/img/none.jpg" onClick="changeTemp('mouse', 10)">
           </div>
         </div>
@@ -558,13 +653,13 @@
       <!-- 5 content4: 体の編集画面 -->
       <div id="content4" class="edit-container">
         <div class="left-box">
-          <p>4. お好みの体に編集してください</p>
+          <p class="title">4. お好みの体に編集してください</p>
           <div class="gallery">
-            <input type="image" src="./assest/img/body_01.jpg" onClick="changeTemp('body', 1)">
-            <input type="image" src="./assest/img/body_02.jpg" onClick="changeTemp('body', 2)">
-            <input type="image" src="./assest/img/body_03.jpg" onClick="changeTemp('body', 3)">
-            <input type="image" src="./assest/img/body_04.jpg" onClick="changeTemp('body', 4)">
-            <input type="image" src="./assest/img/body_05.jpg" onClick="changeTemp('body', 5)">
+            <input type="image" src="./assest/img/body_01.jpg" onClick="changeTemp('body', 0)">
+            <input type="image" src="./assest/img/body_02.jpg" onClick="changeTemp('body', 1)">
+            <input type="image" src="./assest/img/body_03.jpg" onClick="changeTemp('body', 2)">
+            <input type="image" src="./assest/img/body_04.jpg" onClick="changeTemp('body', 3)">
+            <input type="image" src="./assest/img/body_05.jpg" onClick="changeTemp('body', 4)">
             <!-- <input type="image" src="./assest/img/body_06.jpg" onClick="changeTemp('body', 6)"> -->
           </div>
         </div>
@@ -625,57 +720,1069 @@
         <!-- <div id="canvas" class="canvas"></div> -->
       </div>
 
-      <!-- 6 content5: プレビュー画面 -->
+      <!-- 6 content5: アンケート⑴ -->
       <div id="content5" class="edit-container">
-        <div class="left-box">
-          <p>5. プレビュー画面を確認してください</p>
-          <div class="button-block">
-            <p>ロボットのサイズ</p>
-            <button class="mdc-button mdc-button--outlined" onclick="changeBG('assest/img/bg-1.png')">
-              <div class="mdc-button__ripple"></div>
-              <span class="mdc-button__label">大</span>
-            </button>
-            <button class="mdc-button mdc-button--outlined" onclick="changeBG('assest/img/bg-2.png')">
-              <div class="mdc-button__ripple"></div>
-              <span class="mdc-button__label">中</span>
-            </button>
-            <button class="mdc-button mdc-button--outlined" onclick="changeBG('assest/img/bg-3.png')">
-              <div class="mdc-button__ripple"></div>
-              <span class="mdc-button__label">小</span>
-            </button>
-          </div>
-          <div class="button-block">
-            <p>画像とパラメータを保存する</p>
-            <button class="mdc-button mdc-button--outlined" onclick="saveImage();saveParameters()">
-              <div class="mdc-button__ripple"></div>
-              <span class="mdc-button__label">保存</span>
-            </button>
-            <!-- <button class="mdc-button mdc-button--outlined" onclick="saveParameters()">
-              <div class="mdc-button__ripple"></div>
-              <span class="mdc-button__label">パラメータを保存</span>
-            </button> -->
-          </div>
-        </div>
-        <div class="mid-box">
+        <div class="left-box-single">
+          <p class="title">5. アンケート⑴にご回答ください</p>
+          <div class="questionnarie">
+            <div class="view-item">
+              <p>[Q1] お名前をご記入ください</p>
+              <label class="mdc-text-field mdc-text-field--filled mdc-text-field--no-label">
+                <span class="mdc-text-field__ripple"></span>
+                <input class="mdc-text-field__input" id="name-text-field" type="text" placeholder="テキスト" aria-label="Label">
+                <span class="mdc-line-ripple"></span>
+              </label>
+            </div>
+            <div class="view-item">
+              <p>[Q2] 年齢を選択してください</p>
+              <div class="mdc-select mdc-select--filled demo-width-class">
+                <div class="mdc-select__anchor" role="button" aria-haspopup="listbox" aria-expanded="false"
+                  aria-labelledby="demo-label demo-selected-text">
+                  <span class="mdc-select__ripple"></span>
+                  <span id="demo-label" class="mdc-floating-label">年齢</span>
+                  <span class="mdc-select__selected-text-container">
+                    <span id="demo-selected-text" class="mdc-select__selected-text"></span>
+                  </span>
+                  <span class="mdc-select__dropdown-icon">
+                    <svg class="mdc-select__dropdown-icon-graphic" viewBox="7 10 10 5" focusable="false">
+                      <polygon class="mdc-select__dropdown-icon-inactive" stroke="none" fill-rule="evenodd"
+                        points="7 10 12 15 17 10">
+                      </polygon>
+                      <polygon class="mdc-select__dropdown-icon-active" stroke="none" fill-rule="evenodd"
+                        points="7 15 12 10 17 15">
+                      </polygon>
+                    </svg>
+                  </span>
+                  <span class="mdc-line-ripple"></span>
+                </div>
+        
+                <div class="mdc-select__menu mdc-menu mdc-menu-surface mdc-menu-surface--fullwidth">
+                  <ul class="mdc-list" role="listbox" aria-label="Food picker listbox">
+                    <li class="mdc-list-item mdc-list-item--selected" aria-selected="true" data-value="" role="option">
+                      <span class="mdc-list-item__ripple"></span>
+                    </li>
+                    <li class="mdc-list-item" aria-selected="false" data-value="16" role="option">
+                      <span class="mdc-list-item__ripple"></span>
+                      <span class="mdc-list-item__text">
+                        16
+                      </span>
+                    </li>
+                    <li class="mdc-list-item" aria-selected="false" data-value="17" role="option">
+                      <span class="mdc-list-item__ripple"></span>
+                      <span class="mdc-list-item__text">
+                        17
+                      </span>
+                    </li>
+                    <li class="mdc-list-item" aria-selected="false" data-value="18" role="option">
+                      <span class="mdc-list-item__ripple"></span>
+                      <span class="mdc-list-item__text">
+                        18
+                      </span>
+                    </li>
+                    <li class="mdc-list-item" aria-selected="false" data-value="19" role="option">
+                      <span class="mdc-list-item__ripple"></span>
+                      <span class="mdc-list-item__text">
+                        19
+                      </span>
+                    </li>
+                    <li class="mdc-list-item" aria-selected="false" data-value="20" role="option">
+                      <span class="mdc-list-item__ripple"></span>
+                      <span class="mdc-list-item__text">
+                        20
+                      </span>
+                    </li>
+                    <li class="mdc-list-item" aria-selected="false" data-value="21" role="option">
+                      <span class="mdc-list-item__ripple"></span>
+                      <span class="mdc-list-item__text">
+                        21
+                      </span>
+                    </li>
+                    <li class="mdc-list-item" aria-selected="false" data-value="22" role="option">
+                      <span class="mdc-list-item__ripple"></span>
+                      <span class="mdc-list-item__text">
+                        22
+                      </span>
+                    </li>
+                    <li class="mdc-list-item" aria-selected="false" data-value="23" role="option">
+                      <span class="mdc-list-item__ripple"></span>
+                      <span class="mdc-list-item__text">
+                        23
+                      </span>
+                    </li>
+                    <li class="mdc-list-item" aria-selected="false" data-value="24" role="option">
+                      <span class="mdc-list-item__ripple"></span>
+                      <span class="mdc-list-item__text">
+                        24
+                      </span>
+                    </li>
+                    <li class="mdc-list-item" aria-selected="false" data-value="25" role="option">
+                      <span class="mdc-list-item__ripple"></span>
+                      <span class="mdc-list-item__text">
+                        25
+                      </span>
+                    </li>
+                    <li class="mdc-list-item" aria-selected="false" data-value="26" role="option">
+                      <span class="mdc-list-item__ripple"></span>
+                      <span class="mdc-list-item__text">
+                        26
+                      </span>
+                    </li>
+                    <li class="mdc-list-item" aria-selected="false" data-value="27" role="option">
+                      <span class="mdc-list-item__ripple"></span>
+                      <span class="mdc-list-item__text">
+                        27
+                      </span>
+                    </li>
+                    <li class="mdc-list-item" aria-selected="false" data-value="28" role="option">
+                      <span class="mdc-list-item__ripple"></span>
+                      <span class="mdc-list-item__text">
+                        28
+                      </span>
+                    </li>
+                    <li class="mdc-list-item" aria-selected="false" data-value="29" role="option">
+                      <span class="mdc-list-item__ripple"></span>
+                      <span class="mdc-list-item__text">
+                        29
+                      </span>
+                    </li>
+                    <li class="mdc-list-item" aria-selected="false" data-value="30" role="option">
+                      <span class="mdc-list-item__ripple"></span>
+                      <span class="mdc-list-item__text">
+                        30
+                      </span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="view-item">
+              <p>[Q3] 将来、ロボットが様々な機能を有する場合、自身の価値得ないに導入することを希望しますか？</p>
+              <div class="vertical-radio-button-group">
+                <form>
+                  <fieldset id="qs-radio-group">
+                    <div class="questionnarie-items">
+                      <input type="radio" value="q3-yes" name="quetionnarie-radio">
+                      <a>希望する</a>
+                    </div>
+                    <div class="questionnarie-items">
+                      <input type="radio" value="q3-no" name="quetionnarie-radio">
+                      <a>希望しない</a>
+                    </div>
+                    <div class="questionnarie-items">
+                      <input type="radio" value="q3-other" name="quetionnarie-radio">
+                      <a>その他</a>
+                    </div>
+                  </fieldset>
+                </form>
+              </div>
+            </div>
+            <div class="view-item">
+              <p>[Q4] 自身で作成した外観のロボットを、家庭内に導入することを希望しますか？</p>
+              <div class="vertical-radio-button-group">
+                <form>
+                  <fieldset id="qs-radio-group">
+                    <div class="questionnarie-items">
+                      <input type="radio" value="q4-yes" name="quetionnarie-radio">
+                      <a>希望する</a>
+                    </div>
+                    <div class="questionnarie-items">
+                      <input type="radio" value="q4-no" name="quetionnarie-radio">
+                      <a>希望しない</a>
+                    </div>
+                    <div class="questionnarie-items">
+                      <input type="radio" value="q4-other" name="quetionnarie-radio">
+                      <a>その他</a>
+                    </div>
+                  </fieldset>
+                </form>
+              </div>
+            </div>
+            <div class="view-item">
+              <p>[Q5] 自身で作成したロボットはどのような機能を想定して作成しましたか？</p>
+              <div class="vertical-radio-button-group">
+                <div class="questionnarie-items">
+                  <div class="mdc-touch-target-wrapper">
+                    <div class="mdc-checkbox mdc-checkbox--touch">
+                      <input type="checkbox" class="mdc-checkbox__native-control" id="checkbox-1" value="q5-kagi" />
+                      <div class="mdc-checkbox__background">
+                        <svg class="mdc-checkbox__checkmark" viewBox="0 0 24 24">
+                          <path class="mdc-checkbox__checkmark-path" fill="none" d="M1.73,12.91 8.1,19.28 22.79,4.59" />
+                        </svg>
+                        <div class="mdc-checkbox__mixedmark"></div>
+                      </div>
+                      <div class="mdc-checkbox__ripple"></div>
+                    </div>
+                  </div>
+                  <a>家事</a>
+                </div>
+                <div class="questionnarie-items">
+                  <div class="mdc-touch-target-wrapper">
+                    <div class="mdc-checkbox mdc-checkbox--touch">
+                      <input type="checkbox" class="mdc-checkbox__native-control" id="checkbox-1" value="q5-nichijyo-shien" />
+                      <div class="mdc-checkbox__background">
+                        <svg class="mdc-checkbox__checkmark" viewBox="0 0 24 24">
+                          <path class="mdc-checkbox__checkmark-path" fill="none" d="M1.73,12.91 8.1,19.28 22.79,4.59" />
+                        </svg>
+                        <div class="mdc-checkbox__mixedmark"></div>
+                      </div>
+                      <div class="mdc-checkbox__ripple"></div>
+                    </div>
+                  </div>
+                  <a>日常支援</a>
+                </div>
+                <div class="questionnarie-items">
+                  <div class="mdc-touch-target-wrapper">
+                    <div class="mdc-checkbox mdc-checkbox--touch">
+                      <input type="checkbox" class="mdc-checkbox__native-control" id="checkbox-1" value="q5-kyoiku" />
+                      <div class="mdc-checkbox__background">
+                        <svg class="mdc-checkbox__checkmark" viewBox="0 0 24 24">
+                          <path class="mdc-checkbox__checkmark-path" fill="none" d="M1.73,12.91 8.1,19.28 22.79,4.59" />
+                        </svg>
+                        <div class="mdc-checkbox__mixedmark"></div>
+                      </div>
+                      <div class="mdc-checkbox__ripple"></div>
+                    </div>
+                  </div>
+                  <a>教育</a>
+                </div>
+                <div class="questionnarie-items">
+                  <div class="mdc-touch-target-wrapper">
+                    <div class="mdc-checkbox mdc-checkbox--touch">
+                      <input type="checkbox" class="mdc-checkbox__native-control" id="checkbox-1" value="q5-partner" />
+                      <div class="mdc-checkbox__background">
+                        <svg class="mdc-checkbox__checkmark" viewBox="0 0 24 24">
+                          <path class="mdc-checkbox__checkmark-path" fill="none" d="M1.73,12.91 8.1,19.28 22.79,4.59" />
+                        </svg>
+                        <div class="mdc-checkbox__mixedmark"></div>
+                      </div>
+                      <div class="mdc-checkbox__ripple"></div>
+                    </div>
+                  </div>
+                  <a>パートナー</a>
+                </div>
+                <div class="questionnarie-items">
+                  <div class="mdc-touch-target-wrapper">
+                    <div class="mdc-checkbox mdc-checkbox--touch">
+                      <input type="checkbox" class="mdc-checkbox__native-control" id="checkbox-1" value="q5-kaigo" />
+                      <div class="mdc-checkbox__background">
+                        <svg class="mdc-checkbox__checkmark" viewBox="0 0 24 24">
+                          <path class="mdc-checkbox__checkmark-path" fill="none" d="M1.73,12.91 8.1,19.28 22.79,4.59" />
+                        </svg>
+                        <div class="mdc-checkbox__mixedmark"></div>
+                      </div>
+                      <div class="mdc-checkbox__ripple"></div>
+                    </div>
+                  </div>
+                  <a>介護</a>
+                </div>
+                <div class="questionnarie-items">
+                  <div class="mdc-touch-target-wrapper">
+                    <div class="mdc-checkbox mdc-checkbox--touch">
+                      <input type="checkbox" class="mdc-checkbox__native-control" id="checkbox-1" value="q5-pet" />
+                      <div class="mdc-checkbox__background">
+                        <svg class="mdc-checkbox__checkmark" viewBox="0 0 24 24">
+                          <path class="mdc-checkbox__checkmark-path" fill="none" d="M1.73,12.91 8.1,19.28 22.79,4.59" />
+                        </svg>
+                        <div class="mdc-checkbox__mixedmark"></div>
+                      </div>
+                      <div class="mdc-checkbox__ripple"></div>
+                    </div>
+                  </div>
+                  <a>ペット</a>
+                </div>
+                <div class="questionnarie-items">
+                  <div class="mdc-touch-target-wrapper">
+                    <div class="mdc-checkbox mdc-checkbox--touch">
+                      <input type="checkbox" class="mdc-checkbox__native-control" id="checkbox-1" value="q5-other" />
+                      <div class="mdc-checkbox__background">
+                        <svg class="mdc-checkbox__checkmark" viewBox="0 0 24 24">
+                          <path class="mdc-checkbox__checkmark-path" fill="none" d="M1.73,12.91 8.1,19.28 22.79,4.59" />
+                        </svg>
+                        <div class="mdc-checkbox__mixedmark"></div>
+                      </div>
+                      <div class="mdc-checkbox__ripple"></div>
+                    </div>
+                  </div>
+                  <a>その他</a>
+                </div>
+              </div>
+            </div>
+            <div class="view-item">
+              <p>[Q6] 満足するロボットの外観が作成できましたか？</p>
+              <div class="vertical-radio-button-group">
+                <form>
+                  <fieldset id="qs-radio-group">
+                    <div class="questionnarie-items">
+                      <input type="radio" value="q6-satisfied" name="quetionnarie-radio">
+                      <a>満足できた</a>
+                    </div>
+                    <div class="questionnarie-items">
+                      <input type="radio" value="q6-so-satisfied" name="quetionnarie-radio">
+                      <a>やや満足できた</a>
+                    </div>
+                    <div class="questionnarie-items">
+                      <input type="radio" value="q6-neither" name="quetionnarie-radio">
+                      <a>どちらでもない</a>
+                    </div>
+                    <div class="questionnarie-items">
+                      <input type="radio" value="q6-so-unsatisfied" name="quetionnarie-radio">
+                      <a>やや満足できなかった</a>
+                    </div>
+                    <div class="questionnarie-items">
+                      <input type="radio" value="q6-unsatisfied" name="quetionnarie-radio">
+                      <a>満足できなかった</a>
+                    </div>
+                  </fieldset>
+                </form>
+              </div>
+            </div>
+            <div class="view-item">
+              <p>[Q6.1] やや・満足できなかったと答えた方に質問です。どのような点を改善すれば満足するものが作成できましたか？</p>
+              <label class="mdc-text-field mdc-text-field--filled mdc-text-field--textarea mdc-text-field--no-label">
+                <span class="mdc-text-field__ripple"></span>
+                <span class="mdc-text-field__resizer">
+                  <textarea class="mdc-text-field__input" rows="2" cols="40" aria-label="Label" id="q6-1-text"></textarea>
+                </span>
+                <span class="mdc-line-ripple"></span>
+              </label>
+            </div>
+            <div class="view-item">
+              <p>[Q7] 作成したロボットはどのくらいの大きさを想定して作成しましたか？(cm)</p>
+              <label class="mdc-text-field mdc-text-field--filled mdc-text-field--no-label">
+                <span class="mdc-text-field__ripple"></span>
+                <input class="mdc-text-field__input" id="name-text-field" type="text" placeholder="テキスト" aria-label="Label"
+                  id="q7-text">
+                <span class="mdc-line-ripple"></span>
+              </label>
+            </div>
+            <div class="view-item" id="questionnarie-8-1">
+              <p>[Q8] 人間の輪郭のような顔を選択した理由を教えてください</p>
+              <label class="mdc-text-field mdc-text-field--filled mdc-text-field--textarea mdc-text-field--no-label">
+                <span class="mdc-text-field__ripple"></span>
+                <span class="mdc-text-field__resizer">
+                  <textarea class="mdc-text-field__input" rows="2" cols="40" aria-label="Label" id="q8-text"></textarea>
+                </span>
+                <span class="mdc-line-ripple"></span>
+              </label>
+            </div>
+            <div class="view-item disabled" id="questionnarie-8-2">
+              <p>[Q8] ヘルメットやディスプレのような黒い画面の顔を選択した理由を教えてください</p>
+              <label class="mdc-text-field mdc-text-field--filled mdc-text-field--textarea mdc-text-field--no-label">
+                <span class="mdc-text-field__ripple"></span>
+                <span class="mdc-text-field__resizer">
+                  <textarea class="mdc-text-field__input" rows="2" cols="40" aria-label="Label" id="q8-text"></textarea>
+                </span>
+                <span class="mdc-line-ripple"></span>
+              </label>
+            </div>
+            <div class="view-item disabled" id="questionnarie-8-3">
+              <p>[Q8] キャラクターのような顔を選択した理由を教えてください</p>
+              <label class="mdc-text-field mdc-text-field--filled mdc-text-field--textarea mdc-text-field--no-label">
+                <span class="mdc-text-field__ripple"></span>
+                <span class="mdc-text-field__resizer">
+                  <textarea class="mdc-text-field__input" rows="2" cols="40" aria-label="Label" id="q8-text"></textarea>
+                </span>
+                <span class="mdc-line-ripple"></span>
+              </label>
+            </div>
+            <div class="view-item" id="questionnarie-9-1">
+              <p>[Q9] 右のような目のプリセットを選択した理由を教えてください</p>
+              <label class="mdc-text-field mdc-text-field--filled mdc-text-field--textarea mdc-text-field--no-label">
+                <span class="mdc-text-field__ripple"></span>
+                <span class="mdc-text-field__resizer">
+                  <textarea class="mdc-text-field__input" rows="2" cols="40" aria-label="Label" id="q9-text"></textarea>
+                </span>
+                <span class="mdc-line-ripple"></span>
+              </label>
+            </div>
+            <div class="view-item disabled" id="questionnarie-9-2">
+              <p>[Q9] 目のプリセットを選択しない理由を教えてください</p>
+              <label class="mdc-text-field mdc-text-field--filled mdc-text-field--textarea mdc-text-field--no-label">
+                <span class="mdc-text-field__ripple"></span>
+                <span class="mdc-text-field__resizer">
+                  <textarea class="mdc-text-field__input" rows="2" cols="40" aria-label="Label" id="q9-text"></textarea>
+                </span>
+                <span class="mdc-line-ripple"></span>
+              </label>
+            </div>
+            <div class="view-item" id="questionnarie-10-1">
+              <p>[Q10] 右のような口のプリセットを選択した理由を教えてください</p>
+              <label class="mdc-text-field mdc-text-field--filled mdc-text-field--textarea mdc-text-field--no-label">
+                <span class="mdc-text-field__ripple"></span>
+                <span class="mdc-text-field__resizer">
+                  <textarea class="mdc-text-field__input" rows="2" cols="40" aria-label="Label" id="q10-text"></textarea>
+                </span>
+                <span class="mdc-line-ripple"></span>
+              </label>
+            </div>
+            <div class="view-item disabled" id="questionnarie-10-2">
+              <p>[Q10] 口のプリセットを選択しない理由を教えてください</p>
+              <label class="mdc-text-field mdc-text-field--filled mdc-text-field--textarea mdc-text-field--no-label">
+                <span class="mdc-text-field__ripple"></span>
+                <span class="mdc-text-field__resizer">
+                  <textarea class="mdc-text-field__input" rows="2" cols="40" aria-label="Label" id="q10-text"></textarea>
+                </span>
+                <span class="mdc-line-ripple"></span>
+              </label>
+            </div>
+            <div class="view-item">
+              <p>[Q11] 右のような体のプリセットを選択した理由を教えてください</p>
+              <label class="mdc-text-field mdc-text-field--filled mdc-text-field--textarea mdc-text-field--no-label">
+                <span class="mdc-text-field__ripple"></span>
+                <span class="mdc-text-field__resizer">
+                  <textarea class="mdc-text-field__input" rows="2" cols="40" aria-label="Label" id="q11-text"></textarea>
+                </span>
+                <span class="mdc-line-ripple"></span>
+              </label>
+            </div>
+            
+            </div>
         </div>
         <!-- <div id="canvas" class="canvas"></div> -->
+      </div>
+
+      <!-- 7 content6: アンケート⑵ -->
+      <div id="content6" class="edit-container">
+        <div class="left-box-single">
+          <p class="title">6. アンケート⑵にご回答ください</p>
+          <p class="discription">以下の質問は、作成したロボットに対する印象を問うものとなっています。<br> それぞれの項目の形容詞の対のうちから最も近しいものを選択してください。</p>
+          <div class="question-form">
+            <div class="question-header">
+              <div class="adjective-pair">
+                <p></p>
+              </div>
+              <div class="label-measure">
+                <p>非常に</p>
+                <p>かなり</p>
+                <p>やや</p>
+                <p>どちらでもない</p>
+                <p>やや</p>
+                <p>かなり</p>
+                <p>非常に</p>
+              </div>
+              <div class="adjective-pair">
+                <p></p>
+              </div>
+            </div>
+            <div class="question-contents">
+              <div class="question-row">
+                <div class="adjective-pair">
+                  <p>やさしい</p>
+                </div>
+                <form>
+                  <fieldset id="radio-group">
+                    <input type="radio" value=1 name="adjective-radio">
+                    <input type="radio" value=2 name="adjective-radio">
+                    <input type="radio" value=3 name="adjective-radio">
+                    <input type="radio" value=4 name="adjective-radio">
+                    <input type="radio" value=5 name="adjective-radio">
+                    <input type="radio" value=6 name="adjective-radio">
+                    <input type="radio" value=7 name="adjective-radio">
+                  </fieldset>
+                </form>
+                <div class="adjective-pair">
+                  <p>こわい</p>
+                </div>
+              </div>
+              <div class="question-row">
+                <div class="adjective-pair">
+                  <p>感じのよい</p>
+                </div>
+                <form>
+                  <fieldset id="radio-group">
+                    <input type="radio" value=8 name="adjective-radio">
+                    <input type="radio" value=9 name="adjective-radio">
+                    <input type="radio" value=10 name="adjective-radio">
+                    <input type="radio" value=11 name="adjective-radio">
+                    <input type="radio" value=12 name="adjective-radio">
+                    <input type="radio" value=13 name="adjective-radio">
+                    <input type="radio" value=14 name="adjective-radio">
+                  </fieldset>
+                </form>
+                <div class="adjective-pair">
+                  <p>感じのわるい</p>
+                </div>
+              </div>
+              <div class="question-row">
+                <div class="adjective-pair">
+                  <p>親しみやすい</p>
+                </div>
+                <form>
+                  <fieldset id="radio-group">
+                    <input type="radio" value=15 name="adjective-radio">
+                    <input type="radio" value=16 name="adjective-radio">
+                    <input type="radio" value=17 name="adjective-radio">
+                    <input type="radio" value=18 name="adjective-radio">
+                    <input type="radio" value=19 name="adjective-radio">
+                    <input type="radio" value=20 name="adjective-radio">
+                    <input type="radio" value=21 name="adjective-radio">
+                  </fieldset>
+                </form>
+                <div class="adjective-pair">
+                  <p>親しみにくい</p>
+                </div>
+              </div>
+              <div class="question-row">
+                <div class="adjective-pair">
+                  <p>安全な</p>
+                </div>
+                <form>
+                  <fieldset id="radio-group">
+                    <input type="radio" value=22 name="adjective-radio">
+                    <input type="radio" value=23 name="adjective-radio">
+                    <input type="radio" value=24 name="adjective-radio">
+                    <input type="radio" value=25 name="adjective-radio">
+                    <input type="radio" value=26 name="adjective-radio">
+                    <input type="radio" value=27 name="adjective-radio">
+                    <input type="radio" value=28 name="adjective-radio">
+                  </fieldset>
+                </form>
+                <div class="adjective-pair">
+                  <p>危険な</p>
+                </div>
+              </div>
+              <div class="question-row">
+                <div class="adjective-pair">
+                  <p>暖かい</p>
+                </div>
+                <form>
+                  <fieldset id="radio-group">
+                    <input type="radio" value=29 name="adjective-radio">
+                    <input type="radio" value=30 name="adjective-radio">
+                    <input type="radio" value=31 name="adjective-radio">
+                    <input type="radio" value=32 name="adjective-radio">
+                    <input type="radio" value=33 name="adjective-radio">
+                    <input type="radio" value=34 name="adjective-radio">
+                    <input type="radio" value=35 name="adjective-radio">
+                  </fieldset>
+                </form>
+                <div class="adjective-pair">
+                  <p>冷たい</p>
+                </div>
+              </div>
+              <div class="question-row">
+                <div class="adjective-pair">
+                  <p>かわいらしい</p>
+                </div>
+                <form>
+                  <fieldset id="radio-group">
+                    <input type="radio" value=36 name="adjective-radio">
+                    <input type="radio" value=37 name="adjective-radio">
+                    <input type="radio" value=38 name="adjective-radio">
+                    <input type="radio" value=39 name="adjective-radio">
+                    <input type="radio" value=40 name="adjective-radio">
+                    <input type="radio" value=41 name="adjective-radio">
+                    <input type="radio" value=42 name="adjective-radio">
+                  </fieldset>
+                </form>
+                <div class="adjective-pair">
+                  <p>憎たらしい</p>
+                </div>
+              </div>
+              <div class="question-row">
+                <div class="adjective-pair">
+                  <p>うちとけた</p>
+                </div>
+                <form>
+                  <fieldset id="radio-group">
+                    <input type="radio" value=43 name="adjective-radio">
+                    <input type="radio" value=44 name="adjective-radio">
+                    <input type="radio" value=45 name="adjective-radio">
+                    <input type="radio" value=46 name="adjective-radio">
+                    <input type="radio" value=47 name="adjective-radio">
+                    <input type="radio" value=48 name="adjective-radio">
+                    <input type="radio" value=49 name="adjective-radio">
+                  </fieldset>
+                </form>
+                <div class="adjective-pair">
+                  <p>かたくるしい</p>
+                </div>
+              </div>
+              <div class="question-row">
+                <div class="adjective-pair">
+                  <p>わかりやすい</p>
+                </div>
+                <form>
+                  <fieldset id="radio-group">
+                    <input type="radio" value=50 name="adjective-radio">
+                    <input type="radio" value=51 name="adjective-radio">
+                    <input type="radio" value=52 name="adjective-radio">
+                    <input type="radio" value=53 name="adjective-radio">
+                    <input type="radio" value=54 name="adjective-radio">
+                    <input type="radio" value=55 name="adjective-radio">
+                    <input type="radio" value=56 name="adjective-radio">
+                  </fieldset>
+                </form>
+                <div class="adjective-pair">
+                  <p>わかりにくい</p>
+                </div>
+              </div>
+              <div class="question-row">
+                <div class="adjective-pair">
+                  <p>近づきやすい</p>
+                </div>
+                <form>
+                  <fieldset id="radio-group">
+                    <input type="radio" value=57 name="adjective-radio">
+                    <input type="radio" value=58 name="adjective-radio">
+                    <input type="radio" value=59 name="adjective-radio">
+                    <input type="radio" value=60 name="adjective-radio">
+                    <input type="radio" value=61 name="adjective-radio">
+                    <input type="radio" value=62 name="adjective-radio">
+                    <input type="radio" value=63 name="adjective-radio">
+                  </fieldset>
+                </form>
+                <div class="adjective-pair">
+                  <p>近づきがたい</p>
+                </div>
+              </div>
+              <div class="question-row">
+                <div class="adjective-pair">
+                  <p>明るい</p>
+                </div>
+                <form>
+                  <fieldset id="radio-group">
+                    <input type="radio" value=64 name="adjective-radio">
+                    <input type="radio" value=65 name="adjective-radio">
+                    <input type="radio" value=66 name="adjective-radio">
+                    <input type="radio" value=67 name="adjective-radio">
+                    <input type="radio" value=68 name="adjective-radio">
+                    <input type="radio" value=69 name="adjective-radio">
+                    <input type="radio" value=70 name="adjective-radio">
+                  </fieldset>
+                </form>
+                <div class="adjective-pair">
+                  <p>暗い</p>
+                </div>
+              </div>
+              <div class="question-row">
+                <div class="adjective-pair">
+                  <p>思いやりのある</p>
+                </div>
+                <form>
+                  <fieldset id="radio-group">
+                    <input type="radio" value=71 name="adjective-radio">
+                    <input type="radio" value=72 name="adjective-radio">
+                    <input type="radio" value=73 name="adjective-radio">
+                    <input type="radio" value=74 name="adjective-radio">
+                    <input type="radio" value=75 name="adjective-radio">
+                    <input type="radio" value=76 name="adjective-radio">
+                    <input type="radio" value=77 name="adjective-radio">
+                  </fieldset>
+                </form>
+                <div class="adjective-pair">
+                  <p>わがままな</p>
+                </div>
+              </div>
+              <div class="question-row">
+                <div class="adjective-pair">
+                  <p>人間的な</p>
+                </div>
+                <form>
+                  <fieldset id="radio-group">
+                    <input type="radio" value=78 name="adjective-radio">
+                    <input type="radio" value=79 name="adjective-radio">
+                    <input type="radio" value=80 name="adjective-radio">
+                    <input type="radio" value=81 name="adjective-radio">
+                    <input type="radio" value=82 name="adjective-radio">
+                    <input type="radio" value=83 name="adjective-radio">
+                    <input type="radio" value=84 name="adjective-radio">
+                  </fieldset>
+                </form>
+                <div class="adjective-pair">
+                  <p>機械的な</p>
+                </div>
+              </div>
+              <div class="question-row">
+                <div class="adjective-pair">
+                  <p>充実した</p>
+                </div>
+                <form>
+                  <fieldset id="radio-group">
+                    <input type="radio" value=85 name="adjective-radio">
+                    <input type="radio" value=86 name="adjective-radio">
+                    <input type="radio" value=87 name="adjective-radio">
+                    <input type="radio" value=88 name="adjective-radio">
+                    <input type="radio" value=89 name="adjective-radio">
+                    <input type="radio" value=90 name="adjective-radio">
+                    <input type="radio" value=91 name="adjective-radio">
+                  </fieldset>
+                </form>
+                <div class="adjective-pair">
+                  <p>空虚な</p>
+                </div>
+              </div>
+              <div class="question-row">
+                <div class="adjective-pair">
+                  <p>面白い</p>
+                </div>
+                <form>
+                  <fieldset id="radio-group">
+                    <input type="radio" value=92 name="adjective-radio">
+                    <input type="radio" value=93 name="adjective-radio">
+                    <input type="radio" value=94 name="adjective-radio">
+                    <input type="radio" value=95 name="adjective-radio">
+                    <input type="radio" value=96 name="adjective-radio">
+                    <input type="radio" value=97 name="adjective-radio">
+                    <input type="radio" value=98 name="adjective-radio">
+                  </fieldset>
+                </form>
+                <div class="adjective-pair">
+                  <p>つまらない</p>
+                </div>
+              </div>
+              <div class="question-row">
+                <div class="adjective-pair">
+                  <p>愉快な</p>
+                </div>
+                <form>
+                  <fieldset id="radio-group">
+                    <input type="radio" value=99 name="adjective-radio">
+                    <input type="radio" value=100 name="adjective-radio">
+                    <input type="radio" value=101 name="adjective-radio">
+                    <input type="radio" value=102 name="adjective-radio">
+                    <input type="radio" value=103 name="adjective-radio">
+                    <input type="radio" value=104 name="adjective-radio">
+                    <input type="radio" value=105 name="adjective-radio">
+                  </fieldset>
+                </form>
+                <div class="adjective-pair">
+                  <p>不愉快な</p>
+                </div>
+              </div>
+              <div class="question-row">
+                <div class="adjective-pair">
+                  <p>好きな</p>
+                </div>
+                <form>
+                  <fieldset id="radio-group">
+                    <input type="radio" value=106 name="adjective-radio">
+                    <input type="radio" value=107 name="adjective-radio">
+                    <input type="radio" value=108 name="adjective-radio">
+                    <input type="radio" value=109 name="adjective-radio">
+                    <input type="radio" value=110 name="adjective-radio">
+                    <input type="radio" value=111 name="adjective-radio">
+                    <input type="radio" value=112 name="adjective-radio">
+                  </fieldset>
+                </form>
+                <div class="adjective-pair">
+                  <p>嫌いな</p>
+                </div>
+              </div>
+              <div class="question-row">
+                <div class="adjective-pair">
+                  <p>興味深い</p>
+                </div>
+                <form>
+                  <fieldset id="radio-group">
+                    <input type="radio" value=113 name="adjective-radio">
+                    <input type="radio" value=114 name="adjective-radio">
+                    <input type="radio" value=115 name="adjective-radio">
+                    <input type="radio" value=116 name="adjective-radio">
+                    <input type="radio" value=117 name="adjective-radio">
+                    <input type="radio" value=118 name="adjective-radio">
+                    <input type="radio" value=119 name="adjective-radio">
+                  </fieldset>
+                </form>
+                <div class="adjective-pair">
+                  <p>退屈な</p>
+                </div>
+              </div>
+              <div class="question-row">
+                <div class="adjective-pair">
+                  <p>良い</p>
+                </div>
+                <form>
+                  <fieldset id="radio-group">
+                    <input type="radio" value=120 name="adjective-radio">
+                    <input type="radio" value=121 name="adjective-radio">
+                    <input type="radio" value=122 name="adjective-radio">
+                    <input type="radio" value=123 name="adjective-radio">
+                    <input type="radio" value=124 name="adjective-radio">
+                    <input type="radio" value=125 name="adjective-radio">
+                    <input type="radio" value=126 name="adjective-radio">
+                  </fieldset>
+                </form>
+                <div class="adjective-pair">
+                  <p>悪い</p>
+                </div>
+              </div>
+              <div class="question-row">
+                <div class="adjective-pair">
+                  <p>複雑な</p>
+                </div>
+                <form>
+                  <fieldset id="radio-group">
+                    <input type="radio" value=127 name="adjective-radio">
+                    <input type="radio" value=128 name="adjective-radio">
+                    <input type="radio" value=129 name="adjective-radio">
+                    <input type="radio" value=130 name="adjective-radio">
+                    <input type="radio" value=131 name="adjective-radio">
+                    <input type="radio" value=132 name="adjective-radio">
+                    <input type="radio" value=133 name="adjective-radio">
+                  </fieldset>
+                </form>
+                <div class="adjective-pair">
+                  <p>単純な</p>
+                </div>
+              </div>
+              <div class="question-row">
+                <div class="adjective-pair">
+                  <p>速い</p>
+                </div>
+                <form>
+                  <fieldset id="radio-group">
+                    <input type="radio" value=134 name="adjective-radio">
+                    <input type="radio" value=135 name="adjective-radio">
+                    <input type="radio" value=136 name="adjective-radio">
+                    <input type="radio" value=137 name="adjective-radio">
+                    <input type="radio" value=138 name="adjective-radio">
+                    <input type="radio" value=139 name="adjective-radio">
+                    <input type="radio" value=140 name="adjective-radio">
+                  </fieldset>
+                </form>
+                <div class="adjective-pair">
+                  <p>遅い</p>
+                </div>
+              </div>
+              <div class="question-row">
+                <div class="adjective-pair">
+                  <p>すばやい</p>
+                </div>
+                <form>
+                  <fieldset id="radio-group">
+                    <input type="radio" value=141 name="adjective-radio">
+                    <input type="radio" value=142 name="adjective-radio">
+                    <input type="radio" value=143 name="adjective-radio">
+                    <input type="radio" value=144 name="adjective-radio">
+                    <input type="radio" value=145 name="adjective-radio">
+                    <input type="radio" value=146 name="adjective-radio">
+                    <input type="radio" value=147 name="adjective-radio">
+                  </fieldset>
+                </form>
+                <div class="adjective-pair">
+                  <p>のろい</p>
+                </div>
+              </div>
+              <div class="question-row">
+                <div class="adjective-pair">
+                  <p>はげしい</p>
+                </div>
+                <form>
+                  <fieldset id="radio-group">
+                    <input type="radio" value=148 name="adjective-radio">
+                    <input type="radio" value=149 name="adjective-radio">
+                    <input type="radio" value=150 name="adjective-radio">
+                    <input type="radio" value=151 name="adjective-radio">
+                    <input type="radio" value=152 name="adjective-radio">
+                    <input type="radio" value=153 name="adjective-radio">
+                    <input type="radio" value=154 name="adjective-radio">
+                  </fieldset>
+                </form>
+                <div class="adjective-pair">
+                  <p>おだやかな</p>
+                </div>
+              </div>
+              <div class="question-row">
+                <div class="adjective-pair">
+                  <p>積極的な</p>
+                </div>
+                <form>
+                  <fieldset id="radio-group">
+                    <input type="radio" value=155 name="adjective-radio">
+                    <input type="radio" value=156 name="adjective-radio">
+                    <input type="radio" value=157 name="adjective-radio">
+                    <input type="radio" value=188 name="adjective-radio">
+                    <input type="radio" value=159 name="adjective-radio">
+                    <input type="radio" value=160 name="adjective-radio">
+                    <input type="radio" value=161 name="adjective-radio">
+                  </fieldset>
+                </form>
+                <div class="adjective-pair">
+                  <p>消極的な</p>
+                </div>
+              </div>
+              <div class="question-row">
+                <div class="adjective-pair">
+                  <p>強気な</p>
+                </div>
+                <form>
+                  <fieldset id="radio-group">
+                    <input type="radio" value=162 name="adjective-radio">
+                    <input type="radio" value=163 name="adjective-radio">
+                    <input type="radio" value=164 name="adjective-radio">
+                    <input type="radio" value=165 name="adjective-radio">
+                    <input type="radio" value=166 name="adjective-radio">
+                    <input type="radio" value=167 name="adjective-radio">
+                    <input type="radio" value=168 name="adjective-radio">
+                  </fieldset>
+                </form>
+                <div class="adjective-pair">
+                  <p>弱気な</p>
+                </div>
+              </div>
+              <div class="question-row">
+                <div class="adjective-pair">
+                  <p>派手な</p>
+                </div>
+                <form>
+                  <fieldset id="radio-group">
+                    <input type="radio" value=169 name="adjective-radio">
+                    <input type="radio" value=170 name="adjective-radio">
+                    <input type="radio" value=171 name="adjective-radio">
+                    <input type="radio" value=172 name="adjective-radio">
+                    <input type="radio" value=173 name="adjective-radio">
+                    <input type="radio" value=174 name="adjective-radio">
+                    <input type="radio" value=175 name="adjective-radio">
+                  </fieldset>
+                </form>
+                <div class="adjective-pair">
+                  <p>地味な</p>
+                </div>
+              </div>
+              <div class="question-row">
+                <div class="adjective-pair">
+                  <p>陽気な</p>
+                </div>
+                <form>
+                  <fieldset id="radio-group">
+                    <input type="radio" value=176 name="adjective-radio">
+                    <input type="radio" value=177 name="adjective-radio">
+                    <input type="radio" value=178 name="adjective-radio">
+                    <input type="radio" value=179 name="adjective-radio">
+                    <input type="radio" value=180 name="adjective-radio">
+                    <input type="radio" value=181 name="adjective-radio">
+                    <input type="radio" value=182 name="adjective-radio">
+                  </fieldset>
+                </form>
+                <div class="adjective-pair">
+                  <p>陰気な</p>
+                </div>
+              </div>
+              <div class="question-row">
+                <div class="adjective-pair">
+                  <p>敏感な</p>
+                </div>
+                <form>
+                  <fieldset id="radio-group">
+                    <input type="radio" value=183 name="adjective-radio">
+                    <input type="radio" value=184 name="adjective-radio">
+                    <input type="radio" value=185 name="adjective-radio">
+                    <input type="radio" value=186 name="adjective-radio">
+                    <input type="radio" value=187 name="adjective-radio">
+                    <input type="radio" value=188 name="adjective-radio">
+                    <input type="radio" value=189 name="adjective-radio">
+                  </fieldset>
+                </form>
+                <div class="adjective-pair">
+                  <p>鈍感な</p>
+                </div>
+              </div>
+              <div class="question-row">
+                <div class="adjective-pair">
+                  <p>賢い</p>
+                </div>
+                <form>
+                  <fieldset id="radio-group">
+                    <input type="radio" value=190 name="adjective-radio">
+                    <input type="radio" value=191 name="adjective-radio">
+                    <input type="radio" value=192 name="adjective-radio">
+                    <input type="radio" value=193 name="adjective-radio">
+                    <input type="radio" value=194 name="adjective-radio">
+                    <input type="radio" value=195 name="adjective-radio">
+                    <input type="radio" value=196 name="adjective-radio">
+                  </fieldset>
+                </form>
+                <div class="adjective-pair">
+                  <p>愚かな</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
 
       <div id="canvas" class="canvas"></div>
     </div>
   </main>
 
-</body>
-<script src="./assest/js/material.js"></script>
+  <script src="/__/firebase/9.1.3/firebase-app-compat.js"></script>
+  <script src="/__/firebase/9.1.3/firebase-auth-compat.js"></script>
+  <script src="/__/firebase/9.1.3/firebase-firestore-compat.js"></script>
+  <script src="/__/firebase/init.js"></script>
+  <!-- 
+                                                                <script type="module">
+                                                                  import db from "/assest/js/firebase.js";
+                                                              
+                                                                  // -- Get_Random_Int / 整数乱数生成 
+                                                                  function getRandomInt(max) {
+                                                                    return Math.floor(Math.random() * max);
+                                                                  }
+                                                              
+                                                                  let id = String(getRandomInt(100000));
+                                                                  let idDocumentRef = db.collection("users").doc(id);
+                                                                  let idFlag = false;
+                                                                  if (localStorage.getItem("id")) {
+                                                                    id = localStorage.getItem("id");
+                                                                    // サイトをDisabledにする
+                                                                    // タスク - Disabledページの作成
+                                                                  } else {
+                                                                    for (let i = 0; i < 20; i++) {
+                                                                      idDocumentRef.get().then((doc) => {
+                                                                        if (doc.exists) {
+                                                                          id = String(getRandomInt(100000));
+                                                                          console.log("Document data:", doc.data());
+                                                                        } else {
+                                                                          localStorage.setItem("id", id);
+                                                                          idFlag = true;
+                                                                        }
+                                                                      }).catch((error) => {
+                                                                        console.log("Error getting document:", error);
+                                                                      });
+                                                              
+                                                                      if (idFlag) {
+                                                                        break;
+                                                                      }
+                                                                    }
+                                                                  }
+                                                              
+                                                                  // Firestoreにデータを送信
+                                                                  function dataSend() {
+                                                                    db.collection("users").doc(id)
+                                                                      .set(dataFormat())
+                                                                      .then(() => {
+                                                                        console.log("Document successfully written!");
+                                                                      })
+                                                                      .catch((error) => {
+                                                                        console.error("Error writing document: ", error);
+                                                                      });
+                                                                  }
 
-<!-- The core Firebase JS SDK is always required and must be listed first -->
-<script src="/__/firebase/8.0.1/firebase-app.js"></script>
+        // データを整形
+        function dataFormat() {
+        return { name: "yamada taro" }
+        // return {
+        // name: sessionStorage.getItem("name"),
+        // age: sessionStorage.getItem("age"),
+        // creation_time: sessionStorage.getItem("creation_time"),
+        // edit_time: sessionStorage.getItem("edit_time"),
+        // quetionnarie: sessionStorage.getItem("quetionnarie"),
+        // adjective_pairs: sessionStorage.getItem("adjective_pairs"),
+        // robot_parameter: sessionStorage.getItem("robot_parameter")
+        // }
+        }
+        </script>
+        -->
 
-<!-- TODO: Add SDKs for Firebase products that you want to use
-     https://firebase.google.com/docs/web/setup#available-libraries -->
-<script src="/__/firebase/8.0.1/firebase-analytics.js"></script>
+  <!-- p5.js  -->
+  <script src="https://cdn.jsdelivr.net/npm/p5@1.1.9/lib/p5.js"></script>
+  <script src="./libs/p5.play.js"></script>
+  <script type="module" src="./assest/js/material.js"></script>
+  <script type="module" src="./assest/js/firebase.js"></script>
+  <script src="./assest/js/sketch.js"></script>
+  </body>
 
 <!-- Initialize Firebase -->
-<script src="/__/firebase/init.js"></script>
+<!-- <script src="/__/firebase/init.js"></script> -->
 
 </html>

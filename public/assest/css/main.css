@@ -11,25 +11,26 @@ img, input, p, span, textarea, table
 
 a {
   text-decoration: none;
-  font-family: 'Noto Sans JP', sans-serif;
+  font-family: "Noto Sans JP", sans-serif;
 }
 
 p {
   font-size: 1rem;
-  color: rgba(0, 0, 0, 0.6);
-  font-family: 'Noto Sans JP', sans-serif;
+  color: rgba(0, 0, 0, 0.87);
+  font-family: "Noto Sans JP", sans-serif;
 }
 
-input, textarea {
-  -webkit-user-select : auto !important;
+input,
+textarea {
+  -webkit-user-select: auto !important;
 }
 
 span {
-  font-family: 'Noto Sans JP', sans-serif;
+  font-family: "Noto Sans JP", sans-serif;
 }
 
 body {
-  background-color: #FAFAFA;
+  background-color: #fafafa;
   --mdc-theme-primary: #ff9800;
   --mdc-theme-secondary: #2196f3;
 }
@@ -43,6 +44,9 @@ body {
   margin-left: -0.5rem;
 }
 
+.disabled {
+  display: none !important;
+}
 
 /*** -- 2. Css in the body -- ***/
 /*
@@ -54,7 +58,120 @@ body
     - 2.content1
     - 3.content2
     - 4.content3 
+    - 5.content4 
+    - 6.content5 
+    - 7.content6 
 */
+
+/* dailog - onetime_popup */
+.bg_onetime_popup {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  z-index: 9999;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  visibility: hidden;
+  transition: 0.5s;
+}
+
+.bg_onetime_popup.js_active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.onetime_popup {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  width: 560px;
+  min-width: 560px;
+  background-color: #fff;
+  cursor: pointer;
+  border-radius: 4px;
+  box-shadow: rgba(0, 0, 0, 0.12);
+}
+
+.onetime_popup_title {
+  position: relative;
+  padding: 0px 24px;
+  margin: 0px;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+.onetime_popup_title p {
+  color: rgba(0, 0, 0, 0.87);
+  font-size: 20px;
+  line-height: 64px;
+}
+
+.onetime_popup_title::before,
+.onetime_popup_title::after {
+  position: absolute;
+  top: 50%;
+  right: 30px;
+  transform: translateY(-50%);
+  width: 24px;
+  height: 2px;
+  background-color: #ff9800;
+  content: "";
+}
+.onetime_popup_title::before {
+  transform: rotate(45deg);
+}
+.onetime_popup_title::after {
+  transform: rotate(-45deg);
+}
+
+.onetime_popup_content {
+  padding: 24px 24px 28px 24px;
+  text-align: center;
+}
+
+
+/* dialogs - help */
+.mdc-dialog__title {
+  padding-left: 16px !important;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+.mdc-dialog__content {
+  padding: 24px 24px 28px 24px !important;
+}
+
+.dialog-icon {
+  position: relative;
+  top: 4px;
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.help-text-discription {
+  padding-bottom: 1rem;
+}
+
+.help-text-title {
+  font-size: 1rem;
+  font-weight: bold;
+  padding-bottom: 0.5rem;
+}
+
+/* dialogs - usage */
+.youtube_frame {
+  width: 600px !important;
+  /* height: 315px; */
+}
+
+
+/* 1.header */
+.app-bar-button {
+  font-weight: 500 !important;
+  color: #fff !important;
+  border-color: #fff !important;
+  margin-right: 1rem;
+}
 
 /* 2.main */
 main {
@@ -79,21 +196,20 @@ main {
   display: inline-block;
   text-decoration: none;
   overflow: hidden;
-  transition: .4s;
+  transition: 0.4s;
 }
-
 
 /* 2.1 paper */
 .paper {
-  height: calc(100vh - 112px); 
+  height: calc(100vh - 112px);
   width: calc(100vw - 48px);
   display: flex;
   flex-wrap: wrap;
   border-radius: 4px;
   position: relative;
   top: 64px;
-  background-color: #FFF;
-  box-shadow: 0px 1px 3px 0px rgba(0,0,0,0.38);
+  background-color: #fff;
+  box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.38);
 }
 
 /* 2.1.1 stepper */
@@ -102,15 +218,19 @@ main {
   border-bottom: solid 1px rgba(0, 0, 0, 0.12);
 }
 
-/* 2.1.2 - 2.1.4 content */
+.mdc-tab__text-label {
+  font-size: 1rem;
+}
+
+/* 2.1.2 - 2.1.7 content */
 .disable {
   display: none !important;
 }
 
 .edit-container {
   display: flex;
-  align-items:stretch;
-  flex-direction: row; 
+  align-items: stretch;
+  flex-direction: row;
   flex-wrap: nowrap;
   height: 100%;
   max-height: 534px;
@@ -124,10 +244,149 @@ main {
 
 .left-box p {
   height: 24px;
-  margin-bottom: 1.5rem;
-  font-size: 1.2rem;
-  color: rgba(0, 0, 0, 0.6);
+  margin-bottom: 1rem;
+  /* font-size: 1.2rem; */
+  color: rgba(0, 0, 0, 0.87);
 }
+
+.left-box .title {
+  font-size: 1.2rem;
+}
+
+/* 6.content5: アンケート⑴ */
+.questionnarie {
+  height: calc(100vh - 232px);
+  overflow: auto;
+}
+
+.view-item {
+  padding: 8px 16px 12px 0px;
+}
+
+.view-item p {
+  line-height: 1.5rem;
+  margin-bottom: 0.75rem !important;
+}
+
+.questionnarie-items {
+  display: flex;
+  height: 48px;
+  /* margin: auto; */
+}
+
+.questionnarie-items a {
+  line-height: 48px;
+  color: rgba(0, 0, 0, 0.87);
+}
+
+#qs-radio-group input {
+  margin: 0.75rem;
+  cursor: pointer;
+  content: '';
+	width: 24px;		/* ボタンの横幅 */
+	height: 24px;		/* ボタンの縦幅 */
+	background-color: #2196f3;
+	border-radius: 50%;
+}
+
+/* 7.content6: アンケート⑵ */
+.left-box-single {
+  width: 704px;
+}
+
+.left-box-single .title {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+}
+
+.left-box-single .discription {
+  line-height: 24px;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+.question-form {
+  width: 560px;
+  height: calc(100vh - 296px);
+  font-size: 0.75rem !important;
+  margin-left: 4rem;
+  overflow: auto;
+}
+
+.question-header {
+  display: flex;
+  position: fixed;
+  z-index: 1;
+  width: 560px;
+  background-color: #fff;
+  padding-top: 16px;
+}
+
+.label-measure {
+  -webkit-writing-mode: vertical-rl;
+  -moz-writing-mode: vertical-rl;
+  -ms-writing-mode: tb-rl;
+  -ms-writing-mode: vertical-rl;
+  display: inline-block;
+  writing-mode: vertical-rl;
+  text-align: left;
+  margin-bottom: 0.5rem;
+}
+
+.label-measure p{
+  width: 32px;
+  height: 64px;
+  padding: 0 0.56rem 0 0.2rem;
+}
+
+.adjective-pair {
+  width: 112px;
+  /* height: 64px; */
+  font-size: 0.67rem !important;
+  line-height: 40px;
+  text-align: center;
+}
+
+.question-contents {
+  width: 560px;
+  position: relative;
+  top: 96px;
+}
+
+.question-row {
+  display: flex;
+  padding: 0 0.5rem;
+}
+
+.question-row:hover {
+  background-color: rgba(0, 0, 0, 0.04);
+}
+
+#radio-group input {
+  margin: 0.5rem;
+  cursor: pointer;
+  content: '';
+	width: 24px;		/* ボタンの横幅 */
+	height: 24px;		/* ボタンの縦幅 */
+	background-color: #2196f3;
+	border-radius: 50%;
+}
+
+
+/* .radiobutton input[type="radio"] {
+	display: none;
+}
+.radiobutton input[type="radio"]:checked + label:after {
+	content: '';
+	width: 10px;		/* マークの横幅 */
+	/* height: 10px;		/* マークの縦幅 */
+	/* position: absolute;
+	top: 9px;
+	left: 9px;
+	background-color: #fff;
+	border-radius: 50%;
+}  */ 
+
 
 /* .gallery {} */
 
@@ -142,11 +401,11 @@ main {
 .gallery input:focus {
   height: 100px;
   width: 100px;
-  border: solid 2px #2196f3 !important; 
+  border: solid 2px #2196f3 !important;
 }
 
 .gallery input:hover {
-  box-shadow: 0px 1px 3px 0px rgba(0,0,0,0.38);
+  box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.38);
 }
 
 .mid-box {

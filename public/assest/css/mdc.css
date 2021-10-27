@@ -32,6 +32,8 @@ Ex. Colors
   box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.38);
 }
 
+/* -- 2. Buttons -- */
+
 /* -- 8. Dialogs -- */
 .mdc-dialog__surface {
   width: 480px;
