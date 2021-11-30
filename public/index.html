@@ -22,9 +22,9 @@
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap" rel="stylesheet">
 
-  
-<!-- リロードの注意喚起 -->
-<!-- <script type="text/javascript">
+
+  <!-- リロードの注意喚起 -->
+  <!-- <script type="text/javascript">
     window.onbeforeunload = function (e) {
       e.returnValue = "ページを離れようとしています。よろしいですか？";
     }
@@ -52,8 +52,8 @@
         </button>
         <button class="mdc-button mdc-button--outlined app-bar-button" id="send-button">
           <div class="mdc-button__ripple"></div>
-          <i class="material-icons mdc-button__icon" aria-hidden="true">send</i>
-          <span class="mdc-button__label">送信</span>
+          <i id="send-icon" class="material-icons mdc-button__icon" aria-hidden="true">send</i>
+          <span id="send-text" class="mdc-button__label">送信</span>
         </button>
       </section>
     </div>
@@ -72,14 +72,14 @@
           </p>
         </div>
         <div class="onetime_popup_content">
-          <iframe width="512" height="315" src="https://www.youtube.com/embed/t-ruIgyYfew?controls=0"
+          <iframe width="512" height="315" src="https://www.youtube-nocookie.com/embed/mWH1bziGEjk?start=4"
             title="YouTube video player" frameborder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowfullscreen></iframe>
         </div>
       </div>
     </div>
-    
+
     <!-- Dialogs - color -->
     <div class="mdc-dialog color-dialog">
       <div class="mdc-dialog__container">
@@ -153,7 +153,7 @@
       </div>
       <div class="mdc-dialog__scrim"></div>
     </div>
-    
+
     <!-- Dialogs - usage -->
     <div class="mdc-dialog usage-dialog">
       <div class="mdc-dialog__container">
@@ -165,7 +165,7 @@
           </h2>
           <div class="mdc-dialog__content" id="my-dialog-content">
             <div>
-              <iframe width="512" height="315" src="https://www.youtube.com/embed/t-ruIgyYfew?controls=0"
+              <iframe width="512" height="315" src="https://www.youtube-nocookie.com/embed/mWH1bziGEjk?start=4"
                 title="YouTube video player" frameborder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowfullscreen></iframe>
@@ -240,17 +240,17 @@
                   <span class="mdc-tab__content">
                     <span class="mdc-tab__icon material-icons" aria-hidden="true">assignment</span>
                     <span class="mdc-tab__text-label">5-アンケート⑴</span>
-                    </span>
-                    <span class="mdc-tab-indicator mdc-tab-indicator__content--underline">
-                      <span class="mdc-tab-indicator__content mdc-tab-indicator__content--underline"></span>
-                    </span>
-                    <span class="mdc-tab__ripple"></span>
-                    </button>
-                    
-                    <button id="mdc-tab-6" class="mdc-tab" role="tab" aria-selected="false" tabindex="-1">
-                      <span class="mdc-tab__content">
-                        <span class="mdc-tab__icon material-icons" aria-hidden="true">assignment</span>
-                        <span class="mdc-tab__text-label">6-アンケート⑵</span>
+                  </span>
+                  <span class="mdc-tab-indicator mdc-tab-indicator__content--underline">
+                    <span class="mdc-tab-indicator__content mdc-tab-indicator__content--underline"></span>
+                  </span>
+                  <span class="mdc-tab__ripple"></span>
+                </button>
+
+                <button id="mdc-tab-6" class="mdc-tab" role="tab" aria-selected="false" tabindex="-1">
+                  <span class="mdc-tab__content">
+                    <span class="mdc-tab__icon material-icons" aria-hidden="true">assignment</span>
+                    <span class="mdc-tab__text-label">6-アンケート⑵</span>
                   </span>
                   <span class="mdc-tab-indicator mdc-tab-indicator__content--underline">
                     <span class="mdc-tab-indicator__content mdc-tab-indicator__content--underline"></span>
@@ -729,7 +729,8 @@
               <p>[Q1] お名前をご記入ください</p>
               <label class="mdc-text-field mdc-text-field--filled mdc-text-field--no-label">
                 <span class="mdc-text-field__ripple"></span>
-                <input class="mdc-text-field__input" id="name-text-field" type="text" placeholder="テキスト" aria-label="Label">
+                <input class="mdc-text-field__input" id="name-text-field" type="text" placeholder="テキスト"
+                  aria-label="Label">
                 <span class="mdc-line-ripple"></span>
               </label>
             </div>
@@ -755,23 +756,11 @@
                   </span>
                   <span class="mdc-line-ripple"></span>
                 </div>
-        
+
                 <div class="mdc-select__menu mdc-menu mdc-menu-surface mdc-menu-surface--fullwidth">
                   <ul class="mdc-list" role="listbox" aria-label="Food picker listbox">
                     <li class="mdc-list-item mdc-list-item--selected" aria-selected="true" data-value="" role="option">
                       <span class="mdc-list-item__ripple"></span>
-                    </li>
-                    <li class="mdc-list-item" aria-selected="false" data-value="16" role="option">
-                      <span class="mdc-list-item__ripple"></span>
-                      <span class="mdc-list-item__text">
-                        16
-                      </span>
-                    </li>
-                    <li class="mdc-list-item" aria-selected="false" data-value="17" role="option">
-                      <span class="mdc-list-item__ripple"></span>
-                      <span class="mdc-list-item__text">
-                        17
-                      </span>
                     </li>
                     <li class="mdc-list-item" aria-selected="false" data-value="18" role="option">
                       <span class="mdc-list-item__ripple"></span>
@@ -839,24 +828,12 @@
                         28
                       </span>
                     </li>
-                    <li class="mdc-list-item" aria-selected="false" data-value="29" role="option">
-                      <span class="mdc-list-item__ripple"></span>
-                      <span class="mdc-list-item__text">
-                        29
-                      </span>
-                    </li>
-                    <li class="mdc-list-item" aria-selected="false" data-value="30" role="option">
-                      <span class="mdc-list-item__ripple"></span>
-                      <span class="mdc-list-item__text">
-                        30
-                      </span>
-                    </li>
                   </ul>
                 </div>
               </div>
             </div>
             <div class="view-item">
-              <p>[Q3] 将来、ロボットが様々な機能を有する場合、自身の価値得ないに導入することを希望しますか？</p>
+              <p>[Q3] 将来、ロボットが様々な機能を有する場合、自身の家庭内に導入することを希望しますか？</p>
               <div class="vertical-radio-button-group">
                 <form>
                   <fieldset id="qs-radio-group">
@@ -865,12 +842,20 @@
                       <a>希望する</a>
                     </div>
                     <div class="questionnarie-items">
-                      <input type="radio" value="q3-no" name="quetionnarie-radio">
-                      <a>希望しない</a>
+                      <input type="radio" value="q3-so-yes" name="quetionnarie-radio">
+                      <a>やや希望する</a>
                     </div>
                     <div class="questionnarie-items">
-                      <input type="radio" value="q3-other" name="quetionnarie-radio">
-                      <a>その他</a>
+                      <input type="radio" value="q3-neither" name="quetionnarie-radio">
+                      <a>どちらでもない</a>
+                    </div>
+                    <div class="questionnarie-items">
+                      <input type="radio" value="q3-so-no" name="quetionnarie-radio">
+                      <a>やや希望しない</a>
+                    </div>
+                    <div class="questionnarie-items">
+                      <input type="radio" value="q3-no" name="quetionnarie-radio">
+                      <a>希望しない</a>
                     </div>
                   </fieldset>
                 </form>
@@ -886,18 +871,26 @@
                       <a>希望する</a>
                     </div>
                     <div class="questionnarie-items">
-                      <input type="radio" value="q4-no" name="quetionnarie-radio">
-                      <a>希望しない</a>
+                      <input type="radio" value="q4-so-yes" name="quetionnarie-radio">
+                      <a>やや希望する</a>
                     </div>
                     <div class="questionnarie-items">
-                      <input type="radio" value="q4-other" name="quetionnarie-radio">
-                      <a>その他</a>
+                      <input type="radio" value="q4-neither" name="quetionnarie-radio">
+                      <a>どちらでもない</a>
+                    </div>
+                    <div class="questionnarie-items">
+                      <input type="radio" value="q4-so-no" name="quetionnarie-radio">
+                      <a>やや希望しない</a>
+                    </div>
+                    <div class="questionnarie-items">
+                      <input type="radio" value="q4-no" name="quetionnarie-radio">
+                      <a>希望しない</a>
                     </div>
                   </fieldset>
                 </form>
               </div>
             </div>
-            <div class="view-item">
+            <!-- <div class="view-item">
               <p>[Q5] 自身で作成したロボットはどのような機能を想定して作成しましたか？</p>
               <div class="vertical-radio-button-group">
                 <div class="questionnarie-items">
@@ -918,7 +911,8 @@
                 <div class="questionnarie-items">
                   <div class="mdc-touch-target-wrapper">
                     <div class="mdc-checkbox mdc-checkbox--touch">
-                      <input type="checkbox" class="mdc-checkbox__native-control" id="checkbox-1" value="q5-nichijyo-shien" />
+                      <input type="checkbox" class="mdc-checkbox__native-control" id="checkbox-1"
+                        value="q5-nichijyo-shien" />
                       <div class="mdc-checkbox__background">
                         <svg class="mdc-checkbox__checkmark" viewBox="0 0 24 24">
                           <path class="mdc-checkbox__checkmark-path" fill="none" d="M1.73,12.91 8.1,19.28 22.79,4.59" />
@@ -1006,6 +1000,43 @@
                   <a>その他</a>
                 </div>
               </div>
+            </div> -->
+            <div class="view-item">
+              <p>[Q5] 自身で作成したロボットはどのような機能を想定して作成しましたか？</p>
+              <div class="vertical-radio-button-group">
+                <form>
+                  <fieldset id="qs-radio-group">
+                    <div class="questionnarie-items">
+                      <input type="radio" value="q5-housework" name="quetionnarie-radio">
+                      <a>家事</a>
+                    </div>
+                    <div class="questionnarie-items">
+                      <input type="radio" value="q5-everyday-support" name="quetionnarie-radio">
+                      <a>日常支援</a>
+                    </div>
+                    <div class="questionnarie-items">
+                      <input type="radio" value="q5-education" name="quetionnarie-radio">
+                      <a>教育</a>
+                    </div>
+                    <div class="questionnarie-items">
+                      <input type="radio" value="q5-partner" name="quetionnarie-radio">
+                      <a>パートナー</a>
+                    </div>
+                    <div class="questionnarie-items">
+                      <input type="radio" value="q5-nursing-care" name="quetionnarie-radio">
+                      <a>介護</a>
+                    </div>
+                    <div class="questionnarie-items">
+                      <input type="radio" value="q5-pet" name="quetionnarie-radio">
+                      <a>ペット</a>
+                    </div>
+                    <div class="questionnarie-items">
+                      <input type="radio" value="q5-other" name="quetionnarie-radio">
+                      <a>その他</a>
+                    </div>
+                  </fieldset>
+                </form>
+              </div>
             </div>
             <div class="view-item">
               <p>[Q6] 満足するロボットの外観が作成できましたか？</p>
@@ -1041,7 +1072,8 @@
               <label class="mdc-text-field mdc-text-field--filled mdc-text-field--textarea mdc-text-field--no-label">
                 <span class="mdc-text-field__ripple"></span>
                 <span class="mdc-text-field__resizer">
-                  <textarea class="mdc-text-field__input" rows="2" cols="40" aria-label="Label" id="q6-1-text"></textarea>
+                  <textarea class="mdc-text-field__input" rows="2" cols="40" aria-label="Label"
+                    id="q6-1-text"></textarea>
                 </span>
                 <span class="mdc-line-ripple"></span>
               </label>
@@ -1050,13 +1082,38 @@
               <p>[Q7] 作成したロボットはどのくらいの大きさを想定して作成しましたか？(cm)</p>
               <label class="mdc-text-field mdc-text-field--filled mdc-text-field--no-label">
                 <span class="mdc-text-field__ripple"></span>
-                <input class="mdc-text-field__input" id="name-text-field" type="text" placeholder="テキスト" aria-label="Label"
-                  id="q7-text">
+                <input class="mdc-text-field__input" id="name-text-field" type="text" placeholder="テキスト"
+                  aria-label="Label" id="q7-text">
                 <span class="mdc-line-ripple"></span>
               </label>
             </div>
+            <div class="view-item">
+              <p>[Q8] 作成したロボットの中で特にこだわりがあったのはどの部分ですか？</p>
+              <div class="vertical-radio-button-group">
+                <form>
+                  <fieldset id="qs-radio-group">
+                    <div class="questionnarie-items">
+                      <input type="radio" value="q8-face" name="quetionnarie-radio">
+                      <a>顔</a>
+                    </div>
+                    <div class="questionnarie-items">
+                      <input type="radio" value="q8-eye" name="quetionnarie-radio">
+                      <a>目</a>
+                    </div>
+                    <div class="questionnarie-items">
+                      <input type="radio" value="q8-mouse" name="quetionnarie-radio">
+                      <a>口</a>
+                    </div>
+                    <div class="questionnarie-items">
+                      <input type="radio" value="q8-body" name="quetionnarie-radio">
+                      <a>体</a>
+                    </div>
+                  </fieldset>
+                </form>
+              </div>
+            </div>
             <div class="view-item" id="questionnarie-8-1">
-              <p>[Q8] 人間の輪郭のような顔を選択した理由を教えてください</p>
+              <p>[Q8.1] Q8の理由を教えてください</p>
               <label class="mdc-text-field mdc-text-field--filled mdc-text-field--textarea mdc-text-field--no-label">
                 <span class="mdc-text-field__ripple"></span>
                 <span class="mdc-text-field__resizer">
@@ -1065,7 +1122,7 @@
                 <span class="mdc-line-ripple"></span>
               </label>
             </div>
-            <div class="view-item disabled" id="questionnarie-8-2">
+            <!-- <div class="view-item disabled" id="questionnarie-8-2">
               <p>[Q8] ヘルメットやディスプレのような黒い画面の顔を選択した理由を教えてください</p>
               <label class="mdc-text-field mdc-text-field--filled mdc-text-field--textarea mdc-text-field--no-label">
                 <span class="mdc-text-field__ripple"></span>
@@ -1110,7 +1167,8 @@
               <label class="mdc-text-field mdc-text-field--filled mdc-text-field--textarea mdc-text-field--no-label">
                 <span class="mdc-text-field__ripple"></span>
                 <span class="mdc-text-field__resizer">
-                  <textarea class="mdc-text-field__input" rows="2" cols="40" aria-label="Label" id="q10-text"></textarea>
+                  <textarea class="mdc-text-field__input" rows="2" cols="40" aria-label="Label"
+                    id="q10-text"></textarea>
                 </span>
                 <span class="mdc-line-ripple"></span>
               </label>
@@ -1120,7 +1178,8 @@
               <label class="mdc-text-field mdc-text-field--filled mdc-text-field--textarea mdc-text-field--no-label">
                 <span class="mdc-text-field__ripple"></span>
                 <span class="mdc-text-field__resizer">
-                  <textarea class="mdc-text-field__input" rows="2" cols="40" aria-label="Label" id="q10-text"></textarea>
+                  <textarea class="mdc-text-field__input" rows="2" cols="40" aria-label="Label"
+                    id="q10-text"></textarea>
                 </span>
                 <span class="mdc-line-ripple"></span>
               </label>
@@ -1130,13 +1189,14 @@
               <label class="mdc-text-field mdc-text-field--filled mdc-text-field--textarea mdc-text-field--no-label">
                 <span class="mdc-text-field__ripple"></span>
                 <span class="mdc-text-field__resizer">
-                  <textarea class="mdc-text-field__input" rows="2" cols="40" aria-label="Label" id="q11-text"></textarea>
+                  <textarea class="mdc-text-field__input" rows="2" cols="40" aria-label="Label"
+                    id="q11-text"></textarea>
                 </span>
                 <span class="mdc-line-ripple"></span>
               </label>
-            </div>
-            
-            </div>
+            </div> -->
+
+          </div>
         </div>
         <!-- <div id="canvas" class="canvas"></div> -->
       </div>
@@ -1780,7 +1840,7 @@
   <script type="module" src="./assest/js/material.js"></script>
   <script type="module" src="./assest/js/firebase.js"></script>
   <script src="./assest/js/sketch.js"></script>
-  </body>
+</body>
 
 <!-- Initialize Firebase -->
 <!-- <script src="/__/firebase/init.js"></script> -->

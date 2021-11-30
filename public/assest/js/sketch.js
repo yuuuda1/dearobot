@@ -30,8 +30,9 @@ window.onload = function () {
 // -- 1.0.3 Initialization / 初期化
 function initParameter() {
   sessionStorage.clear();
-  sessionStorage.setItem("creation_time", Date.now());
-
+  if (!sessionStorage.getItem("creation_time")) {
+    sessionStorage.setItem("creation_time", Date.now());
+  }
   // Face：顔
   // faceTemp = checkStorage("faceTemp");
   // faceY = Number(checkStorage("faceY"));
@@ -1321,11 +1322,11 @@ function draw() {
 
   // アンケートに全て回答していた場合、送信ボタンをActive
   len = getRadioButtonValue().length;
-  if(sessionStorage.getItem("adjective_pairs")) {
+  if (sessionStorage.getItem("adjective_pairs")) {
     sessionStorage.removeItem("adjective_pairs");
-    sessionStorage.setItem("adjective_pairs",getRadioButtonValue());
+    sessionStorage.setItem("adjective_pairs", getRadioButtonValue());
   } else {
-    sessionStorage.setItem("adjective_pairs",getRadioButtonValue());
+    sessionStorage.setItem("adjective_pairs", getRadioButtonValue());
   }
   activeSendButton(checkAllEnquete(len));
 
@@ -1333,35 +1334,35 @@ function draw() {
   saveToStorage();
 
   // 顔のテンプレートによって質問項目を切り替え
-  if ((0 <= faceTemp) && (faceTemp < 4)) {
-    document.getElementById("questionnarie-8-1").classList.remove("disabled");
-    document.getElementById("questionnarie-8-2").classList.add("disabled");
-    document.getElementById("questionnarie-8-3").classList.add("disabled");
-  }else if ((4 <= faceTemp) && (faceTemp < 8)) {
-    document.getElementById("questionnarie-8-1").classList.add("disabled");
-    document.getElementById("questionnarie-8-2").classList.remove("disabled");
-    document.getElementById("questionnarie-8-3").classList.add("disabled");
-  }else {
-    document.getElementById("questionnarie-8-1").classList.add("disabled");
-    document.getElementById("questionnarie-8-2").classList.add("disabled");
-    document.getElementById("questionnarie-8-3").classList.remove("disabled");
-  }
+  // if ((0 <= faceTemp) && (faceTemp < 4)) {
+  //   document.getElementById("questionnarie-8-1").classList.remove("disabled");
+  //   document.getElementById("questionnarie-8-2").classList.add("disabled");
+  //   document.getElementById("questionnarie-8-3").classList.add("disabled");
+  // }else if ((4 <= faceTemp) && (faceTemp < 8)) {
+  //   document.getElementById("questionnarie-8-1").classList.add("disabled");
+  //   document.getElementById("questionnarie-8-2").classList.remove("disabled");
+  //   document.getElementById("questionnarie-8-3").classList.add("disabled");
+  // }else {
+  //   document.getElementById("questionnarie-8-1").classList.add("disabled");
+  //   document.getElementById("questionnarie-8-2").classList.add("disabled");
+  //   document.getElementById("questionnarie-8-3").classList.remove("disabled");
+  // }
   // 目のテンプレートによって質問項目を切り替え
-  if(eyeTemp == 15) {
-    document.getElementById("questionnarie-9-1").classList.add("disabled");
-    document.getElementById("questionnarie-9-2").classList.remove("disabled");
-  }else {
-    document.getElementById("questionnarie-9-1").classList.remove("disabled");
-    document.getElementById("questionnarie-9-2").classList.add("disabled");
-  }
+  // if(eyeTemp == 15) {
+  //   document.getElementById("questionnarie-9-1").classList.add("disabled");
+  //   document.getElementById("questionnarie-9-2").classList.remove("disabled");
+  // }else {
+  //   document.getElementById("questionnarie-9-1").classList.remove("disabled");
+  //   document.getElementById("questionnarie-9-2").classList.add("disabled");
+  // }
   // 口のテンプレートによって質問項目を切り替え
-  if(mouseTemp == 9) {
-    document.getElementById("questionnarie-10-1").classList.add("disabled");
-    document.getElementById("questionnarie-10-2").classList.remove("disabled");
-  }else {
-    document.getElementById("questionnarie-10-1").classList.remove("disabled");
-    document.getElementById("questionnarie-10-2").classList.add("disabled");
-  }
+  // if(mouseTemp == 9) {
+  //   document.getElementById("questionnarie-10-1").classList.add("disabled");
+  //   document.getElementById("questionnarie-10-2").classList.remove("disabled");
+  // }else {
+  //   document.getElementById("questionnarie-10-1").classList.remove("disabled");
+  //   document.getElementById("questionnarie-10-2").classList.add("disabled");
+  // }
 }
 
 // タブの遷移

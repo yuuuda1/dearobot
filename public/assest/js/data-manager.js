@@ -57,6 +57,7 @@ sendButton.onclick = function () {
   sessionStorage.setItem("send_time", Date.now());
   if (dataConsistency()) {
     dataSend();
+    changeAfterSending();
   } else {
     console.log("Error: データに不整合が見られたため, データを送信できません.");
     console.log(dataFormat());
@@ -75,6 +76,7 @@ function dataSend() {
       console.error("Error writing document: ", error);
     });
 }
+
 // 1.2.2 全ての追加データを整形
 function dataFormat() {
   return {
@@ -82,11 +84,13 @@ function dataFormat() {
     age: sessionStorage.getItem("age"),
     creation_time: Date(sessionStorage.getItem("creation_time")),
     send_time: Date(sessionStorage.getItem("send_time")),
+    work_time: sessionStorage.getItem("send_time") - sessionStorage.getItem("creation_time"),
     quetionnarie: sessionStorage.getItem("quetionnarie"),
     adjective_pairs: sessionStorage.getItem("adjective_pairs"),
     robot_parameter: localStorage.getItem("robot_parameter"),
   };
 }
+
 // 1.2.3 アンケート結果のパラメータを整形
 function quetionnarieFormat() {
   // 名前の追加
@@ -104,13 +108,10 @@ function quetionnarieFormat() {
     }
   }
   quetionnarieArray.push("Q6.1:" + document.getElementById("q6-1-text").value); // Q6.1
-  quetionnarieArray.push("Q7:" + document.getElementById("q7-text").value); // Q7
-  quetionnarieArray.push("Q8:" + document.getElementById("q8-text").value); // Q8
-  quetionnarieArray.push("Q9:" + document.getElementById("q9-text").value); // Q9
-  quetionnarieArray.push("Q10:" + document.getElementById("q10-text").value); // Q10
-  quetionnarieArray.push("Q11:" + document.getElementById("q11-text").value); // Q11
+  quetionnarieArray.push("Q8.1:" + document.getElementById("q8-text").value); // Q8
   sessionStorage.setItem("quetionnarie", quetionnarieArray);
 }
+
 // 1.2.4 ロボットのパラメータを整形
 function robotParaFormat() {
   console.log("hoge");
@@ -175,4 +176,13 @@ function dataConsistency() {
     return false;
   }
   return true;
+}
+
+// 1.2.6 データを送信後の変更(ボタンのアイコンとテキスト)
+function changeAfterSending() {
+  let elmText = document.getElementById("send-text");
+  elmText.textContent = "送信完了";
+
+  let elmIcon = document.getElementById("send-icon");
+  elmIcon.textContent = "check"
 }
