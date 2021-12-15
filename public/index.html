@@ -22,13 +22,6 @@
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap" rel="stylesheet">
 
-
-  <!-- リロードの注意喚起 -->
-  <!-- <script type="text/javascript">
-    window.onbeforeunload = function (e) {
-      e.returnValue = "ページを離れようとしています。よろしいですか？";
-    }
-  </script> -->
   <script type="module" src="./assest/js/data-manager.js"></script>
 </head>
 
@@ -37,24 +30,29 @@
   <header class="mdc-top-app-bar">
     <div class="mdc-top-app-bar__row">
       <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
-        <span class="mdc-top-app-bar__title">Dearobot</span>
+        <span class="mdc-top-app-bar__title">あなたが家庭内に人型ロボットを導入する際に、最も好ましいと感じるデザインを作成してください</span>
       </section>
       <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-end" role="toolbar">
         <button class="mdc-button mdc-button--outlined app-bar-button" id="usage-dialog">
           <div class="mdc-button__ripple"></div>
           <i class="material-icons mdc-button__icon" aria-hidden="true">play_circle_filled</i>
-          <span class="mdc-button__label">実験手順動画</span>
+          <span class="mdc-button__label">実験手順</span>
         </button>
         <button class="mdc-button mdc-button--outlined app-bar-button" id="help-dialog">
           <div class="mdc-button__ripple"></div>
           <i class="material-icons mdc-button__icon" aria-hidden="true">help</i>
-          <span class="mdc-button__label">実験について</span>
+          <span class="mdc-button__label">よくある質問</span>
         </button>
         <button class="mdc-button mdc-button--outlined app-bar-button" id="send-button">
           <div class="mdc-button__ripple"></div>
           <i id="send-icon" class="material-icons mdc-button__icon" aria-hidden="true">send</i>
-          <span id="send-text" class="mdc-button__label">送信</span>
+          <span id="send-text" class="mdc-button__label">データ送信</span>
         </button>
+        <!-- <button class="mdc-button mdc-button--outlined app-bar-button" id="save-button" onclick="saveImage()">
+          <div class="mdc-button__ripple"></div>
+          <i id="save-icon" class="material-icons mdc-button__icon" aria-hidden="true">save</i>
+          <span id="send-text" class="mdc-button__label">保存</span>
+        </button> -->
       </section>
     </div>
   </header>
@@ -90,25 +88,71 @@
           </h2>
           <div class="mdc-dialog__content" id="my-dialog-content">
             <div class="color-pallet-block">
-              <a href="javascript:onPalletClick(`#ffcdd2`);" class="btn-circle-flat red-500"></a>
-              <a href="javascript:onPalletClick(`#f8bbd0`);" class="btn-circle-flat pink-500"></a>
-              <a href="javascript:onPalletClick(`#e1bee7`);" class="btn-circle-flat purple-500"></a>
-              <a href="javascript:onPalletClick(`#d1c4e9`);" class="btn-circle-flat deep-purple-500"></a>
-              <a href="javascript:onPalletClick(`#c5cae9`);" class="btn-circle-flat indigo-500"></a>
-              <a href="javascript:onPalletClick(`#bbdefb`);" class="btn-circle-flat blue-500"></a>
-              <a href="javascript:onPalletClick(`#b3e5fc`);" class="btn-circle-flat light-blue-500"></a>
-              <a href="javascript:onPalletClick(`#b2ebf2`);" class="btn-circle-flat cyan-500"></a>
-              <a href="javascript:onPalletClick(`#b2dfdb`);" class="btn-circle-flat teal-500"></a>
-              <a href="javascript:onPalletClick(`#c8e6c9`);" class="btn-circle-flat green-500"></a>
-              <a href="javascript:onPalletClick(`#dcedc8`);" class="btn-circle-flat light-green-500"></a>
-              <a href="javascript:onPalletClick(`#f0f4c3`);" class="btn-circle-flat lime-500"></a>
-              <a href="javascript:onPalletClick(`#fff9c4`);" class="btn-circle-flat yellow-500"></a>
-              <a href="javascript:onPalletClick(`#ffecb3`);" class="btn-circle-flat amber-500"></a>
-              <a href="javascript:onPalletClick(`#ffe0b2`);" class="btn-circle-flat orange-500"></a>
-              <a href="javascript:onPalletClick(`#ffccbc`);" class="btn-circle-flat deep-orange-500"></a>
-              <a href="javascript:onPalletClick(`#d7ccc8`);" class="btn-circle-flat brown-500"></a>
-              <a href="javascript:onPalletClick(`#f5f5f5`);" class="btn-circle-flat grey-500"></a>
-              <a href="javascript:onPalletClick(`#cfd8dc`);" class="btn-circle-flat blue-grey-500"></a>
+              <a href="javascript:onPalletClick(`#ffcdd2`);" class="btn-circle-flat red-100"></a>
+              <a href="javascript:onPalletClick(`#f8bbd0`);" class="btn-circle-flat pink-100"></a>
+              <a href="javascript:onPalletClick(`#e1bee7`);" class="btn-circle-flat purple-100"></a>
+              <a href="javascript:onPalletClick(`#d1c4e9`);" class="btn-circle-flat deep-purple-100"></a>
+              <a href="javascript:onPalletClick(`#c5cae9`);" class="btn-circle-flat indigo-100"></a>
+              <a href="javascript:onPalletClick(`#bbdefb`);" class="btn-circle-flat blue-100"></a>
+              <a href="javascript:onPalletClick(`#b3e5fc`);" class="btn-circle-flat light-blue-100"></a>
+              <a href="javascript:onPalletClick(`#b2ebf2`);" class="btn-circle-flat cyan-100"></a>
+              <a href="javascript:onPalletClick(`#b2dfdb`);" class="btn-circle-flat teal-100"></a>
+              <a href="javascript:onPalletClick(`#c8e6c9`);" class="btn-circle-flat green-100"></a>
+              <a href="javascript:onPalletClick(`#dcedc8`);" class="btn-circle-flat light-green-100"></a>
+              <a href="javascript:onPalletClick(`#f0f4c3`);" class="btn-circle-flat lime-100"></a>
+              <a href="javascript:onPalletClick(`#fff9c4`);" class="btn-circle-flat yellow-100"></a>
+              <a href="javascript:onPalletClick(`#ffecb3`);" class="btn-circle-flat amber-100"></a>
+              <a href="javascript:onPalletClick(`#ffe0b2`);" class="btn-circle-flat orange-100"></a>
+              <a href="javascript:onPalletClick(`#ffccbc`);" class="btn-circle-flat deep-orange-100"></a>
+              <a href="javascript:onPalletClick(`#d7ccc8`);" class="btn-circle-flat brown-100"></a>
+              <a href="javascript:onPalletClick(`#f5f5f5`);" class="btn-circle-flat grey-100"></a>
+              <a href="javascript:onPalletClick(`#cfd8dc`);" class="btn-circle-flat blue-grey-100"></a>
+            </div>
+            <div class="color-pallet-block">
+              <a href="javascript:onPalletClick(`#e57373`);" class="btn-circle-flat red-300"></a>
+              <a href="javascript:onPalletClick(`#f06292`);" class="btn-circle-flat pink-300"></a>
+              <a href="javascript:onPalletClick(`#ba68c8`);" class="btn-circle-flat purple-300"></a>
+              <a href="javascript:onPalletClick(`#9575cd`);" class="btn-circle-flat deep-purple-300"></a>
+              <a href="javascript:onPalletClick(`#7986cb`);" class="btn-circle-flat indigo-300"></a>
+              <a href="javascript:onPalletClick(`#64b5f6`);" class="btn-circle-flat blue-300"></a>
+              <a href="javascript:onPalletClick(`#4fc3f7`);" class="btn-circle-flat light-blue-300"></a>
+              <a href="javascript:onPalletClick(`#4dd0e1`);" class="btn-circle-flat cyan-300"></a>
+              <a href="javascript:onPalletClick(`#4db6ac`);" class="btn-circle-flat teal-300"></a>
+              <a href="javascript:onPalletClick(`#81c784`);" class="btn-circle-flat green-300"></a>
+              <a href="javascript:onPalletClick(`#aed581`);" class="btn-circle-flat light-green-300"></a>
+              <a href="javascript:onPalletClick(`#dce775`);" class="btn-circle-flat lime-300"></a>
+              <a href="javascript:onPalletClick(`#fff176`);" class="btn-circle-flat yellow-300"></a>
+              <a href="javascript:onPalletClick(`#ffd54f`);" class="btn-circle-flat amber-300"></a>
+              <a href="javascript:onPalletClick(`#ffb74d`);" class="btn-circle-flat orange-300"></a>
+              <a href="javascript:onPalletClick(`#ff8a65`);" class="btn-circle-flat deep-orange-300"></a>
+              <a href="javascript:onPalletClick(`#a1887f`);" class="btn-circle-flat brown-300"></a>
+              <a href="javascript:onPalletClick(`#e0e0e0`);" class="btn-circle-flat grey-300"></a>
+              <a href="javascript:onPalletClick(`#90a4ae`);" class="btn-circle-flat blue-grey-300"></a>
+            </div>
+            <div class="color-pallet-block">
+              <a href="javascript:onPalletClick(`#f44336`);" class="btn-circle-flat red-500"></a>
+              <a href="javascript:onPalletClick(`#e91e63`);" class="btn-circle-flat pink-500"></a>
+              <a href="javascript:onPalletClick(`#9c27b0`);" class="btn-circle-flat purple-500"></a>
+              <a href="javascript:onPalletClick(`#673ab7`);" class="btn-circle-flat deep-purple-500"></a>
+              <a href="javascript:onPalletClick(`#3f51b5`);" class="btn-circle-flat indigo-500"></a>
+              <a href="javascript:onPalletClick(`#2196f3`);" class="btn-circle-flat blue-500"></a>
+              <a href="javascript:onPalletClick(`#03a9f4`);" class="btn-circle-flat light-blue-500"></a>
+              <a href="javascript:onPalletClick(`#00bcd4`);" class="btn-circle-flat cyan-500"></a>
+              <a href="javascript:onPalletClick(`#009688`);" class="btn-circle-flat teal-500"></a>
+              <a href="javascript:onPalletClick(`#4caf50`);" class="btn-circle-flat green-500"></a>
+              <a href="javascript:onPalletClick(`#8bc34a`);" class="btn-circle-flat light-green-500"></a>
+              <a href="javascript:onPalletClick(`#cddc39`);" class="btn-circle-flat lime-500"></a>
+              <a href="javascript:onPalletClick(`#ffeb3b`);" class="btn-circle-flat yellow-500"></a>
+              <a href="javascript:onPalletClick(`#ffc107`);" class="btn-circle-flat amber-500"></a>
+              <a href="javascript:onPalletClick(`#ff9800`);" class="btn-circle-flat orange-500"></a>
+              <a href="javascript:onPalletClick(`#ff5722`);" class="btn-circle-flat deep-orange-500"></a>
+              <a href="javascript:onPalletClick(`#795548`);" class="btn-circle-flat brown-500"></a>
+              <a href="javascript:onPalletClick(`#9e9e9e`);" class="btn-circle-flat grey-500"></a>
+              <a href="javascript:onPalletClick(`#607d8b`);" class="btn-circle-flat blue-grey-500"></a>
+            </div>
+            <div class="color-pallet-block">
+              <p>色の調整: </p>
+              <input type="color" id="colorPicker" onchange="getColorPicker()">
             </div>
           </div>
           <div class="mdc-dialog__actions">
@@ -133,14 +177,21 @@
           aria-describedby="my-dialog-content">
           <h2 class="mdc-dialog__title" id="my-dialog-title">
             <span class="mdc-tab__icon material-icons dialog-icon" aria-hidden="true">help</span>
-            実験について
+            よくある質問
           </h2>
           <div class="mdc-dialog__content" id="my-dialog-content">
             <div>
-              <p class="help-text-discription">本実験は、あなたがもし家庭内にロボットを導入する場合に、最も好ましいと感じるデザインを作成してもらうものです。</p>
+              <p class="help-text-discription">本実験は、家庭内にロボットを導入する際に、最も好ましいと感じるデザインを作成してもらう実験です。</p>
               <p class="help-text-title">実験手順</p>
-              <p>1. 顔の編集 → 2. 目の編集 → 3.口の編集 → 4. 体の編集</p>
-              <p>5. アンケート⑴ → 6. アンケート⑵ → 送信ボタン</p>
+              <p>1. 顔 → 2. 目 → 3.口 → 4. 体 → 5. アンケート１ → 6. アンケート２ → 送信ボタン</p>
+            </div>
+            <div>
+              <br>
+              <p>スライダーがおかしい場合はページを再読み込みしてください</p>
+            </div>
+            <div>
+              <br>
+              <p>全ての情報を入力し、送信ボタンを押すとボタンのテキストが実験終了に変わります。送信できない場合はアンケートなどで項目漏れがある可能性があります。</p>
             </div>
           </div>
           <div class="mdc-dialog__actions">
@@ -185,7 +236,7 @@
     <!-- 2.1 paper -->
     <div class="paper">
 
-      <!-- 1 stepper -->
+      <!-- 0 stepper -->
       <div class="stepper">
         <div class="mdc-tab-bar" role="tablist">
           <div class="mdc-tab-scroller">
@@ -264,7 +315,7 @@
         </div>
       </div>
 
-      <!-- 2 content1: 顔の形の編集画面 -->
+      <!-- 1 content1: 顔の形の編集画面 -->
       <div id="content1" class="edit-container">
         <div class="left-box">
           <p class="title">1. お好みの顔の形に編集してください</p>
@@ -295,6 +346,31 @@
               <span class="mdc-button__label">色の変更</span>
             </button>
           </div>
+
+          <!-- 顔の倍率のスライダー -->
+          <!-- <div class="slider">
+            <p>顔の大きさ</p>
+            <div class="mdc-slider mdc-slider--discrete">
+              <input id="face-size" class="mdc-slider__input" type="range" min="0.5" max="1.5" value="1.0" name="volume"
+                step="0.02" aria-label="Discrete slider demo">
+              <div class="mdc-slider__track">
+                <div class="mdc-slider__track--inactive"></div>
+                <div class="mdc-slider__track--active">
+                  <div class="mdc-slider__track--active_fill"></div>
+                </div>
+              </div>
+              <div class="mdc-slider__thumb">
+                <div class="mdc-slider__value-indicator-container">
+                  <div class="mdc-slider__value-indicator">
+                    <span class="mdc-slider__value-indicator-text">
+                      1.0
+                    </span>
+                  </div>
+                </div>
+                <div class="mdc-slider__thumb-knob"></div>
+              </div>
+            </div>
+          </div> -->
 
           <!-- 顔の位置のスライダー -->
           <div class="slider">
@@ -340,7 +416,7 @@
         <!-- <div id="canvas" class="canvas"></div> -->
       </div>
 
-      <!-- 3 content2: 目の編集画面 -->
+      <!-- 2 content2: 目の編集画面 -->
       <div id="content2" class="edit-container">
         <div class="left-box">
           <p class="title">2. お好みの目に編集してください</p>
@@ -498,7 +574,7 @@
         <!-- <div id="canvas" class="canvas"></div> -->
       </div>
 
-      <!-- 4 content3: 口の編集画面 -->
+      <!-- 3 content3: 口の編集画面 -->
       <div id="content3" class="edit-container">
         <div class="left-box">
           <p class="title">3. お好みの口に編集してください</p>
@@ -559,7 +635,7 @@
                 </div>
               </div>
               <div id="mouse-position" class="mdc-slider__thumb" role="slider" tabindex="0"
-                aria-label="Continuous slider demo" aria-valuemin="-100" aria-valuemax="100" aria-valuenow="0">
+                aria-label="Continuous slider demo" aria-valuemin="-" aria-valuemax="" aria-valuenow="0">
                 <div class="mdc-slider__thumb-knob"></div>
               </div>
             </div>
@@ -650,7 +726,7 @@
         <!-- <div id="canvas" class="canvas"></div> -->
       </div>
 
-      <!-- 5 content4: 体の編集画面 -->
+      <!-- 4 content4: 体の編集画面 -->
       <div id="content4" class="edit-container">
         <div class="left-box">
           <p class="title">4. お好みの体に編集してください</p>
@@ -696,7 +772,7 @@
                 </div>
               </div>
               <div id="body-position" class="mdc-slider__thumb" role="slider" tabindex="0"
-                aria-label="Continuous slider demo" aria-valuemin="-100" aria-valuemax="100" aria-valuenow="0">
+                aria-label="Continuous slider demo" aria-valuemin="-" aria-valuemax="" aria-valuenow="0">
                 <div class="mdc-slider__thumb-knob"></div>
               </div>
             </div>
@@ -720,20 +796,35 @@
         <!-- <div id="canvas" class="canvas"></div> -->
       </div>
 
-      <!-- 6 content5: アンケート⑴ -->
+      <!-- 5 content5: アンケート⑴ -->
       <div id="content5" class="edit-container">
         <div class="left-box-single">
-          <p class="title">5. アンケート⑴にご回答ください</p>
+          <p class="title">5. アンケート１にご回答ください（Q1 ~ Q14）</p>
+
           <div class="questionnarie">
+            <p class="description">
+              本実験で取得したデータは個人が特定できない形で分析します。実験結果は研究結果の発表として使用する可能性がありますが、その際にも個人が特定できないように統計処理したデータを使用します。全ての情報が正しく入力されないと謝礼をお支払いすることができないため、丁寧なご記入をお願いします。
+            </p>
+            <!-- 質問群：参加者情報 -->
+            <div class="view-title">
+              <p>参加者情報（Q1 ~ Q4）</p>
+            </div>
+
+            <!-- Q1：名前 data.js 1.2.3-->
             <div class="view-item">
               <p>[Q1] お名前をご記入ください</p>
               <label class="mdc-text-field mdc-text-field--filled mdc-text-field--no-label">
                 <span class="mdc-text-field__ripple"></span>
                 <input class="mdc-text-field__input" id="name-text-field" type="text" placeholder="テキスト"
-                  aria-label="Label">
+                  aria-label="Label" required>
                 <span class="mdc-line-ripple"></span>
               </label>
+              <div class="mdc-text-field-helper-line">
+                <div class="mdc-text-field-helper-text mdc-text-field-helper-text--validation-msg">入力してください</div>
+              </div>
             </div>
+
+            <!-- Q2：年齢：material.js E1. -->
             <div class="view-item">
               <p>[Q2] 年齢を選択してください</p>
               <div class="mdc-select mdc-select--filled demo-width-class">
@@ -757,7 +848,7 @@
                   <span class="mdc-line-ripple"></span>
                 </div>
 
-                <div class="mdc-select__menu mdc-menu mdc-menu-surface mdc-menu-surface--fullwidth">
+                <div class="mdc-select__menu mdc-menu mdc-menu-surface mdc-menu-surface--fixed">
                   <ul class="mdc-list" role="listbox" aria-label="Food picker listbox">
                     <li class="mdc-list-item mdc-list-item--selected" aria-selected="true" data-value="" role="option">
                       <span class="mdc-list-item__ripple"></span>
@@ -832,380 +923,366 @@
                 </div>
               </div>
             </div>
+
+            <!-- Q3：メールアドレス data.js 1.2.3-->
             <div class="view-item">
-              <p>[Q3] 将来、ロボットが様々な機能を有する場合、自身の家庭内に導入することを希望しますか？</p>
+              <p>[Q3] メールアドレスをご記入ください</p>
+              <p>謝礼などについてのご連絡を行います。</p>
+              <label class="mdc-text-field mdc-text-field--filled mdc-text-field--no-label">
+                <span class="mdc-text-field__ripple"></span>
+                <input class="mdc-text-field__input" id="mail-address" type="email" placeholder="テキスト"
+                  aria-label="Label" required>
+                <span class="mdc-line-ripple"></span>
+              </label>
+              <div class="mdc-text-field-helper-line">
+                <div class="mdc-text-field-helper-text mdc-text-field-helper-text--validation-msg" id="my-helper-id"
+                  aria-hidden="true">メールアドレスを入力してください</div>
+              </div>
+            </div>
+
+            <!-- Q4：紹介者の有無 data.js 1.2.3-->
+            <div class="view-item">
+              <p>[Q4] 本実験の紹介者がいる場合はご記入ください[任意]</p>
+              <label class="mdc-text-field mdc-text-field--filled mdc-text-field--no-label">
+                <span class="mdc-text-field__ripple"></span>
+                <input class="mdc-text-field__input" id="introducer" type="text" placeholder="テキスト" aria-label="Label">
+                <span class="mdc-line-ripple"></span>
+              </label>
+            </div>
+
+            <!-- 質問群：ロボット経験について -->
+            <div class="view-title">
+              <p>ロボット経験について（Q5 ~ Q9）</p>
+            </div>
+
+            <!-- Q５：実際に見た経験 data.js 1.2.3-->
+            <div class="view-item">
+              <p>[Q5] 実際にヒューマノイドロボット（人間型ロボット）を見たことがありますか？</p>
               <div class="vertical-radio-button-group">
                 <form>
                   <fieldset id="qs-radio-group">
                     <div class="questionnarie-items">
-                      <input type="radio" value="q3-yes" name="quetionnarie-radio">
-                      <a>希望する</a>
+                      <input type="radio" value="q5-1" name="quetionnarie-radio">
+                      <a>興味を持って、よく見た</a>
                     </div>
                     <div class="questionnarie-items">
-                      <input type="radio" value="q3-so-yes" name="quetionnarie-radio">
-                      <a>やや希望する</a>
+                      <input type="radio" value="q5-2" name="quetionnarie-radio">
+                      <a>見たことがある</a>
                     </div>
                     <div class="questionnarie-items">
-                      <input type="radio" value="q3-neither" name="quetionnarie-radio">
+                      <input type="radio" value="q5-3" name="quetionnarie-radio">
+                      <a>見たことがない</a>
+                    </div>
+                  </fieldset>
+                </form>
+              </div>
+            </div>
+
+            <!-- Q6：実現可能性の期待値 data.js 1.2.3-->
+            <div class="view-item">
+              <p>[Q6] 日常の場で活躍するヒューマノイドロボットはいつ頃実現可能になると思いますか？</p>
+              <div class="vertical-radio-button-group">
+                <form>
+                  <fieldset id="qs-radio-group">
+                    <div class="questionnarie-items">
+                      <input type="radio" value="q6-1" name="quetionnarie-radio">
+                      <a>10年以内</a>
+                    </div>
+                    <div class="questionnarie-items">
+                      <input type="radio" value="q6-2" name="quetionnarie-radio">
+                      <a>30年以内</a>
+                    </div>
+                    <div class="questionnarie-items">
+                      <input type="radio" value="q6-3" name="quetionnarie-radio">
+                      <a>30年以上未来になる</a>
+                    </div>
+                    <div class="questionnarie-items">
+                      <input type="radio" value="q6-4" name="quetionnarie-radio">
+                      <a>実現は無理</a>
+                    </div>
+                  </fieldset>
+                </form>
+              </div>
+            </div>
+
+            <!-- Q7：コンピュータの利用頻度 data.js 1.2.3-->
+            <div class="view-item">
+              <p>[Q7] コンピュータの利用頻度はどのぐらいですか？</p>
+              <div class="vertical-radio-button-group">
+                <form>
+                  <fieldset id="qs-radio-group">
+                    <div class="questionnarie-items">
+                      <input type="radio" value="q7-1" name="quetionnarie-radio">
+                      <a>非常によく使う（ほとんど毎日）</a>
+                    </div>
+                    <div class="questionnarie-items">
+                      <input type="radio" value="q7-2" name="quetionnarie-radio">
+                      <a>よく使う（週４日程度）</a>
+                    </div>
+                    <div class="questionnarie-items">
+                      <input type="radio" value="q7-3" name="quetionnarie-radio">
+                      <a>時々使う（週２日程度）</a>
+                    </div>
+                    <div class="questionnarie-items">
+                      <input type="radio" value="q7-4" name="quetionnarie-radio">
+                      <a>たまに使う（月数日程度）</a>
+                    </div>
+                    <div class="questionnarie-items">
+                      <input type="radio" value="q7-5" name="quetionnarie-radio">
+                      <a>全く使わない（利用したことがない）</a>
+                    </div>
+                  </fieldset>
+                </form>
+              </div>
+            </div>
+
+            <!-- Q8：将来的な導入希望 data.js 1.2.3-->
+            <div class="view-item">
+              <p>[Q8] 将来的にヒューマノイドロボットを導入することを検討しますか？</p>
+              <div class="vertical-radio-button-group">
+                <form>
+                  <fieldset id="qs-radio-group">
+                    <div class="questionnarie-items">
+                      <input type="radio" value="q8-1" name="quetionnarie-radio">
+                      <a>機能や外見が向上すれば検討する</a>
+                    </div>
+                    <div class="questionnarie-items">
+                      <input type="radio" value="q8-2" name="quetionnarie-radio">
+                      <a>既存のもので検討している</a>
+                    </div>
+                    <div class="questionnarie-items">
+                      <input type="radio" value="q8-3" name="quetionnarie-radio">
                       <a>どちらでもない</a>
                     </div>
                     <div class="questionnarie-items">
-                      <input type="radio" value="q3-so-no" name="quetionnarie-radio">
+                      <input type="radio" value="q8-4" name="quetionnarie-radio">
+                      <a>既存のものでは検討していない</a>
+                    </div>
+                    <div class="questionnarie-items">
+                      <input type="radio" value="q8-5" name="quetionnarie-radio">
+                      <a>全く検討していない（導入することはない）</a>
+                    </div>
+                  </fieldset>
+                </form>
+              </div>
+            </div>
+
+            <!-- Q9：ヒューマノイドロボットの存在に対する期待感 data.js 1.2.3-->
+            <div class="view-item">
+              <p>[Q9] 将来的にヒューマノイドロボットはどのような存在として人間と共存すると考えますか？</p>
+              <div class="vertical-radio-button-group">
+                <form>
+                  <fieldset id="qs-radio-group">
+                    <div class="questionnarie-items">
+                      <input type="radio" value="q9-1" name="quetionnarie-radio">
+                      <a>友人や家族のような新しいパートナー</a>
+                    </div>
+                    <div class="questionnarie-items">
+                      <input type="radio" value="q9-2" name="quetionnarie-radio">
+                      <a>ペットや愛玩の対象</a>
+                    </div>
+                    <div class="questionnarie-items">
+                      <input type="radio" value="q9-3" name="quetionnarie-radio">
+                      <a>家電ような機械としての存在</a>
+                    </div>
+                    <div class="questionnarie-items">
+                      <input type="radio" value="q9-4" name="quetionnarie-radio">
+                      <a>ロボットとしての存在</a>
+                    </div>
+                    <div class="questionnarie-items">
+                      <input type="radio" value="q9-5" name="quetionnarie-radio">
+                      <a>どれにも当てはまらない</a>
+                    </div>
+                  </fieldset>
+                </form>
+              </div>
+            </div>
+
+            <!-- 質問群：制作したロボットについて -->
+            <div class="view-title">
+              <p>制作したロボットにいついて（Q10 ~ Q14）</p>
+            </div>
+
+            <!-- Q10：制作したロボットの導入希望 -->
+            <div class="view-item">
+              <p>[Q10] 自身で作成した外観のロボットを、家庭内に導入することを希望しますか？</p>
+              <div class="vertical-radio-button-group">
+                <form>
+                  <fieldset id="qs-radio-group">
+                    <div class="questionnarie-items">
+                      <input type="radio" value="q10-1" name="quetionnarie-radio">
+                      <a>希望する</a>
+                    </div>
+                    <div class="questionnarie-items">
+                      <input type="radio" value="q10-2" name="quetionnarie-radio">
+                      <a>やや希望する</a>
+                    </div>
+                    <div class="questionnarie-items">
+                      <input type="radio" value="q10-3" name="quetionnarie-radio">
+                      <a>どちらでもない</a>
+                    </div>
+                    <div class="questionnarie-items">
+                      <input type="radio" value="q10-4" name="quetionnarie-radio">
                       <a>やや希望しない</a>
                     </div>
                     <div class="questionnarie-items">
-                      <input type="radio" value="q3-no" name="quetionnarie-radio">
+                      <input type="radio" value="q10-5" name="quetionnarie-radio">
                       <a>希望しない</a>
                     </div>
                   </fieldset>
                 </form>
               </div>
             </div>
+
+            <!-- Q11：制作したロボットの想定機能 -->
             <div class="view-item">
-              <p>[Q4] 自身で作成した外観のロボットを、家庭内に導入することを希望しますか？</p>
+              <p>[Q11] 自身で作成したロボットはどのような機能を想定して作成しましたか？</p>
               <div class="vertical-radio-button-group">
                 <form>
                   <fieldset id="qs-radio-group">
                     <div class="questionnarie-items">
-                      <input type="radio" value="q4-yes" name="quetionnarie-radio">
-                      <a>希望する</a>
-                    </div>
-                    <div class="questionnarie-items">
-                      <input type="radio" value="q4-so-yes" name="quetionnarie-radio">
-                      <a>やや希望する</a>
-                    </div>
-                    <div class="questionnarie-items">
-                      <input type="radio" value="q4-neither" name="quetionnarie-radio">
-                      <a>どちらでもない</a>
-                    </div>
-                    <div class="questionnarie-items">
-                      <input type="radio" value="q4-so-no" name="quetionnarie-radio">
-                      <a>やや希望しない</a>
-                    </div>
-                    <div class="questionnarie-items">
-                      <input type="radio" value="q4-no" name="quetionnarie-radio">
-                      <a>希望しない</a>
-                    </div>
-                  </fieldset>
-                </form>
-              </div>
-            </div>
-            <!-- <div class="view-item">
-              <p>[Q5] 自身で作成したロボットはどのような機能を想定して作成しましたか？</p>
-              <div class="vertical-radio-button-group">
-                <div class="questionnarie-items">
-                  <div class="mdc-touch-target-wrapper">
-                    <div class="mdc-checkbox mdc-checkbox--touch">
-                      <input type="checkbox" class="mdc-checkbox__native-control" id="checkbox-1" value="q5-kagi" />
-                      <div class="mdc-checkbox__background">
-                        <svg class="mdc-checkbox__checkmark" viewBox="0 0 24 24">
-                          <path class="mdc-checkbox__checkmark-path" fill="none" d="M1.73,12.91 8.1,19.28 22.79,4.59" />
-                        </svg>
-                        <div class="mdc-checkbox__mixedmark"></div>
-                      </div>
-                      <div class="mdc-checkbox__ripple"></div>
-                    </div>
-                  </div>
-                  <a>家事</a>
-                </div>
-                <div class="questionnarie-items">
-                  <div class="mdc-touch-target-wrapper">
-                    <div class="mdc-checkbox mdc-checkbox--touch">
-                      <input type="checkbox" class="mdc-checkbox__native-control" id="checkbox-1"
-                        value="q5-nichijyo-shien" />
-                      <div class="mdc-checkbox__background">
-                        <svg class="mdc-checkbox__checkmark" viewBox="0 0 24 24">
-                          <path class="mdc-checkbox__checkmark-path" fill="none" d="M1.73,12.91 8.1,19.28 22.79,4.59" />
-                        </svg>
-                        <div class="mdc-checkbox__mixedmark"></div>
-                      </div>
-                      <div class="mdc-checkbox__ripple"></div>
-                    </div>
-                  </div>
-                  <a>日常支援</a>
-                </div>
-                <div class="questionnarie-items">
-                  <div class="mdc-touch-target-wrapper">
-                    <div class="mdc-checkbox mdc-checkbox--touch">
-                      <input type="checkbox" class="mdc-checkbox__native-control" id="checkbox-1" value="q5-kyoiku" />
-                      <div class="mdc-checkbox__background">
-                        <svg class="mdc-checkbox__checkmark" viewBox="0 0 24 24">
-                          <path class="mdc-checkbox__checkmark-path" fill="none" d="M1.73,12.91 8.1,19.28 22.79,4.59" />
-                        </svg>
-                        <div class="mdc-checkbox__mixedmark"></div>
-                      </div>
-                      <div class="mdc-checkbox__ripple"></div>
-                    </div>
-                  </div>
-                  <a>教育</a>
-                </div>
-                <div class="questionnarie-items">
-                  <div class="mdc-touch-target-wrapper">
-                    <div class="mdc-checkbox mdc-checkbox--touch">
-                      <input type="checkbox" class="mdc-checkbox__native-control" id="checkbox-1" value="q5-partner" />
-                      <div class="mdc-checkbox__background">
-                        <svg class="mdc-checkbox__checkmark" viewBox="0 0 24 24">
-                          <path class="mdc-checkbox__checkmark-path" fill="none" d="M1.73,12.91 8.1,19.28 22.79,4.59" />
-                        </svg>
-                        <div class="mdc-checkbox__mixedmark"></div>
-                      </div>
-                      <div class="mdc-checkbox__ripple"></div>
-                    </div>
-                  </div>
-                  <a>パートナー</a>
-                </div>
-                <div class="questionnarie-items">
-                  <div class="mdc-touch-target-wrapper">
-                    <div class="mdc-checkbox mdc-checkbox--touch">
-                      <input type="checkbox" class="mdc-checkbox__native-control" id="checkbox-1" value="q5-kaigo" />
-                      <div class="mdc-checkbox__background">
-                        <svg class="mdc-checkbox__checkmark" viewBox="0 0 24 24">
-                          <path class="mdc-checkbox__checkmark-path" fill="none" d="M1.73,12.91 8.1,19.28 22.79,4.59" />
-                        </svg>
-                        <div class="mdc-checkbox__mixedmark"></div>
-                      </div>
-                      <div class="mdc-checkbox__ripple"></div>
-                    </div>
-                  </div>
-                  <a>介護</a>
-                </div>
-                <div class="questionnarie-items">
-                  <div class="mdc-touch-target-wrapper">
-                    <div class="mdc-checkbox mdc-checkbox--touch">
-                      <input type="checkbox" class="mdc-checkbox__native-control" id="checkbox-1" value="q5-pet" />
-                      <div class="mdc-checkbox__background">
-                        <svg class="mdc-checkbox__checkmark" viewBox="0 0 24 24">
-                          <path class="mdc-checkbox__checkmark-path" fill="none" d="M1.73,12.91 8.1,19.28 22.79,4.59" />
-                        </svg>
-                        <div class="mdc-checkbox__mixedmark"></div>
-                      </div>
-                      <div class="mdc-checkbox__ripple"></div>
-                    </div>
-                  </div>
-                  <a>ペット</a>
-                </div>
-                <div class="questionnarie-items">
-                  <div class="mdc-touch-target-wrapper">
-                    <div class="mdc-checkbox mdc-checkbox--touch">
-                      <input type="checkbox" class="mdc-checkbox__native-control" id="checkbox-1" value="q5-other" />
-                      <div class="mdc-checkbox__background">
-                        <svg class="mdc-checkbox__checkmark" viewBox="0 0 24 24">
-                          <path class="mdc-checkbox__checkmark-path" fill="none" d="M1.73,12.91 8.1,19.28 22.79,4.59" />
-                        </svg>
-                        <div class="mdc-checkbox__mixedmark"></div>
-                      </div>
-                      <div class="mdc-checkbox__ripple"></div>
-                    </div>
-                  </div>
-                  <a>その他</a>
-                </div>
-              </div>
-            </div> -->
-            <div class="view-item">
-              <p>[Q5] 自身で作成したロボットはどのような機能を想定して作成しましたか？</p>
-              <div class="vertical-radio-button-group">
-                <form>
-                  <fieldset id="qs-radio-group">
-                    <div class="questionnarie-items">
-                      <input type="radio" value="q5-housework" name="quetionnarie-radio">
+                      <input type="radio" value="q11-1" name="quetionnarie-radio">
                       <a>家事</a>
                     </div>
                     <div class="questionnarie-items">
-                      <input type="radio" value="q5-everyday-support" name="quetionnarie-radio">
+                      <input type="radio" value="q11-2" name="quetionnarie-radio">
                       <a>日常支援</a>
                     </div>
                     <div class="questionnarie-items">
-                      <input type="radio" value="q5-education" name="quetionnarie-radio">
+                      <input type="radio" value="q11-3" name="quetionnarie-radio">
                       <a>教育</a>
                     </div>
                     <div class="questionnarie-items">
-                      <input type="radio" value="q5-partner" name="quetionnarie-radio">
+                      <input type="radio" value="q11-4" name="quetionnarie-radio">
                       <a>パートナー</a>
                     </div>
                     <div class="questionnarie-items">
-                      <input type="radio" value="q5-nursing-care" name="quetionnarie-radio">
+                      <input type="radio" value="q11-5" name="quetionnarie-radio">
                       <a>介護</a>
                     </div>
                     <div class="questionnarie-items">
-                      <input type="radio" value="q5-pet" name="quetionnarie-radio">
+                      <input type="radio" value="q11-6" name="quetionnarie-radio">
                       <a>ペット</a>
                     </div>
                     <div class="questionnarie-items">
-                      <input type="radio" value="q5-other" name="quetionnarie-radio">
+                      <input type="radio" value="q11-7" name="quetionnarie-radio">
                       <a>その他</a>
                     </div>
                   </fieldset>
                 </form>
               </div>
             </div>
+
+            <!-- Q12：満足するロボットの外観 -->
             <div class="view-item">
-              <p>[Q6] 満足するロボットの外観が作成できましたか？</p>
+              <p>[Q12] 満足するロボットの外観が作成できましたか？</p>
               <div class="vertical-radio-button-group">
                 <form>
                   <fieldset id="qs-radio-group">
                     <div class="questionnarie-items">
-                      <input type="radio" value="q6-satisfied" name="quetionnarie-radio">
+                      <input type="radio" value="q12-1" name="quetionnarie-radio">
                       <a>満足できた</a>
                     </div>
                     <div class="questionnarie-items">
-                      <input type="radio" value="q6-so-satisfied" name="quetionnarie-radio">
+                      <input type="radio" value="q12-2" name="quetionnarie-radio">
                       <a>やや満足できた</a>
                     </div>
                     <div class="questionnarie-items">
-                      <input type="radio" value="q6-neither" name="quetionnarie-radio">
+                      <input type="radio" value="q12-3" name="quetionnarie-radio">
                       <a>どちらでもない</a>
                     </div>
                     <div class="questionnarie-items">
-                      <input type="radio" value="q6-so-unsatisfied" name="quetionnarie-radio">
+                      <input type="radio" value="q12-4" name="quetionnarie-radio">
                       <a>やや満足できなかった</a>
                     </div>
                     <div class="questionnarie-items">
-                      <input type="radio" value="q6-unsatisfied" name="quetionnarie-radio">
+                      <input type="radio" value="q12-5" name="quetionnarie-radio">
                       <a>満足できなかった</a>
                     </div>
                   </fieldset>
                 </form>
               </div>
             </div>
+
+            <!-- Q12.1：理由-->
             <div class="view-item">
-              <p>[Q6.1] やや・満足できなかったと答えた方に質問です。どのような点を改善すれば満足するものが作成できましたか？</p>
+              <p>[Q12.1] やや・満足できなかったと答えた方に質問です。どのような点を改善すれば満足するものが作成できましたか？ [任意]</p>
               <label class="mdc-text-field mdc-text-field--filled mdc-text-field--textarea mdc-text-field--no-label">
                 <span class="mdc-text-field__ripple"></span>
                 <span class="mdc-text-field__resizer">
-                  <textarea class="mdc-text-field__input" rows="2" cols="40" aria-label="Label"
-                    id="q6-1-text"></textarea>
+                  <textarea class="mdc-text-field__input" rows="2" cols="40" aria-label="Label" id="q12-1"></textarea>
                 </span>
                 <span class="mdc-line-ripple"></span>
               </label>
             </div>
+
+            <!-- Q13：ロボットの大きさ -->
             <div class="view-item">
-              <p>[Q7] 作成したロボットはどのくらいの大きさを想定して作成しましたか？(cm)</p>
+              <p>[Q13] 作成したロボットはどのくらいの大きさを想定して作成しましたか？(cm)</p>
               <label class="mdc-text-field mdc-text-field--filled mdc-text-field--no-label">
                 <span class="mdc-text-field__ripple"></span>
-                <input class="mdc-text-field__input" id="name-text-field" type="text" placeholder="テキスト"
-                  aria-label="Label" id="q7-text">
+                <input class="mdc-text-field__input" type="text" placeholder="テキスト" aria-label="Label" id="q13"
+                  required>
                 <span class="mdc-line-ripple"></span>
               </label>
+              <div class="mdc-text-field-helper-line">
+                <div class="mdc-text-field-helper-text mdc-text-field-helper-text--validation-msg" id="my-helper-id"
+                  aria-hidden="true">入力してください</div>
+              </div>
             </div>
+
+            <!-- Q14：ロボットのこだわり -->
             <div class="view-item">
-              <p>[Q8] 作成したロボットの中で特にこだわりがあったのはどの部分ですか？</p>
+              <p>[Q14] 作成したロボットの中で特にこだわりがあったのはどの部分ですか？</p>
               <div class="vertical-radio-button-group">
                 <form>
                   <fieldset id="qs-radio-group">
                     <div class="questionnarie-items">
-                      <input type="radio" value="q8-face" name="quetionnarie-radio">
+                      <input type="radio" value="q14-1" name="quetionnarie-radio">
                       <a>顔</a>
                     </div>
                     <div class="questionnarie-items">
-                      <input type="radio" value="q8-eye" name="quetionnarie-radio">
+                      <input type="radio" value="q14-2" name="quetionnarie-radio">
                       <a>目</a>
                     </div>
                     <div class="questionnarie-items">
-                      <input type="radio" value="q8-mouse" name="quetionnarie-radio">
+                      <input type="radio" value="q14-3" name="quetionnarie-radio">
                       <a>口</a>
                     </div>
                     <div class="questionnarie-items">
-                      <input type="radio" value="q8-body" name="quetionnarie-radio">
+                      <input type="radio" value="q14-4" name="quetionnarie-radio">
                       <a>体</a>
                     </div>
                   </fieldset>
                 </form>
               </div>
             </div>
-            <div class="view-item" id="questionnarie-8-1">
-              <p>[Q8.1] Q8の理由を教えてください</p>
-              <label class="mdc-text-field mdc-text-field--filled mdc-text-field--textarea mdc-text-field--no-label">
-                <span class="mdc-text-field__ripple"></span>
-                <span class="mdc-text-field__resizer">
-                  <textarea class="mdc-text-field__input" rows="2" cols="40" aria-label="Label" id="q8-text"></textarea>
-                </span>
-                <span class="mdc-line-ripple"></span>
-              </label>
-            </div>
-            <!-- <div class="view-item disabled" id="questionnarie-8-2">
-              <p>[Q8] ヘルメットやディスプレのような黒い画面の顔を選択した理由を教えてください</p>
-              <label class="mdc-text-field mdc-text-field--filled mdc-text-field--textarea mdc-text-field--no-label">
-                <span class="mdc-text-field__ripple"></span>
-                <span class="mdc-text-field__resizer">
-                  <textarea class="mdc-text-field__input" rows="2" cols="40" aria-label="Label" id="q8-text"></textarea>
-                </span>
-                <span class="mdc-line-ripple"></span>
-              </label>
-            </div>
-            <div class="view-item disabled" id="questionnarie-8-3">
-              <p>[Q8] キャラクターのような顔を選択した理由を教えてください</p>
-              <label class="mdc-text-field mdc-text-field--filled mdc-text-field--textarea mdc-text-field--no-label">
-                <span class="mdc-text-field__ripple"></span>
-                <span class="mdc-text-field__resizer">
-                  <textarea class="mdc-text-field__input" rows="2" cols="40" aria-label="Label" id="q8-text"></textarea>
-                </span>
-                <span class="mdc-line-ripple"></span>
-              </label>
-            </div>
-            <div class="view-item" id="questionnarie-9-1">
-              <p>[Q9] 右のような目のプリセットを選択した理由を教えてください</p>
-              <label class="mdc-text-field mdc-text-field--filled mdc-text-field--textarea mdc-text-field--no-label">
-                <span class="mdc-text-field__ripple"></span>
-                <span class="mdc-text-field__resizer">
-                  <textarea class="mdc-text-field__input" rows="2" cols="40" aria-label="Label" id="q9-text"></textarea>
-                </span>
-                <span class="mdc-line-ripple"></span>
-              </label>
-            </div>
-            <div class="view-item disabled" id="questionnarie-9-2">
-              <p>[Q9] 目のプリセットを選択しない理由を教えてください</p>
-              <label class="mdc-text-field mdc-text-field--filled mdc-text-field--textarea mdc-text-field--no-label">
-                <span class="mdc-text-field__ripple"></span>
-                <span class="mdc-text-field__resizer">
-                  <textarea class="mdc-text-field__input" rows="2" cols="40" aria-label="Label" id="q9-text"></textarea>
-                </span>
-                <span class="mdc-line-ripple"></span>
-              </label>
-            </div>
-            <div class="view-item" id="questionnarie-10-1">
-              <p>[Q10] 右のような口のプリセットを選択した理由を教えてください</p>
-              <label class="mdc-text-field mdc-text-field--filled mdc-text-field--textarea mdc-text-field--no-label">
-                <span class="mdc-text-field__ripple"></span>
-                <span class="mdc-text-field__resizer">
-                  <textarea class="mdc-text-field__input" rows="2" cols="40" aria-label="Label"
-                    id="q10-text"></textarea>
-                </span>
-                <span class="mdc-line-ripple"></span>
-              </label>
-            </div>
-            <div class="view-item disabled" id="questionnarie-10-2">
-              <p>[Q10] 口のプリセットを選択しない理由を教えてください</p>
-              <label class="mdc-text-field mdc-text-field--filled mdc-text-field--textarea mdc-text-field--no-label">
-                <span class="mdc-text-field__ripple"></span>
-                <span class="mdc-text-field__resizer">
-                  <textarea class="mdc-text-field__input" rows="2" cols="40" aria-label="Label"
-                    id="q10-text"></textarea>
-                </span>
-                <span class="mdc-line-ripple"></span>
-              </label>
-            </div>
-            <div class="view-item">
-              <p>[Q11] 右のような体のプリセットを選択した理由を教えてください</p>
-              <label class="mdc-text-field mdc-text-field--filled mdc-text-field--textarea mdc-text-field--no-label">
-                <span class="mdc-text-field__ripple"></span>
-                <span class="mdc-text-field__resizer">
-                  <textarea class="mdc-text-field__input" rows="2" cols="40" aria-label="Label"
-                    id="q11-text"></textarea>
-                </span>
-                <span class="mdc-line-ripple"></span>
-              </label>
-            </div> -->
 
+            <!-- Q14.1：理由 -->
+            <div class="view-item" id="questionnarie-14-1">
+              <p>[Q14.1] Q14の理由を教えてください</p>
+              <label class="mdc-text-field mdc-text-field--filled mdc-text-field--textarea mdc-text-field--no-label">
+                <span class="mdc-text-field__ripple"></span>
+                <span class="mdc-text-field__resizer">
+                  <textarea class="mdc-text-field__input" rows="2" cols="40" aria-label="Label" id="q14-1"
+                    required></textarea>
+                </span>
+                <span class="mdc-line-ripple"></span>
+              </label>
+              <div class="mdc-text-field-helper-line">
+                <div class="mdc-text-field-helper-text mdc-text-field-helper-text--validation-msg" id="my-helper-id"
+                  aria-hidden="true">入力してください</div>
+              </div>
+            </div>
           </div>
         </div>
-        <!-- <div id="canvas" class="canvas"></div> -->
       </div>
 
-      <!-- 7 content6: アンケート⑵ -->
+      <!-- 6 content6: アンケート⑵ -->
       <div id="content6" class="edit-container">
         <div class="left-box-single">
-          <p class="title">6. アンケート⑵にご回答ください</p>
-          <p class="discription">以下の質問は、作成したロボットに対する印象を問うものとなっています。<br> それぞれの項目の形容詞の対のうちから最も近しいものを選択してください。</p>
+          <p class="title">6. アンケート２にご回答ください</p>
+          <p class="description">以下の質問は、作成したロボットに対する印象を問うものとなっています。<br> それぞれの項目の形容詞の対のうちから最も近しいものを選択してください。</p>
           <div class="question-form">
             <div class="question-header">
               <div class="adjective-pair">
@@ -1763,6 +1840,34 @@
       </div>
 
       <div id="canvas" class="canvas"></div>
+
+      <div id="floating-table">
+        <div class="ft-header">
+          <span class="mdc-tab__icon material-icons" aria-hidden="true">recommend</span>
+          <p>実験の同意について</p>
+        </div>
+        <div class="ft-content">
+          <p><a href="./consent_form.html" target="_blank"
+              rel="noopener noreferrer">実験同意書</a>を確認し、実験に同意される場合は「同意するボタン」を押してください。実験に同意された後、本実験への参加に対して、謝礼をお支払いします。
+          </p>
+        </div>
+        <div class="ft-footer">
+          <div class="vertical-radio-button-group">
+            <form>
+              <fieldset id="qs-radio-group">
+                <div class="questionnarie-items">
+                  <input type="radio" value="agree" name="consent-radio">
+                  <a>同意する</a>
+                </div>
+                <div class="questionnarie-items">
+                  <input type="radio" value="disagree" name="consent-radio">
+                  <a>同意しない</a>
+                </div>
+              </fieldset>
+            </form>
+          </div>
+        </div>
+      </div>
     </div>
   </main>
 
@@ -1770,69 +1875,6 @@
   <script src="/__/firebase/9.1.3/firebase-auth-compat.js"></script>
   <script src="/__/firebase/9.1.3/firebase-firestore-compat.js"></script>
   <script src="/__/firebase/init.js"></script>
-  <!-- 
-                                                                <script type="module">
-                                                                  import db from "/assest/js/firebase.js";
-                                                              
-                                                                  // -- Get_Random_Int / 整数乱数生成 
-                                                                  function getRandomInt(max) {
-                                                                    return Math.floor(Math.random() * max);
-                                                                  }
-                                                              
-                                                                  let id = String(getRandomInt(100000));
-                                                                  let idDocumentRef = db.collection("users").doc(id);
-                                                                  let idFlag = false;
-                                                                  if (localStorage.getItem("id")) {
-                                                                    id = localStorage.getItem("id");
-                                                                    // サイトをDisabledにする
-                                                                    // タスク - Disabledページの作成
-                                                                  } else {
-                                                                    for (let i = 0; i < 20; i++) {
-                                                                      idDocumentRef.get().then((doc) => {
-                                                                        if (doc.exists) {
-                                                                          id = String(getRandomInt(100000));
-                                                                          console.log("Document data:", doc.data());
-                                                                        } else {
-                                                                          localStorage.setItem("id", id);
-                                                                          idFlag = true;
-                                                                        }
-                                                                      }).catch((error) => {
-                                                                        console.log("Error getting document:", error);
-                                                                      });
-                                                              
-                                                                      if (idFlag) {
-                                                                        break;
-                                                                      }
-                                                                    }
-                                                                  }
-                                                              
-                                                                  // Firestoreにデータを送信
-                                                                  function dataSend() {
-                                                                    db.collection("users").doc(id)
-                                                                      .set(dataFormat())
-                                                                      .then(() => {
-                                                                        console.log("Document successfully written!");
-                                                                      })
-                                                                      .catch((error) => {
-                                                                        console.error("Error writing document: ", error);
-                                                                      });
-                                                                  }
-
-        // データを整形
-        function dataFormat() {
-        return { name: "yamada taro" }
-        // return {
-        // name: sessionStorage.getItem("name"),
-        // age: sessionStorage.getItem("age"),
-        // creation_time: sessionStorage.getItem("creation_time"),
-        // edit_time: sessionStorage.getItem("edit_time"),
-        // quetionnarie: sessionStorage.getItem("quetionnarie"),
-        // adjective_pairs: sessionStorage.getItem("adjective_pairs"),
-        // robot_parameter: sessionStorage.getItem("robot_parameter")
-        // }
-        }
-        </script>
-        -->
 
   <!-- p5.js  -->
   <script src="https://cdn.jsdelivr.net/npm/p5@1.1.9/lib/p5.js"></script>
@@ -1841,8 +1883,5 @@
   <script type="module" src="./assest/js/firebase.js"></script>
   <script src="./assest/js/sketch.js"></script>
 </body>
-
-<!-- Initialize Firebase -->
-<!-- <script src="/__/firebase/init.js"></script> -->
 
 </html>

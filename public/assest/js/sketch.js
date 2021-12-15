@@ -33,6 +33,7 @@ function initParameter() {
   if (!sessionStorage.getItem("creation_time")) {
     sessionStorage.setItem("creation_time", Date.now());
   }
+
   // Face：顔
   // faceTemp = checkStorage("faceTemp");
   // faceY = Number(checkStorage("faceY"));
@@ -78,7 +79,8 @@ class Head {
 }
 
 let faceTemp = 0,
-  faceY = 0;
+  faceY = 0,
+  faceSize = 1.0;
 class Face {
   constructor(x, y, color) {
     this.x = x;
@@ -92,38 +94,38 @@ class Face {
     fill(this.color);
     if (faceTemp == 0) {
       beginShape();
-      vertex(this.x, 20 + faceY);
+      vertex(this.x, (20 * faceSize) + faceY);
       bezierVertex(
         this.x,
-        20 + faceY,
-        this.x + 80,
-        20 + faceY,
-        this.x + 80,
-        100 + faceY
+        (20 * faceSize) + faceY,
+        this.x + (80 * faceSize),
+        (20 * faceSize) + faceY,
+        this.x + (80 * faceSize),
+        (100 * faceSize) + faceY
       );
       bezierVertex(
-        this.x + 80,
-        100 + faceY,
-        this.x + 80,
-        180 + faceY,
+        this.x + (80 * faceSize),
+        (100 * faceSize) + faceY,
+        this.x + (80 * faceSize),
+        (180 * faceSize) + faceY,
         this.x,
-        200 + faceY
+        (200 * faceSize) + faceY
       );
       bezierVertex(
         this.x,
-        200 + faceY,
-        this.x - 80,
-        180 + faceY,
-        this.x - 80,
-        100 + faceY
+        (200 * faceSize) + faceY,
+        this.x - (80 * faceSize),
+        (180 * faceSize) + faceY,
+        this.x - (80 * faceSize),
+        (100 * faceSize) + faceY
       );
       bezierVertex(
-        this.x - 80,
-        100 + faceY,
-        this.x - 80,
-        20 + faceY,
+        this.x - (80 * faceSize),
+        (100 * faceSize) + faceY,
+        this.x - (80 * faceSize),
+        (20 * faceSize) + faceY,
         this.x,
-        20 + faceY
+        (20 * faceSize) + faceY
       );
       endShape();
     }
@@ -1271,7 +1273,7 @@ function changeTemp(parts, num) {
 */
 
 // 2.1 SETUP: キャンバスの初期化
-let cnvs; // setup()でキャンバス生成，draw()で位置調節や指定した親要素にアタッチ
+let cnvs; // setup()でキャンバス生成，draw()で位置調節や指定した親要素にアタッチ
 function setup() {
   cnvs = createCanvas(cnvsW, cnvsH); // Creating a Canvas
   cnvs.position(0, 0);
@@ -1297,9 +1299,11 @@ function draw() {
   robotBody.draw(); // 体の描写
 
   var facePos = document.getElementById("face-pos").getAttribute("value");
-  if (facePos != faceY) {
-    faceY = Number(facePos);
-  }
+  if (facePos != faceY) faceY = Number(facePos);
+
+  // var faceSizeValue = document.getElementById("face-size").getAttribute("value");
+  // if (faceSizeValue != faceSize) faceSize = 0.3 * ((1 - Number(faceSizeValue)) / 0.5) + Number(faceSizeValue);
+
   robotFace.draw(); // 顔の描画
 
   var newEyeSize = document.getElementById("eye-size").getAttribute("value");
@@ -1333,36 +1337,20 @@ function draw() {
   // ループ毎に各値をSessionStorageに保存
   saveToStorage();
 
-  // 顔のテンプレートによって質問項目を切り替え
-  // if ((0 <= faceTemp) && (faceTemp < 4)) {
-  //   document.getElementById("questionnarie-8-1").classList.remove("disabled");
-  //   document.getElementById("questionnarie-8-2").classList.add("disabled");
-  //   document.getElementById("questionnarie-8-3").classList.add("disabled");
-  // }else if ((4 <= faceTemp) && (faceTemp < 8)) {
-  //   document.getElementById("questionnarie-8-1").classList.add("disabled");
-  //   document.getElementById("questionnarie-8-2").classList.remove("disabled");
-  //   document.getElementById("questionnarie-8-3").classList.add("disabled");
-  // }else {
-  //   document.getElementById("questionnarie-8-1").classList.add("disabled");
-  //   document.getElementById("questionnarie-8-2").classList.add("disabled");
-  //   document.getElementById("questionnarie-8-3").classList.remove("disabled");
-  // }
-  // 目のテンプレートによって質問項目を切り替え
-  // if(eyeTemp == 15) {
-  //   document.getElementById("questionnarie-9-1").classList.add("disabled");
-  //   document.getElementById("questionnarie-9-2").classList.remove("disabled");
-  // }else {
-  //   document.getElementById("questionnarie-9-1").classList.remove("disabled");
-  //   document.getElementById("questionnarie-9-2").classList.add("disabled");
-  // }
-  // 口のテンプレートによって質問項目を切り替え
-  // if(mouseTemp == 9) {
-  //   document.getElementById("questionnarie-10-1").classList.add("disabled");
-  //   document.getElementById("questionnarie-10-2").classList.remove("disabled");
-  // }else {
-  //   document.getElementById("questionnarie-10-1").classList.remove("disabled");
-  //   document.getElementById("questionnarie-10-2").classList.add("disabled");
-  // }
+  let elm = document.getElementsByName("consent-radio");
+  let elmLen = elm.length;
+  for (let i = 0; i < elmLen; i++) {
+    if (elm.item(i).checked) {
+      if (elm.item(i).value == "agree") {
+        localStorage.setItem("consent-form", "agree");
+        const ft = document.getElementById("floating-table");
+        ft.classList.add("disable");
+      }
+      if (elm.item(i).value == "disagree") {
+        window.location.href = '404.html';
+      }
+    }
+  }
 }
 
 // タブの遷移
@@ -1443,12 +1431,39 @@ function tabSwiching() {
 3.1 COLOR 
 */
 
+// 色を変更するパーツを変数代入
 let selectColorParts = "";
 function changeColor(parts) {
   selectColorParts = parts;
 }
 
+// ColorPalletががクリックされた場合（onClick()）
 function onPalletClick(colorValue) {
+  if (selectColorParts == "face") {
+    robotFace.color = colorValue;
+  }
+  if (selectColorParts == "eye") {
+    robotEye.color = colorValue;
+  }
+  if (selectColorParts == "mouse") {
+    robotMouse.color = colorValue;
+  }
+  if (selectColorParts == "body") {
+    robotBody.color = colorValue;
+  }
+  chageColorPicker(colorValue);
+}
+
+// ColorPalletで選択された色をColorPickerに反映
+function chageColorPicker(color) {
+  let elm = document.getElementById('colorPicker');
+  elm.value = color;
+}
+
+// ColorPickerで値が変更された場合（onChange()）
+function getColorPicker() {
+  let elm = document.getElementById('colorPicker');
+  let colorValue = elm.value;
   if (selectColorParts == "face") {
     robotFace.color = colorValue;
   }
@@ -1526,9 +1541,9 @@ function activeSendButton(boolean) {
   }
 }
 
-function sendData() {
-  // addData();
-}
+// function sendData() {
+//   // addData();
+// }
 
 window.addEventListener(
   "load",
@@ -1551,6 +1566,7 @@ function saveToStorage() {
   sessionStorage.setItem("faceTemp", faceTemp);
   sessionStorage.setItem("faceColor", robotFace.color);
   sessionStorage.setItem("faceY", faceY);
+  sessionStorage.setItem("faceSize", faceSize);
   // Eye：目
   sessionStorage.setItem("eyeTemp", eyeTemp);
   sessionStorage.setItem("eyeColor", robotEye.color);

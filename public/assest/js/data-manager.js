@@ -93,12 +93,7 @@ function dataFormat() {
 
 // 1.2.3 アンケート結果のパラメータを整形
 function quetionnarieFormat() {
-  // 名前の追加
-  sessionStorage.setItem(
-    "name",
-    document.getElementById("name-text-field").value
-  );
-  // 質問事項の追加
+  // 質問事項の配列(quetionnarieArray)への追加
   let elm = document.getElementsByName("quetionnarie-radio");
   let len = elm.length;
   let quetionnarieArray = new Array();
@@ -107,14 +102,30 @@ function quetionnarieFormat() {
       quetionnarieArray.push(elm.item(i).value);
     }
   }
-  quetionnarieArray.push("Q6.1:" + document.getElementById("q6-1-text").value); // Q6.1
-  quetionnarieArray.push("Q8.1:" + document.getElementById("q8-text").value); // Q8
+
+  // -- テキストの配列(quetionnarieArray)への追加 --
+  // Q1：名前のみ例外的にsessionStorageに追加
+  sessionStorage.setItem(
+    "name",
+    document.getElementById("name-text-field").value
+  );
+  // Q3：メールアドレス(mail-address)
+  quetionnarieArray.push(document.getElementById("mail-address").value);
+  // Q4：紹介者(introducer)
+  quetionnarieArray.push("紹介者" + document.getElementById("introducer").value);
+  // Q12.1 理由
+  quetionnarieArray.push("Q12の理由:" + document.getElementById("q12-1").value);
+  // Q13 作成したロボットの大きさ
+  quetionnarieArray.push(document.getElementById("q13").value);
+  // Q14.1 理由
+  quetionnarieArray.push("Q14の理由:" + document.getElementById("q14-1").value);
+
+  //　アンケート(quetionnarie)をsessionStorageに追加
   sessionStorage.setItem("quetionnarie", quetionnarieArray);
 }
 
 // 1.2.4 ロボットのパラメータを整形
 function robotParaFormat() {
-  console.log("hoge");
   let array = [];
   // Face：顔
   array.push(sessionStorage.getItem("faceTemp"));
@@ -181,7 +192,7 @@ function dataConsistency() {
 // 1.2.6 データを送信後の変更(ボタンのアイコンとテキスト)
 function changeAfterSending() {
   let elmText = document.getElementById("send-text");
-  elmText.textContent = "送信完了";
+  elmText.textContent = "実験終了";
 
   let elmIcon = document.getElementById("send-icon");
   elmIcon.textContent = "check"
