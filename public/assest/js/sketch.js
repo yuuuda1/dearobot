@@ -33,42 +33,7 @@ function initParameter() {
   if (!sessionStorage.getItem("creation_time")) {
     sessionStorage.setItem("creation_time", Date.now());
   }
-
-  // Face：顔
-  // faceTemp = checkStorage("faceTemp");
-  // faceY = Number(checkStorage("faceY"));
-  // robotFace.color = checkStorage("faceColor");
-  // Eye：目
-  // eyeTemp = checkStorage("eyeTemp");
-  // robotEye.color = checkStorage("eyeColor");
-  // eyeY = Number(checkStorage("eyeY"));
-  // eyeX = Number(checkStorage("eyeX"));
-  // eyeMag = Number(checkStorage("eyeMag"));
-  // Mouse：口
-  // mouseTemp = checkStorage("mouseTemp");
-  // robotMouse.color = checkStorage("mouseColor");
-  // mouseY = Number(checkStorage("mouseY"));
-  // mouseHeight = Number(checkStorage("mouseHeight"));
-  // mouseWidth = Number(checkStorage("mouseWidth"));
-  // Body：体
-  // bodyTemp = checkStorage("bodyTemp");
-  // robotBody.color = checkStorage("bodyColor");
-  // bodyY = Number(checkStorage("bodyY"));
-  // bodyHeight = Number(checkStorage("bodyHeight"));
-  // bodyWidth = Number(checkStorage("bodyWidth"));
 }
-
-// -- 1.0.4 Check_TO_Storage / ストレージにある値を確認
-function checkStorage(key) {
-  // if (sessionStorage.getItem(key)) {
-  //   return sessionStorage.getItem(key);
-  // } else {
-  //   return 0;
-  // }
-}
-
-
-
 
 /* -- 1.1 Head -- */
 class Head {
@@ -77,7 +42,6 @@ class Head {
     this.y = y;
   }
 }
-
 let faceTemp = 0,
   faceY = 0,
   faceSize = 1.0;
@@ -587,7 +551,7 @@ let robotFace = new Face(cnvsW / 2, 400, "#FFF");
 
 let eyeTemp = 0,
   eyeY = 0,
-  eyeMag = 0,
+  eyeMag = 1.0,
   eyeX = 0;
 class Eye {
   constructor(x, y, color) {
@@ -1103,142 +1067,6 @@ class Body {
       // 首
       ellipse(this.x, this.y + 16 + bodyY, 40, 40);
     }
-    // if (bodyTemp == 1) {
-    //   // 上腕
-    //   rect(this.x - 130, this.y + 40 + bodyY, 48, 120, 16);
-    //   rect(this.x + 82, this.y + 40 + bodyY, 48, 120, 16);
-    //   // 前腕
-    //   rect(this.x - 130, this.y + 160 + bodyY, 48, 120, 16);
-    //   rect(this.x + 82, this.y + 160 + bodyY, 48, 120, 16);
-    //   // 肘
-    //   rect(this.x - 134, this.y + 150 + bodyY, 56, 20, 4);
-    //   rect(this.x + 78, this.y + 150 + bodyY, 56, 20, 4);
-    //   // 肩
-    //   ellipse(this.x + 80, this.y + 48 + bodyY, 48, 48);
-    //   ellipse(this.x - 80, this.y + 48 + bodyY, 48, 48);
-    //   // 大腿(1)
-    //   rect(this.x - 68, this.y + 224 + bodyY, 64, 240, 16);
-    //   rect(this.x + 4, this.y + 224 + bodyY, 64, 240, 16);
-    //   // 膝(1)
-    //   rect(this.x - 72, this.y + 324 + bodyY, 72, 20, 4);
-    //   rect(this.x, this.y + 324 + bodyY, 72, 20, 4);
-    //   // 腰
-    //   rect(this.x - 70, this.y + 180 + bodyY, 140, 60, 30);
-    //   // 胴体
-    //   rect(this.x - 80, this.y + 16 + bodyY, 160, 200, 20, 20, 80, 80);
-    //   // 右手
-    //   rect(this.x - 144, this.y + 272 + bodyY, 40, 12, 4);
-    //   rect(this.x - 128, this.y + 272 + bodyY, 12, 40, 4);
-    //   rect(this.x - 112, this.y + 272 + bodyY, 12, 40, 4);
-    //   rect(this.x - 96, this.y + 272 + bodyY, 12, 40, 4);
-    //   rect(this.x - 134, this.y + 248 + bodyY, 56, 40, 4);
-    //   // 左手
-    //   rect(this.x + 104, this.y + 272 + bodyY, 40, 12, 4);
-    //   rect(this.x + 116, this.y + 272 + bodyY, 12, 40, 4);
-    //   rect(this.x + 100, this.y + 272 + bodyY, 12, 40, 4);
-    //   rect(this.x + 84, this.y + 272 + bodyY, 12, 40, 4);
-    //   rect(this.x + 78, this.y + 248 + bodyY, 56, 40, 4);
-    //   // 首
-    //   ellipse(this.x, this.y + 16 + bodyY, 40, 40);
-    // }
-    // if (bodyTemp == 2) {
-    //   // 上腕
-    //   rect(this.x - 130, this.y + 40 + bodyY, 48, 120, 16);
-    //   rect(this.x + 82, this.y + 40 + bodyY, 48, 120, 16);
-    //   // 前腕
-    //   rect(this.x - 130, this.y + 160 + bodyY, 48, 120, 16);
-    //   rect(this.x + 82, this.y + 160 + bodyY, 48, 120, 16);
-    //   // 肘
-    //   rect(this.x - 134, this.y + 150 + bodyY, 56, 20, 4);
-    //   rect(this.x + 78, this.y + 150 + bodyY, 56, 20, 4);
-    //   // 肩
-    //   ellipse(this.x + 80, this.y + 48 + bodyY, 48, 48);
-    //   ellipse(this.x - 80, this.y + 48 + bodyY, 48, 48);
-    //   // ローラー
-    //   ellipse(this.x + 48, this.y + 424 + bodyY, 56, 56);
-    //   ellipse(this.x - 48, this.y + 424 + bodyY, 56, 56);
-    //   ellipse(this.x, this.y + 424 + bodyY, 56, 56);
-    //   // 下半身
-    //   rect(this.x - 72, this.y + 224 + bodyY, 144, 200, 80, 80, 16, 16);
-    //   // 腰
-    //   rect(this.x - 70, this.y + 180 + bodyY, 140, 60, 30);
-    //   // 胴体
-    //   rect(this.x - 80, this.y + 16 + bodyY, 160, 200, 20, 20, 80, 80);
-    //   // 右手
-    //   rect(this.x - 144, this.y + 272 + bodyY, 40, 12, 4);
-    //   rect(this.x - 128, this.y + 272 + bodyY, 12, 40, 4);
-    //   rect(this.x - 112, this.y + 272 + bodyY, 12, 40, 4);
-    //   rect(this.x - 96, this.y + 272 + bodyY, 12, 40, 4);
-    //   rect(this.x - 134, this.y + 248 + bodyY, 56, 40, 4);
-    //   // 左手
-    //   rect(this.x + 104, this.y + 272 + bodyY, 40, 12, 4);
-    //   rect(this.x + 116, this.y + 272 + bodyY, 12, 40, 4);
-    //   rect(this.x + 100, this.y + 272 + bodyY, 12, 40, 4);
-    //   rect(this.x + 84, this.y + 272 + bodyY, 12, 40, 4);
-    //   rect(this.x + 78, this.y + 248 + bodyY, 56, 40, 4);
-    //   // 首
-    //   ellipse(this.x, this.y + 16 + bodyY, 40, 40);
-    // }
-    // if (bodyTemp == 3) {
-    //   // 上腕
-    //   rect(this.x - 130, this.y + 40 + bodyY, 48, 120, 16);
-    //   rect(this.x + 82, this.y + 40 + bodyY, 48, 120, 16);
-    //   // 前腕
-    //   rect(this.x - 130, this.y + 160 + bodyY, 48, 120, 16);
-    //   rect(this.x + 82, this.y + 160 + bodyY, 48, 120, 16);
-    //   // 肘
-    //   rect(this.x - 134, this.y + 150 + bodyY, 56, 20, 4);
-    //   rect(this.x + 78, this.y + 150 + bodyY, 56, 20, 4);
-    //   // 肩
-    //   ellipse(this.x + 80, this.y + 48 + bodyY, 48, 48);
-    //   ellipse(this.x - 80, this.y + 48 + bodyY, 48, 48);
-    //   // 大腿(1)
-    //   rect(this.x - 68, this.y + 224 + bodyY, 64, 240, 16);
-    //   rect(this.x + 4, this.y + 224 + bodyY, 64, 240, 16);
-    //   // 膝(1)
-    //   rect(this.x - 72, this.y + 324 + bodyY, 72, 20, 4);
-    //   rect(this.x, this.y + 324 + bodyY, 72, 20, 4);
-    //   // 腰
-    //   rect(this.x - 70, this.y + 180 + bodyY, 140, 60, 30);
-    //   // 胴体
-    //   rect(this.x - 80, this.y + 16 + bodyY, 160, 200, 20, 20, 80, 80);
-    //   // 右手
-    //   rect(this.x - 138, this.y + 248 + bodyY, 64, 64, 32);
-    //   // 左手
-    //   rect(this.x + 74, this.y + 248 + bodyY, 64, 64, 32);
-    //   // 首
-    //   ellipse(this.x, this.y + 16 + bodyY, 40, 40);
-    // }
-    // if (bodyTemp == 4) {
-    //   // 上腕
-    //   rect(this.x - 130, this.y + 40 + bodyY, 48, 120, 16);
-    //   rect(this.x + 82, this.y + 40 + bodyY, 48, 120, 16);
-    //   // 前腕
-    //   rect(this.x - 130, this.y + 160 + bodyY, 48, 120, 16);
-    //   rect(this.x + 82, this.y + 160 + bodyY, 48, 120, 16);
-    //   // 肘
-    //   rect(this.x - 134, this.y + 150 + bodyY, 56, 20, 4);
-    //   rect(this.x + 78, this.y + 150 + bodyY, 56, 20, 4);
-    //   // 肩
-    //   ellipse(this.x + 80, this.y + 48 + bodyY, 48, 48);
-    //   ellipse(this.x - 80, this.y + 48 + bodyY, 48, 48);
-    //   // ローラー
-    //   ellipse(this.x + 48, this.y + 424 + bodyY, 56, 56);
-    //   ellipse(this.x - 48, this.y + 424 + bodyY, 56, 56);
-    //   ellipse(this.x, this.y + 424 + bodyY, 56, 56);
-    //   // 下半身
-    //   rect(this.x - 72, this.y + 224 + bodyY, 144, 200, 80, 80, 16, 16);
-    //   // 腰
-    //   rect(this.x - 70, this.y + 180 + bodyY, 140, 60, 30);
-    //   // 胴体
-    //   rect(this.x - 80, this.y + 16 + bodyY, 160, 200, 20, 20, 80, 80);
-    //   // 右手
-    //   rect(this.x - 138, this.y + 248 + bodyY, 64, 64, 32);
-    //   // 左手
-    //   rect(this.x + 74, this.y + 248 + bodyY, 64, 64, 32);
-    //   // 首
-    //   ellipse(this.x, this.y + 16 + bodyY, 40, 40);
-    // }
   }
 }
 let robotBody = new Body(cnvsW / 2, 180, "#FFF");
@@ -1279,10 +1107,6 @@ function setup() {
   cnvs.position(0, 0);
 }
 
-// function draw() {
-//   cnvs.parent("canvas1");
-// }
-
 // 2.2 DRAW：setup後に繰り返し実行（フレーム単位）
 function draw() {
   tabSwiching();
@@ -1290,19 +1114,11 @@ function draw() {
 
   cnvs.parent("canvas");
 
-  // var newBodyH = document.getElementById("body-height").getAttribute("aria-valuenow");
-  // var newBodyW = document.getElementById("body-width").getAttribute("aria-valuenow");
-  // var newBodyPos = document.getElementById("body-position").getAttribute("value");
-  // if (bodyHeight != newBodyH) bodyHeight = Number(newBodyH);
-  // if (bodyWidth != newBodyW) bodyWidth = Number(newBodyW);
-  // if (bodyY != newBodyPos) bodyY = Number(newBodyPos);
+
   robotBody.draw(); // 体の描写
 
   var facePos = document.getElementById("face-pos").getAttribute("value");
   if (facePos != faceY) faceY = Number(facePos);
-
-  // var faceSizeValue = document.getElementById("face-size").getAttribute("value");
-  // if (faceSizeValue != faceSize) faceSize = 0.3 * ((1 - Number(faceSizeValue)) / 0.5) + Number(faceSizeValue);
 
   robotFace.draw(); // 顔の描画
 
@@ -1540,10 +1356,6 @@ function activeSendButton(boolean) {
     // sendButtonFlag = 1;
   }
 }
-
-// function sendData() {
-//   // addData();
-// }
 
 window.addEventListener(
   "load",
